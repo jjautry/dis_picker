@@ -2,7 +2,7 @@ import csv
 import random
 
 movie_dict = {}
-with open('data/disney_data.csv') as data:
+with open("static/disney_data.csv") as data:
     """Converts dataset into dictionary movie_dict"""
     data_reader = csv.reader(data)
     next(data_reader)
@@ -41,76 +41,6 @@ def new_search(studio, year):
     selected_movie = new_set_list[random_index]
     return selected_movie
 
-
-
-def get_movie(studio, year):
-    producers = ""
-    time_period = ""
-    if studio == 'Disney':
-        producers = '1'
-    elif studio == 'Pixar':
-        producers = '2'
-    elif studio == 'Lucas Films':
-        producers = '3'
-    else:
-        producers = '4'
-
-    if year == 'Pre-1980s':
-        time_period = '1'
-    elif year == '1980-1999':
-        time_period = '2'
-    elif year == '2000-Today':
-        time_period = '3'
-    else:
-        time_period = '4'
-
-    producer_sorted = {}
-    for movie in movie_dict:
-        if producers == '4':
-            producer_sorted[movie] = movie_dict[movie]
-        elif producers == '1':
-            if movie_dict[movie]['studio'] == 'Disney':
-                producer_sorted[movie] = movie_dict[movie]
-            else:
-                pass
-        elif producers == '2':
-            if movie_dict[movie]['studio'] == 'Pixar':
-                producer_sorted[movie] = movie_dict[movie]
-            else:
-                pass
-        elif producers == '3':
-            if movie_dict[movie]['studio'] == 'Lucas Film':
-                producer_sorted[movie] = movie_dict[movie]
-            else:
-                pass
-        else:
-            print('Invalid selection, try again.')
-
-    random_list = []
-    for movie in producer_sorted:
-        if time_period == '1':
-            if producer_sorted[movie]['year released'] < 1980:
-                random_list.append(movie)
-            else:
-                pass
-        elif time_period == '2':
-            if producer_sorted[movie]['year released'] >= 1980 and producer_sorted[movie]['year released'] < 2000:
-                random_list.append(movie)
-            else:
-                pass
-        elif time_period == '3':
-            if producer_sorted[movie]['year released'] >= 2000:
-                random_list.append(movie)
-            else:
-                pass
-        elif time_period == '4':
-            random_list.append(movie)
-        else:
-            print('Invalid selection, try again.')
-
-    random_index = random.randint(0,(len(random_list)-1))
-    movie_choice = random_list[random_index]
-    return movie_choice
 
 
 
