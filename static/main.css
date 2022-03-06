@@ -85,10 +85,10 @@ body {
 }
 
 .genie {
-	width: 600px;
-	height: 300px;
+	width: 250px;
+	height: 137px;
 	margin-top: 25px;
-	margin-bottom: 25x;
+	margin-bottom: 50px;
 }
 
 .moviebox h3 {
@@ -103,7 +103,6 @@ body {
 
 .countdown-box {
 	display: block;
-
 	max-width: 700px;
 	height: 650px;
 	margin-left: auto;
