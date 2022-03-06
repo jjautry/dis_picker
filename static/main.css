@@ -85,7 +85,7 @@ body {
 }
 
 .genie {
-	width: 300px;
+	width: 600px;
 	height: 300px;
 	margin-top: 25px;
 	margin-bottom: 25x;
@@ -100,3 +100,39 @@ body {
 	margin: 100px auto 0 auto;
 	text-align: center;
 }
+
+.countdown-box {
+	display: block;
+
+	max-width: 700px;
+	height: 650px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+	box-shadow:
+		inset 0 -3em 3em rgba(0,0,0,0.1),
+			0 0  0 2px rgb(255,255,255),
+			s0.3em 0.3em 1em rgba(0,0,0,0.3);
+	background-image: url(../static/mak_drink.jpg);
+	background-size: cover;
+	
+	
+}
+
+.countdown {
+	display: block;
+	text-align: center;
+	padding-top: 200px;
+}
+
+.countdown h1 {
+	font-family: 'WaltographRegular';
+	font-size: 10em;
+
+}
+
+.countdown img {
+	padding-top: 75px;
+	max-width: 625px;
+}
+

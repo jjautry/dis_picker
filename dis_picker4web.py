@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, flash, redirect
-from movie_selector import new_search, movie_dict
+from movie_selector import new_search, movie_dict, dis_countdown
 
 app = Flask(__name__)
 app.config['SECRET KEY'] = 'slinkydogdash'
@@ -28,13 +28,31 @@ def movie(movie_name):
         studio = movie_dict[movie_name]['studio']
         year = movie_dict[movie_name]['year released']
         category = movie_dict[movie_name]['category']
+        logo_url = ""
+        if studio == "Disney":
+            logo_url = "../static/The_Walt_Disney_Studios_logo.png"
+        elif studio == "Disney Channel":
+            logo_url = "../static/disneychannel.png"
+        elif studio == "Marvel":
+            logo_url = "../static/marvel.png"
+        elif studio == "Pixar":
+            logo_url = "../static/pixar.png"
+        elif studio == "Lucasfilm":
+            logo_url = "../static/lucasfilm.png"
+
     return render_template('movie.html', temp_name=name,
                            temp_studio=studio, temp_year=year,
-                           temp_cat = category)
+                           temp_cat = category, temp_logo_url=logo_url)
 
 @app.route("/login")
 def login():
     return render_template("login.html")
+
+
+@app.route("/countdown")
+def countdown():
+    days = dis_countdown()
+    return render_template("countdown.html", temp_days=days)
 
 
 
