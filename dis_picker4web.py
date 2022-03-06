@@ -30,7 +30,7 @@ def movie(movie_name):
         category = movie_dict[movie_name]['category']
         logo_url = ""
         if studio == "Disney":
-            logo_url = "static/The_Walt_Disney_Studios_logo.png"
+            logo_url = "../static/The_Walt_Disney_Studios_logo.png"
         elif studio == "Disney Channel":
             logo_url = "../static/disneychannel.png"
         elif studio == "Marvel":
