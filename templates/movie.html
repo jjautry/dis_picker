@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="moviebox">
+        <img src="../static/mak_genie.jpg" class="genie">
+        <h1>{{ temp_name }} </h1>
+        <h3>Studio: {{ temp_studio }}</h3>
+        <h3>Year: {{ temp_year }}</h3>
+        <h3>Category: {{ temp_cat }}</h3>
+        <br>
+        <br>
+        <a href="/"><button>Back to Search</button></a>
+    </div>
+
+
+{% endblock %}
