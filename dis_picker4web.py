@@ -4,6 +4,7 @@ from movie_selector import new_search, movie_dict, dis_countdown
 app = Flask(__name__)
 app.config['SECRET KEY'] = 'slinkydogdash'
 
+@app.route('/home')
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
@@ -12,12 +13,9 @@ def home():
         if studio == "Pick a studio:" or year == "Time period:":
             pass
         else:
-            try:
-                temp_movie = new_search(studio, year)
-                movie_url = "/movie/" + str(temp_movie)
-                return redirect(movie_url)
-            except:
-                pass
+            temp_movie = new_search(studio, year)
+            movie_url = "/movie/" + str(temp_movie)
+            return redirect(movie_url)
     return render_template('index.html')
 
 

@@ -2,9 +2,9 @@ import csv
 import random
 from datetime import datetime
 
+
 movie_dict = {}
 with open("static/disney_data.csv") as data:
-    """Converts dataset into dictionary movie_dict"""
     data_reader = csv.reader(data)
     next(data_reader)
     for line in list(data_reader):
@@ -44,8 +44,9 @@ def new_search(studio, year):
 
 
 def dis_countdown():
-   today = datetime.today().date()
-   disney_date = datetime(2022, 10, 9).date()
-   delta = disney_date - today
-   return delta.days
+    """Countdown till disney from today - need to adjust for timezone"""
+    today = datetime.today().date()
+    disney_date = datetime(2022, 10, 9).date()
+    delta = disney_date - today
+    return delta.days
 

@@ -4,7 +4,7 @@
 }
 
 body {
-	background-color: slategray;
+	background-color: rgb(152, 164, 175);
 }
 
 
@@ -18,9 +18,15 @@ body {
 	margin-top: 50px;
 	padding: 15px;
 	box-shadow:
-       inset 0 -3em 3em rgba(0,0,0,0.1),
-             0 0  0 2px rgb(255,255,255),
-             0.3em 0.3em 1em rgba(0,0,0,0.3);
+  1.6px 1.8px 3.2px rgba(0, 0, 0, 0.018),
+  3.7px 4.1px 7.4px rgba(0, 0, 0, 0.026),
+  6.7px 7.4px 13.3px rgba(0, 0, 0, 0.032),
+  11.1px 12.2px 22px rgba(0, 0, 0, 0.038),
+  18.3px 20.1px 36.2px rgba(0, 0, 0, 0.044),
+  31.9px 35.1px 63.3px rgba(0, 0, 0, 0.052),
+  69px 76px 137px rgba(0, 0, 0, 0.07)
+;
+
 }
 
 .box button {
@@ -109,9 +115,15 @@ body {
 	margin-right: auto;
 	margin-top: 50px;
 	box-shadow:
-		inset 0 -3em 3em rgba(0,0,0,0.1),
-			0 0  0 2px rgb(255,255,255),
-			s0.3em 0.3em 1em rgba(0,0,0,0.3);
+  1.6px 1.8px 3.2px rgba(0, 0, 0, 0.018),
+  3.7px 4.1px 7.4px rgba(0, 0, 0, 0.026),
+  6.7px 7.4px 13.3px rgba(0, 0, 0, 0.032),
+  11.1px 12.2px 22px rgba(0, 0, 0, 0.038),
+  18.3px 20.1px 36.2px rgba(0, 0, 0, 0.044),
+  31.9px 35.1px 63.3px rgba(0, 0, 0, 0.052),
+  69px 76px 137px rgba(0, 0, 0, 0.07)
+;
+
 	background-image: url(../static/mak_drink.jpg);
 	background-size: cover;
 	
@@ -125,13 +137,14 @@ body {
 }
 
 .countdown h1 {
+	margin-top: 100px;
 	font-family: 'WaltographRegular';
 	font-size: 10em;
 
 }
 
 .countdown img {
-	padding-top: 75px;
+	padding-top: 50px;
 	max-width: 625px;
 }
 
