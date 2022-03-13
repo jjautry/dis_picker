@@ -32,7 +32,7 @@ class DBConnect:
 		self.connection = sqlite3.connect("data/dis-movies.db")
 		self.cursor = self.connection.cursor()
 
-	def random_movie(self):
+
 
 
 
