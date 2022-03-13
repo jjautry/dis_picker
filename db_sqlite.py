@@ -1,5 +1,5 @@
 import sqlite3
-from movie_selector import movie_dict
+
 
 # Create and connect to dis-movies.db
 connection = sqlite3.connect("data/dis-movies.db")

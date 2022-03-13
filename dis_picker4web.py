@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, flash, redirect, session
-from movie_selector import new_search, movie_dict, dis_countdown
-from db_sqlite import DBConnect
+from movie_selector import dis_countdown
+from models import DBConnect
 
 app = Flask(__name__)
 app.config['SECRET KEY'] = 'slinkydogdash'
@@ -26,29 +26,33 @@ def get_studio():
     return sorted(studio_list)
 
 
-@app.route('/movie/<movie_name>')
-def movie(movie_name):
-    """This is outdated and will be deleted"""
-    if movie_name in movie_dict:
-        name = movie_dict[movie_name]['title']
-        studio = movie_dict[movie_name]['studio']
-        year = movie_dict[movie_name]['year released']
-        category = movie_dict[movie_name]['category']
-        logo_url = ""
-        if studio == "Disney":
-            logo_url = "../static/The_Walt_Disney_Studios_logo.png"
-        elif studio == "Disney Channel":
-            logo_url = "../static/disneychannel.png"
-        elif studio == "Marvel":
-            logo_url = "../static/marvel.png"
-        elif studio == "Pixar":
-            logo_url = "../static/pixar.png"
-        elif studio == "Lucasfilm":
-            logo_url = "../static/lucasfilm.png"
+# @app.route('/movie/<movie_name>')
+# def movie(movie_name):
+#     """This is outdated and will be deleted"""
+#     if movie_name in movie_dict:
+#         name = movie_dict[movie_name]['title']
+#         studio = movie_dict[movie_name]['studio']
+#         year = movie_dict[movie_name]['year released']
+#         category = movie_dict[movie_name]['category']
+#         logo_url = ""
+#         if studio == "Disney":
+#             logo_url = "../static/The_Walt_Disney_Studios_logo.png"
+#         elif studio == "Disney Channel":
+#             logo_url = "../static/disneychannel.png"
+#         elif studio == "Marvel":
+#             logo_url = "../static/marvel.png"
+#         elif studio == "Pixar":
+#             logo_url = "../static/pixar.png"
+#         elif studio == "Lucasfilm":
+#             logo_url = "../static/lucasfilm.png"
+#
+#     return render_template('movie.html', temp_name=name,
+#                            temp_studio=studio, temp_year=year,
+#                            temp_cat = category, temp_logo_url=logo_url)
 
-    return render_template('movie.html', temp_name=name,
-                           temp_studio=studio, temp_year=year,
-                           temp_cat = category, temp_logo_url=logo_url)
+@app.route("/register")
+def register():
+    return render_template("register.html")
 
 @app.route("/login")
 def login():
