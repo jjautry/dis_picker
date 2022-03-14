@@ -13,6 +13,7 @@ db.init_app(app)
 login.init_app(app)
 login.login_view = 'login'
 
+
 @app.before_first_request
 def create_table():
     db.create_all()
@@ -21,8 +22,6 @@ def create_table():
 @app.route('/')
 def index():
     return render_template('index.html')
-
-
 
 
 @app.route('/login', methods=['POST', 'GET'])
@@ -64,6 +63,15 @@ def register():
     return render_template('register.html')
 
 
+@app.route('/random-movie')
+def random_movie():
+    cursor = DBConnect().cursor
+    cursor.execute("""SELECT *
+                    FROM movies
+                    ORDER BY RANDOM()
+                    LIMIT 1;""")
+    result = cursor.fetchall()
+    return render_template("movie.html", result=result)
 
 
 @app.route("/my_page")
@@ -71,17 +79,17 @@ def register():
 def my_page():
     return render_template("userpage.html")
 
+
 @app.route("/countdown")
 def countdown():
     days = dis_countdown()
     return render_template("countdown.html", temp_days=days)
 
+
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect('/')
-
-
 
 
 # @app.route('/movie/<movie_name>')
@@ -107,7 +115,6 @@ def logout():
 #     return render_template('movie.html', temp_name=name,
 #                            temp_studio=studio, temp_year=year,
 #                            temp_cat = category, temp_logo_url=logo_url)
-
 
 
 if __name__ == '__main__':

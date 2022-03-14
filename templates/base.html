@@ -12,27 +12,8 @@
         <link rel="stylesheet" href="../static/main.css"/>
         <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/waltograph-disney" type="text/css"/>
         <title>Disney+ Movie Picker</title>
-        <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-dard bg-dark">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">SURPRISE</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-        </div>
-
-
+        {% block nav %}
+        {% endblock %}
     </head>
     <body>
         {% block content %}
