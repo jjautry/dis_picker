@@ -7,6 +7,7 @@ import sqlite3
 login = LoginManager()
 db = SQLAlchemy()
 
+
 # creates db model and connects with user data
 class UserModel(UserMixin, db.Model):
 	__tablename__ = 'users'
