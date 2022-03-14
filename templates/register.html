@@ -1,16 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="box">
-    <h2>Register:</h2>
-    <br>
-    <form action="" method="POST" class="register">
-        <input type="email" name="email" placeholder="Enter email"/>
-        <input type="text" name="username" placeholder="username"/>
-        <input type="password" name="password" placeholder="password"/>
-        <input type="submit" value="submit"/>
+<div class="container">
+    <h2 class="display-2">Register</h2>
+    <div class="container">
+    <form action="" method="POST">
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Username">
+        </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    <br>
-    <h3><a href="{{ url_for('login') }}">Already have an account?</a></h3>
+    </div>
 </div>
 {% endblock %}

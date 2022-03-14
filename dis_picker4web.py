@@ -1,45 +1,85 @@
-from flask import Flask, render_template, request, flash, redirect, session
+from flask import Flask, render_template, request, redirect, session
+from flask_login import login_required, current_user, login_user, logout_user
 from movie_selector import dis_countdown
-from models import DBConnect
+from models import DBConnect, db, login, UserModel
 
 app = Flask(__name__)
-app.config['SECRET KEY'] = 'slinkydogdash'
+app.secret_key = 'slinkydogdash'
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+app.config['SQLALCHEMY_TRACK_NOTIFICATIONS'] = False
+
+db.init_app(app)
+login.init_app(app)
+login.login_view = 'login'
+
+@app.before_first_request
+def create_table():
+    db.create_all()
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
     return render_template('index.html')
 
 
 
 
-
-
-def get_studio():
-    """Returns all distinct studios in a list"""
-    cur = DBConnect().cursor
-    cur.execute("SELECT DISTINCT studio FROM movies;")
-    studio_list = []
-    for studio in cur.fetchall():
-        studio_list.append(studio[0])
-    return sorted(studio_list)
-
-
-
-
-@app.route("/register")
-def register():
-    return render_template("register.html")
-
-@app.route("/login")
+@app.route('/login', methods=['POST', 'GET'])
 def login():
-    return render_template("login.html")
+    if current_user.is_authenticated:
+        return redirect('/my_page')
 
+    if request.method == 'POST':
+        username = request.form['username']
+        user = UserModel.query.filter_by(username=username).first()
+        if user is not None and user.check_password(request.form['password']):
+            login_user(user)
+            return redirect('/my_page')
+
+    return render_template('login.html')
+
+
+@app.route('/register', methods=['POST', 'GET'])
+def register():
+    if current_user.is_authenticated:
+        return redirect('/my_page')
+
+    if request.method == 'POST':
+        email = request.form['email']
+        username = request.form['username']
+        password = request.form['password']
+
+        if UserModel.query.filter_by(email=email).first():
+            return('Email already in use')
+        elif UserModel.query.filter_by(username=username).first():
+            return('Username already in use')
+
+        user = UserModel(email=email, username=username)
+        user.set_password(password)
+        db.session.add(user)
+        db.session.commit()
+        return redirect('/login')
+
+    return render_template('register.html')
+
+
+
+
+@app.route("/my_page")
+@login_required
+def my_page():
+    return render_template("userpage.html")
 
 @app.route("/countdown")
 def countdown():
     days = dis_countdown()
     return render_template("countdown.html", temp_days=days)
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect('/')
 
 
 
