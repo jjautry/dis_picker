@@ -8,12 +8,11 @@ app.config['SECRET KEY'] = 'slinkydogdash'
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    """Home page with selection lists for dropdowns"""
-    studio_list = get_studio()
-    year_list = ["2000-Today", "1980-1999", "Pre-1980s"]
-    phase_list = [1, 2, 3, 4]
-    return render_template("index.html", studio_list=studio_list,
-                           year_list=year_list, phase_list=phase_list)
+    return render_template('index.html')
+
+
+
+
 
 
 def get_studio():
@@ -24,6 +23,25 @@ def get_studio():
     for studio in cur.fetchall():
         studio_list.append(studio[0])
     return sorted(studio_list)
+
+
+
+
+@app.route("/register")
+def register():
+    return render_template("register.html")
+
+@app.route("/login")
+def login():
+    return render_template("login.html")
+
+
+@app.route("/countdown")
+def countdown():
+    days = dis_countdown()
+    return render_template("countdown.html", temp_days=days)
+
+
 
 
 # @app.route('/movie/<movie_name>')
@@ -49,20 +67,6 @@ def get_studio():
 #     return render_template('movie.html', temp_name=name,
 #                            temp_studio=studio, temp_year=year,
 #                            temp_cat = category, temp_logo_url=logo_url)
-
-@app.route("/register")
-def register():
-    return render_template("register.html")
-
-@app.route("/login")
-def login():
-    return render_template("login.html")
-
-
-@app.route("/countdown")
-def countdown():
-    days = dis_countdown()
-    return render_template("countdown.html", temp_days=days)
 
 
 

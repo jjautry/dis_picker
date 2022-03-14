@@ -6,23 +6,6 @@
 
     <div class="box">
     <img src="../static/new_logo.png" class="logo">
-
-    <div class="studio">
-    <form action="/" method="POST">
-        <select class="form-select" aria-label="studio" name="studio">
-            {% for studio in studio_list %}
-            <option value="{{studio}}">{{ studio }}</option>
-            {% endfor %}
-        </select>
-    </div>
-
-    <div class="year">
-        <select class="form-select" aria-label="time period" name="time period">
-            {% for period in year_list %}
-            <option value="{{period}}">{{ period }}</option>
-            {% endfor %}
-        </select>
-    </div>
     <button type="submit" class="btn btn-primary btn-lg">Generate my movie</button>
     </form>
         <p class="footnote">James Autry | 2022</p>
