@@ -1,17 +1,13 @@
 {% extends "base.html" %}
-
 {% block nav %}
 <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/login">Login<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
                     <a class="nav-link" href="/my_page">Account</a>
                     </li>
                     <li class="nav-item">
@@ -20,16 +16,25 @@
                 </ul>
             </div>
         </nav>
-        </div>
-{% endblock %}
-
-{% block content %}
-<div class="container">
-    <h2>Login Successful!</h2>
-    <p>Welcome, {{ current_user.username }}!</p>
-    <br>
-    <br>
-    <img src="{{ link }}"/>
-    <a href="/logout">Logout</a>
 </div>
+{% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="studio-selections">
+        <div class="studio">
+            <a href="/phase/1">Phase 1</a>
+        </div>
+        <div class="studio">
+            <a href="/phase/2">Phase 2</a>
+        </div>
+        <div class="studio">
+            <a href="/phase/3">Phase 3</a>
+        </div>
+        <div class="studio">
+            <a href="/phase/4">Phase 4</a>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

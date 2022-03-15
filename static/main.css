@@ -120,3 +120,29 @@ body {
 	padding-top: 75px;
 	max-width: 625px;
 }
+
+.img-fluid {
+	max-height: 300px;
+
+}
+
+.container {
+	background-color: #F2F2F2;
+	margin-top: 25px;
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+}
+
+body {
+	background-color: slategray;
+}
+
+.studio-selections {
+	text-align: center;
+	margin: 20px auto 20px auto;
+}
+
+.studio {
+	width: auto;
+	height: 100px;
+}
