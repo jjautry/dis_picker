@@ -55,7 +55,7 @@ body {
 
 .moviebox {
 	display: block;
-	background: #eee;
+	background: #F2F2F2;
 	width: 650px;
 	height: auto;
 	margin-left: auto;
@@ -145,4 +145,9 @@ body {
 .studio {
 	width: auto;
 	height: 100px;
+}
+
+.studio_img {
+	height: 200px;
+	width: auto;
 }
