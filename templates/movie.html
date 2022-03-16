@@ -29,7 +29,9 @@
         <p>{{ result[0][2] }}</p>
         <p>{{ result[0][3] }}</p>
         <p>{{ result[0][4] }}</p>
-        <p>{{ result[0][5] }}</p>
+        {% if result[0][5] %}
+        <p>Phase: {{ result[0][5] }}</p>
+        {% endif %}
         <br>
         <a href="/"><button>Back to Search</button></a>
     </div>
