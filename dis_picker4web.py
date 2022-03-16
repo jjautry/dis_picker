@@ -1,7 +1,9 @@
+import sqlite3
+
 from flask import Flask, render_template, request, redirect, session
 from flask_login import login_required, current_user, login_user, logout_user
 from movie_selector import dis_countdown
-from models import DBConnect, db, login, UserModel
+from models import DBConnect, db, login, UserModel, UserMoviesDB
 
 app = Flask(__name__)
 app.secret_key = 'slinkydogdash'
@@ -77,7 +79,18 @@ def random_movie():
 @app.route("/my_page")
 @login_required
 def my_page():
+
     return render_template("userpage.html")
+
+@app.route("/preference")
+@login_required
+def preference():
+    con = UserMoviesDB().connection
+    cur = con.cursor()
+    id = current_user.id
+    cur.execute(f"SELECT title FROM user_dislike WHERE user_id={id};")
+    result = cur.fetchall()
+    return render_template("preference.html", result=result)
 
 
 @app.route("/countdown")
@@ -103,8 +116,36 @@ def marvel():
     return render_template("marvel_phase.html")
 
 
-@app.route("/studio/<studio>")
+@app.route("/studio/<studio>", methods=['POST', 'GET'])
 def year(studio):
+
+    if current_user.is_authenticated:
+        new_studio = str(studio)
+        if new_studio == 'Lucasfilm':
+            query = "SELECT * FROM movies WHERE production_company='Lucasfilm' ORDER BY RANDOM() LIMIT 1;"
+        elif new_studio == 'Disney':
+            query = "SELECT * FROM movies WHERE production_company='Disney' ORDER BY RANDOM() LIMIT 1;"
+        elif new_studio == 'Disney Channel':
+            query = "SELECT * FROM movies WHERE production_company='Disney Channel' ORDER BY RANDOM() LIMIT 1;"
+        elif new_studio == 'Pixar':
+            query = "SELECT * FROM movies WHERE production_company='Pixar' ORDER BY RANDOM() LIMIT 1;"
+        elif new_studio == 'Marvel':
+            query = "SELECT * FROM movies WHERE production_company='Marvel' ORDER BY RANDOM() LIMIT 1;"
+
+        cursor = DBConnect().cursor
+        cursor.execute(query)
+        result = cursor.fetchall()
+        cursor.close()
+        string_result = str(result[0][0])
+
+        query = "SELECT COUNT(*) FROM user_dislike WHERE user_id="+ str(current_user.id) + " AND title='" + string_result + "' ;"
+        check_cur = UserMoviesDB().cursor
+        check_cur.execute(query)
+        result2 = check_cur.fetchall()
+        if result2[0][0] > 0:
+            year(studio)
+        return render_template("movie.html", result=result)
+
     new_studio = str(studio)
     if new_studio == 'Lucasfilm':
         query = "SELECT * FROM movies WHERE production_company='Lucasfilm' ORDER BY RANDOM() LIMIT 1;"
@@ -120,6 +161,18 @@ def year(studio):
     cursor.execute(query)
     result = cursor.fetchall()
     return render_template("movie.html", result=result)
+
+
+@app.route("/movie")
+def movie():
+    if request.method == 'POST':
+        if request.form['submit_button'] == 'Dislike':
+            return redirect('/countdown')
+        elif request.form['submit_button'] == 'Favorite':
+            pass
+    elif request.method == 'GET':
+        return render_template("movie.html", form=form)
+
 
 
 

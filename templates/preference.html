@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block nav %}
-    <div class="container-fluid">
+<div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
@@ -24,14 +24,23 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h2>Login Successful!</h2>
-        <p>Welcome, {{ current_user.username }}!</p>
-        <br>
-        <a href="/preference">Movie Preferences</a>
-        <br>
-        <img src="{{ link }}"/>
-        <a href="/logout">Logout</a>
-    </div>
-
+<div class="container">
+    <h3>{{ current_user.username }}'s current blocked movies:</h3>
+    <br>
+    {% if result %}
+    <table>
+        <tr><th>Title</th></tr>
+        {% for movie in result %}
+        <tr>
+            <td>{{ movie[0] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>You have no disliked movies</p>
+    {% endif %}
+    <br>
+    <img src="{{ link }}"/>
+    <a href="/logout">Logout</a>
+</div>
 {% endblock %}
