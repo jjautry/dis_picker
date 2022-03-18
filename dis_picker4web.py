@@ -3,7 +3,7 @@ import sqlite3
 from flask import Flask, render_template, request, redirect, session
 from flask_login import login_required, current_user, login_user, logout_user
 from movie_selector import dis_countdown
-from models import DBConnect, db, login, UserModel, UserMoviesDB
+from models import DBConnect, db, login, UserModel, UserMoviesDB, DislikeMovie
 
 app = Flask(__name__)
 app.secret_key = 'slinkydogdash'
@@ -79,17 +79,13 @@ def random_movie():
 @app.route("/my_page")
 @login_required
 def my_page():
-
     return render_template("userpage.html")
 
 @app.route("/preference")
 @login_required
 def preference():
-    con = UserMoviesDB().connection
-    cur = con.cursor()
     id = current_user.id
-    cur.execute(f"SELECT title FROM user_dislike WHERE user_id={id};")
-    result = cur.fetchall()
+    result = DislikeMovie.query.filter_by(user_id=id).all()
     return render_template("preference.html", result=result)
 
 

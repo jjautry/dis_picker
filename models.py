@@ -8,6 +8,7 @@ login = LoginManager()
 db = SQLAlchemy()
 
 
+# SQLAlchemy models
 # creates db model and connects with user data
 class UserModel(UserMixin, db.Model):
 	__tablename__ = 'users'
@@ -22,6 +23,16 @@ class UserModel(UserMixin, db.Model):
 
 	def check_password(self, password):
 		return check_password_hash(self.password_hash, password)
+
+
+class DislikeMovie(db.Model):
+	__tablename__ = 'disliked_movies'
+
+	row_num = db.Column(db.Integer, primary_key=True)
+	user_id = db.Column(db.Integer, nullable=False)
+	title = db.Column(db.String(80), nullable=False)
+
+
 
 
 class DBConnect:

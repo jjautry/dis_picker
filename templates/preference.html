@@ -27,18 +27,14 @@
 <div class="container">
     <h3>{{ current_user.username }}'s current blocked movies:</h3>
     <br>
-    {% if result %}
     <table>
         <tr><th>Title</th></tr>
-        {% for movie in result %}
+        {% for row in result %}
         <tr>
-            <td>{{ movie[0] }}</td>
+            <td>{{ row.title }}</td>
         </tr>
         {% endfor %}
     </table>
-    {% else %}
-    <p>You have no disliked movies</p>
-    {% endif %}
     <br>
     <img src="{{ link }}"/>
     <a href="/logout">Logout</a>
