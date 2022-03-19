@@ -79,6 +79,15 @@ def preference():
     return render_template("preference.html", result=result)
 
 
+@app.route("/restore/<movie_id>")
+@login_required
+def restore(movie_id):
+    db.engine.execute(f"DELETE FROM disliked_movies "
+                      f"WHERE user_id ={current_user.id} "
+                      f"AND movie_id={movie_id};")
+    return redirect("/preference")
+
+
 @app.route("/countdown")
 def countdown():
     days = dis_countdown()
@@ -102,35 +111,11 @@ def random_movie():
 @app.route("/studio", methods=['POST', 'GET'])
 def studio():
     if request.method == 'POST':
-        if request.form['studio_select'] == 'Disney':
-            result = db.engine.execute("SELECT * FROM movies WHERE studio='Disney' ORDER BY RANDOM() LIMIT 1;")
-            for movie in result:
-                new_result = movie.id
-            return redirect('/movie/' + str(new_result))
-
-        elif request.form['studio_select'] == 'Pixar':
-            result = db.engine.execute("SELECT * FROM movies WHERE studio='Pixar' ORDER BY RANDOM() LIMIT 1;")
-            for movie in result:
-                new_result = movie.id
-            return redirect('/movie/' + str(new_result))
-
-        elif request.form['studio_select'] == 'Lucasfilm':
-            result = db.engine.execute("SELECT * FROM movies WHERE studio='Lucasfilm' ORDER BY RANDOM() LIMIT 1;")
-            for movie in result:
-                new_result = movie.id
-            return redirect('/movie/' + str(new_result))
-
-        elif request.form['studio_select'] == 'Marvel':
-            result = db.engine.execute("SELECT * FROM movies WHERE studio='Marvel' ORDER BY RANDOM() LIMIT 1;")
-            for movie in result:
-                new_result = movie.id
-            return redirect('/movie/' + str(new_result))
-
-        elif request.form['studio_select'] == 'Disney Channel':
-            result = db.engine.execute("SELECT * FROM movies WHERE studio='Disney Channel' ORDER BY RANDOM() LIMIT 1;")
-            for movie in result:
-                new_result = movie.id
-            return redirect('/movie/' + str(new_result))
+        result = db.engine.execute(f"SELECT * FROM movies WHERE studio='{request.form['studio_select']}' "
+                                   f"ORDER BY RANDOM() LIMIT 1;")
+        for line in result:
+            new_result = line.id
+        return redirect('/movie/' + str(new_result))
 
     return render_template("studio.html")
 
@@ -138,11 +123,11 @@ def studio():
 @app.route("/movie/<movie_id>", methods=['GET','POST'])
 def movie(movie_id):
     result = MovieDB.query.filter_by(id=movie_id).first()
-    """Checks if """
+
     if request.method == 'POST':
         if current_user.is_authenticated:
             if request.form['submit_button'] == 'Dislike':
-                reject = DislikeMovie(user_id=current_user.id, title=result.title)
+                reject = DislikeMovie(user_id=current_user.id, title=result.title, movie_id=result.id)
                 db.session.add(reject)
                 db.session.commit()
                 return redirect("/preference")

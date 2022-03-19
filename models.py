@@ -45,6 +45,7 @@ class DislikeMovie(db.Model):
 	row_num = db.Column(db.Integer, primary_key=True)
 	user_id = db.Column(db.Integer, nullable=False)
 	title = db.Column(db.String(80), nullable=False)
+	movie_id = db.Column(db.Integer, nullable=False)
 
 
 # stores the user id during session

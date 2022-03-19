@@ -27,11 +27,20 @@
 <div class="container">
     <h3>{{ current_user.username }}'s current blocked movies:</h3>
     <br>
-    <table>
-        <tr><th>Title</th></tr>
+    <div class="list-group">
+        {% for row in result %}
+    <button type="Submit" onclick="location.href = '/restore/{{row.movie_id}}" class="list-group-item list-group-item-action">
+        {{ row.title }}</button>
+        {% endfor %}
+    </div>
+    <br>
+    <p>___________________________________________________________________</p>
+    <table class="table table-dark table-striped">
+        <tr><th>Disliked Movies:</th></tr>
         {% for row in result %}
         <tr>
             <td>{{ row.title }}</td>
+            <td><input type="button" onclick="location.href = '/restore/{{row.movie_id}}'" value="Restore"/></td>
         </tr>
         {% endfor %}
     </table>
