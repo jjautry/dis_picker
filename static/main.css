@@ -27,16 +27,6 @@ body {
 	margin-top: 20px;
 }
 
-
-.year {
-	width: 225px;
-	margin: 40px auto 0 auto;
-}
-
-.year option {
-	text-align: center;
-}
-
 .footnote {
 
 	color: silver;

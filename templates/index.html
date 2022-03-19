@@ -2,26 +2,33 @@
 
 {% block nav %}
 <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="/my_page">Account</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="/countdown">Countdown</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/my_page">Account</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/countdown">Countdown</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 </div>
 {% endblock %}
 
 
 {% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <div class="alert alert-secondary" role="alert">{{ msg }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
 
     <div class="container">
         <div class="box">

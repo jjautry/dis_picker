@@ -1,7 +1,7 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, flash, get_flashed_messages
 from flask_login import login_required, current_user, login_user, logout_user
 from movie_selector import dis_countdown
-from models import  db, login, UserModel, DislikeMovie, MovieDB
+from models import  db, login, UserModel, DislikeMovie, MovieDB, FavoriteMovie
 
 app = Flask(__name__)
 app.secret_key = 'slinkydogdash'
@@ -63,26 +63,32 @@ def register():
     return render_template('register.html')
 
 
-
-
-
 @app.route("/my_page")
 @login_required
 def my_page():
     return render_template("userpage.html")
 
+
 @app.route("/preference")
 @login_required
 def preference():
     id = current_user.id
-    result = DislikeMovie.query.filter_by(user_id=id).all()
-    return render_template("preference.html", result=result)
+    dislike = DislikeMovie.query.filter_by(user_id=id).all()
+    favorite = FavoriteMovie.query.filter_by(user_id=id).all()
+    return render_template("preference.html", dislike=dislike, favorite=favorite)
 
 
 @app.route("/restore/<movie_id>")
 @login_required
 def restore(movie_id):
-    db.engine.execute(f"DELETE FROM disliked_movies "
+    db.engine.execute(f"DELETE FROM disliked_movies WHERE user_id ={current_user.id} AND movie_id={movie_id};")
+    return redirect("/preference")
+
+
+@app.route("/remove/<movie_id>")
+@login_required
+def remove(movie_id):
+    db.engine.execute(f"DELETE FROM favorite_movie "
                       f"WHERE user_id ={current_user.id} "
                       f"AND movie_id={movie_id};")
     return redirect("/preference")
@@ -97,6 +103,7 @@ def countdown():
 @app.route('/logout')
 def logout():
     logout_user()
+    flash("You have been logged out!", "info")
     return redirect('/')
 
 
@@ -132,11 +139,12 @@ def movie(movie_id):
                 db.session.commit()
                 return redirect("/preference")
             elif request.form['submit_button'] == 'Favorite':
-                return redirect('/countdown')
-    elif request.method == 'GET':
-        return render_template("movie.html", result=result)
+                fav = FavoriteMovie(user_id=current_user.id, title=result.title, movie_id=result.id)
+                db.session.add(fav)
+                db.session.commit()
+                return redirect('/preference')
 
-
+    return render_template("movie.html", result=result)
 
 
 if __name__ == '__main__':
