@@ -67,8 +67,10 @@ def register():
 
 @app.route('/random-movie')
 def random_movie():
-    result = MovieDB.query.first()
-    return render_template("movie.html", result=result)
+    result = db.engine.execute("SELECT * FROM movies ORDER BY RANDOM() LIMIT 1;")
+    for movie in result:
+        new_result = movie.id
+    return redirect('/movie/'+ str(new_result))
 
 
 @app.route("/my_page")
@@ -96,8 +98,39 @@ def logout():
     return redirect('/')
 
 
-@app.route("/studio")
+@app.route("/studio", methods=['POST', 'GET'])
 def studio():
+    if request.method == 'POST':
+        if request.form['studio_select'] == 'Disney':
+            result = db.engine.execute("SELECT * FROM movies WHERE studio='Disney' ORDER BY RANDOM() LIMIT 1;")
+            for movie in result:
+                new_result = movie.id
+            return redirect('/movie/' + str(new_result))
+
+        elif request.form['studio_select'] == 'Pixar':
+            result = db.engine.execute("SELECT * FROM movies WHERE studio='Pixar' ORDER BY RANDOM() LIMIT 1;")
+            for movie in result:
+                new_result = movie.id
+            return redirect('/movie/' + str(new_result))
+
+        elif request.form['studio_select'] == 'Lucasfilm':
+            result = db.engine.execute("SELECT * FROM movies WHERE studio='Lucasfilm' ORDER BY RANDOM() LIMIT 1;")
+            for movie in result:
+                new_result = movie.id
+            return redirect('/movie/' + str(new_result))
+
+        elif request.form['studio_select'] == 'Marvel':
+            result = db.engine.execute("SELECT * FROM movies WHERE studio='Marvel' ORDER BY RANDOM() LIMIT 1;")
+            for movie in result:
+                new_result = movie.id
+            return redirect('/movie/' + str(new_result))
+
+        elif request.form['studio_select'] == 'Disney Channel':
+            result = db.engine.execute("SELECT * FROM movies WHERE studio='Disney Channel' ORDER BY RANDOM() LIMIT 1;")
+            for movie in result:
+                new_result = movie.id
+            return redirect('/movie/' + str(new_result))
+
     return render_template("studio.html")
 
 
@@ -120,9 +153,9 @@ def year(studio):
     return render_template("movie.html", result=result)
 
 
-# Need to finish adjusting this to pull movie by ID
 @app.route("/movie/<movie_id>", methods=['GET','POST'])
 def movie(movie_id):
+    """Checks if """
     if request.method == 'POST':
         if request.form['submit_button'] == 'Dislike':
             return redirect('/countdown')
@@ -131,7 +164,6 @@ def movie(movie_id):
     elif request.method == 'GET':
         result = MovieDB.query.filter_by(id=movie_id).first()
         return render_template("movie.html", result=result)
-
 
 
 
