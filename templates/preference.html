@@ -25,27 +25,35 @@
 
 {% block content %}
 <div class="container">
-    <h2>{{ current_user.username }}'s movie preferences:</h2>
-    <h6>Click name to remove movie from lists</h6>
+    <h2 class="text-center display-3">{{ current_user.username }}'s movie preferences:</h2>
     <br>
-    <div class="list-group">
-        <th>Favorited Movies</th>
-        {% for row in favorite %}
-    <button type="Submit" onclick="location.href = '/remove/{{row.movie_id}}'" class="list-group-item list-group-item-action">
-        {{ row.title }}</button>
-        {% endfor %}
+    <br>
+    <div class="container-md">
+        <p class="display-4 text-center">Favorited Movies</p>
+        <table class="table table-dark table-hover">
+            {% for row in favorite %}
+            <tr>
+                <td>{{ row.title }}</td>
+                <td><button class="btn btn-sm btn-outline-danger" onclick="location.href = '/remove/{{row.movie_id}}'">Remove</button></td>
+            </tr>
+            {% endfor %}
+        </table>
     </div>
     <br>
-    <p>___________________________________________________________________</p>
-    <div class="list-group">
-        <th>Disliked Movies</th>
-        {% for row in dislike %}
-    <button type="Submit" onclick="location.href = '/restore/{{row.movie_id}}'" class="list-group-item list-group-item-action">
-        {{ row.title }}</button>
-        {% endfor %}
-    </div>
     <br>
-    <img src="{{ link }}"/>
+    <div class="container-md">
+        <p class="display-4 text-center">Disliked Movies</p>
+        <table class="table table-dark table-hover">
+            {% for row in dislike %}
+            <tr>
+                <td>{{ row.title }}</td>
+                <td><button class="btn btn-sm btn-outline-danger" onclick="location.href = '/restore/{{row.movie_id}}'">Remove</button></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <br>
     <a href="/logout">Logout</a>
 </div>
 {% endblock %}
