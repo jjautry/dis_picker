@@ -22,19 +22,21 @@
 {% block content %}
     <div class="moviebox">
         <div class="container">
-        <img src="{{ result[0][6] }}" class="img-fluid">
+        <img src="{{ result.poster }}" class="img-fluid">
         </div>
-        <h1>{{ result[0][0] }} </h1>
-        <p>{{ result[0][1] }}</p>
-        <p>{{ result[0][2] }}</p>
-        <p>{{ result[0][3] }}</p>
-        <p>{{ result[0][4] }}</p>
-        {% if result[0][5] %}
-        <p>Phase: {{ result[0][5] }}</p>
+        <h1>{{ result.title }} </h1>
+        <p>{{ result.year }}</p>
+        <p>{{ result.studio }}</p>
+        <p>{{ result.category }}</p>
+        <p>{{ result.type }}</p>
+        {% if result.phase %}
+        <p>Phase: {{ result.phase }}</p>
         {% endif %}
         <br>
-        <input type="submit" name="submit_button" value="Dislike">
-        <input type="submit" name="submit_button" value="Favorite">
+        <form action="POST">
+        <input type="Submit" name="submit_button" value="Dislike">
+        <input type="Submit" name="submit_button" value="Favorite">
+        </form>
         <br>
         <a href="/"><button>Back to Search</button></a>
     </div>

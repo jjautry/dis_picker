@@ -25,6 +25,19 @@ class UserModel(UserMixin, db.Model):
 		return check_password_hash(self.password_hash, password)
 
 
+class MovieDB(db.Model):
+	__tablename__ = 'movies'
+
+	id = db.Column(db.Integer, primary_key=True)
+	title = db.Column(db.String, nullable=False)
+	year = db.Column(db.Integer, nullable=False)
+	studio = db.Column(db.String, nullable=False)
+	category = db.Column(db.String, nullable=False)
+	type = db.Column(db.String, nullable=False)
+	phase = db.Column(db.Integer)
+	poster = db.Column(db.String, nullable=False)
+
+
 class DislikeMovie(db.Model):
 	__tablename__ = 'disliked_movies'
 
@@ -50,12 +63,6 @@ class DBConnect:
 		self.connection.close()
 		return sorted(studio_list)
 
-class UserMoviesDB:
-	"""Class to go in user_movies database"""
-	def __init__(self):
-		self.connection = sqlite3.connect("data/user_movies.db")
-		self.cursor = self.connection.cursor()
-
 
 # userconn = sqlite3.connect("data/user_movies.db")
 # usercur = userconn.cursor()
@@ -73,6 +80,7 @@ class UserMoviesDB:
 # 	usercur.close()
 # 	userconn.close()
 # 	moviecur.close()
+
 
 
 
