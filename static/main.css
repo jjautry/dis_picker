@@ -9,7 +9,7 @@ body {
 */
 
 
-.box button {
+.box input {
 	display: block;
 	color: whitesmoke;
 	background-color: rgb(112, 128, 144);
@@ -72,11 +72,6 @@ body {
 	margin-top: 20px;
 }
 
-.coming-soon {
-	width: 690px;
-	margin: 100px auto 0 auto;
-	text-align: center;
-}
 
 .countdown-box {
 	display: block;
