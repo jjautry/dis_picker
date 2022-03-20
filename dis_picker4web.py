@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, session, flash, get
 from flask_login import login_required, current_user, login_user, logout_user
 from movie_selector import dis_countdown
 from models import  db, login, UserModel, DislikeMovie, MovieDB, FavoriteMovie
+import random
 
 app = Flask(__name__)
 app.secret_key = 'slinkydogdash'
@@ -110,6 +111,14 @@ def logout():
 @app.route('/random-movie')
 def random_movie():
     result = db.engine.execute("SELECT * FROM movies ORDER BY RANDOM() LIMIT 1;")
+    if current_user.is_authenticated:
+        for line in result:
+            new_result = line.id
+            check = DislikeMovie().check_in(current_user.id, new_result)
+            if check:
+                return studio()
+            else:
+                pass
     for movie in result:
         new_result = movie.id
     return redirect('/movie/'+ str(new_result))
@@ -120,6 +129,14 @@ def studio():
     if request.method == 'POST':
         result = db.engine.execute(f"SELECT * FROM movies WHERE studio='{request.form['studio_select']}' "
                                    f"ORDER BY RANDOM() LIMIT 1;")
+        if current_user.is_authenticated:
+            for line in result:
+                new_result = line.id
+                check = DislikeMovie().check_in(current_user.id, new_result)
+                if check:
+                    return studio()
+                else:
+                    pass
         for line in result:
             new_result = line.id
         return redirect('/movie/' + str(new_result))
@@ -142,10 +159,23 @@ def movie(movie_id):
                 fav = FavoriteMovie(user_id=current_user.id, title=result.title, movie_id=result.id)
                 db.session.add(fav)
                 db.session.commit()
-                return redirect('/studio')
+                return redirect('/preference')
 
     return render_template("movie.html", result=result)
 
+
+@app.route("/random-faves/<user_id>")
+def random_fav(user_id):
+    id = user_id
+    faves = []
+    result = FavoriteMovie.query.filter_by(user_id=id).all()
+    for movie in result:
+        faves.append(movie.movie_id)
+    if len(faves) < 1:
+        return "<h1>You don't have any favorites!</h1>"
+    else:
+        choice = random.choice(faves)
+        return redirect("/movie/"+str(choice))
 
 if __name__ == '__main__':
     app.run(debug=True)

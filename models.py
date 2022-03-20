@@ -47,6 +47,18 @@ class DislikeMovie(db.Model):
 	title = db.Column(db.String(80), nullable=False)
 	movie_id = db.Column(db.Integer, nullable=False)
 
+	def check_in(self, user_id, movie_id):
+		usr_lst = []
+		result = DislikeMovie.query.filter_by(user_id=user_id)
+		for movie in result:
+			usr_lst.append(movie.movie_id)
+		if movie_id in usr_lst:
+			return True
+		else:
+			return False
+
+
+
 
 class FavoriteMovie(db.Model):
 	__table_name = 'favorite_movies'
