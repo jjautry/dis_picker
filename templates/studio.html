@@ -1,35 +1,40 @@
 {% extends "base.html" %}
-{% block nav %}
-<div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="/my_page">Account</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="/countdown">Countdown</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-</div>
-{% endblock %}
-{% block content %}
 
-<div class="container">
-    <div class="studio-selections">
-        <form method="POST">
-            <button type="submit" name="studio_select" value="Disney"> <img src="../static/dis_studio.jpg" class="studio-collage"/></button>
-            <button type="submit" name="studio_select" value="Pixar"> <img src="../static/pixar_studio.png" class="studio-collage"/></button>
-            <button type="submit" name="studio_select" value="Lucasfilm"> <img src="../static/lucasfilm_studio.jpg" class="studio-collage"/></button>
-            <button type="submit" name="studio_select" value="Marvel"> <img src="../static/marvel_studio.jpg" class="studio-collage"/></button>
-            <button type="submit" name="studio_select" value="Disney Channel"> <img src="../static/dis_channel_studio.jpg" class="studio-collage"/></button>
-        </form>
+{% block content %}
+<section id="studio-selector mt-5">
+    <div class="container-lg justify-content-center">
+        <div class="col-md-3">
+            <div class="container">
+                <a href="#" class="invisible">Hello</a>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 justify-content-center">
+            <form method="POST">
+
+                <button class="btn" type="submit" name="studio_select" value="Disney"> <img src="../static/dis_studio.jpg" class="img-fluid rounded-pill"/></button>
+
+                <button class="btn" type="submit" name="studio_select" value="Pixar"> <img src="../static/pixar_studio.png" class="img-fluid rounded-pill"/></button>
+
+                <button class="btn" type="submit" name="studio_select" value="Lucasfilm"> <img src="../static/lucasfilm_studio.jpg" class="img-fluid rounded-pill"/></button>
+
+                <button class="btn" type="submit" name="studio_select" value="Marvel"> <img src="../static/marvel_studio.jpg" class="img-fluid rounded-pill"/></button>
+
+                <button class="btn" type="submit" name="studio_select" value="Disney Channel"> <img src="../static/dis_channel_studio.jpg" class="img-fluid rounded-pill"/></button>
+
+            </form>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="container">
+                <a href="#" class="invisible">Hello</a>
+            </div>
+            
+        </div>
+
     </div>
-</div>
+</section>
 
 {% endblock %}
