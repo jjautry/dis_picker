@@ -1,41 +1,31 @@
 {% extends "base.html" %}
 
-{% block nav %}
-<div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                    <a class="nav-link" href="/login">Login<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="/my_page">Account</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="/countdown">Countdown</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-</div>
-{% endblock %}
-
 {% block content %}
-<div class="container">
-    <div class="box">
-        <h2>Login</h2>
-        <br>
-        <form action="" method="POST">
-            <p>username<input type="text" name="username"/></p>
-            <p>password<input type="password" name="password"/></p>
-            <input type="submit" value="submit"/>
-        </form>
-        <br>
-        <h6><a href="{{ url_for('register') }}">Don't have an account?</a></h6>
+<section id="login" class="pt-5">
+    <div class="container-lg justify-content-center">
+        <div class="row text-center justify-content-center">
+            <div class="col-12 col-md-5">
+                <form action="" method="POST" class="bg-light rounded-3 border border-5 border-light p-5">
+                    <img class="mb-4" src="/static/dp_logo.png" alt="" width="72" height="57">
+                    <h1 class="h3 mb-3 fw-normal">Sign in</h1>
+                
+                    <div class="form-floating">
+                      <input type="text" class="form-control my-1" id="floatingInput" placeholder="username" name="username">
+                      <label for="floatingInput">Username</label>
+                    </div>
+                    <div class="form-floating">
+                      <input type="password" class="form-control my-1" id="floatingPassword" placeholder="Password" name="password">
+                      <label for="floatingPassword">Password</label>
+                    </div>
+                    <div class="mt-5">
+                        <button class="w-100 btn btn-lg btn-primary mb-2" type="submit" value="submit">Sign in</button>
+                        <a href="{{ url_for('register') }}" class="text-muted">Don't have an account?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-</div>
-{% endblock %}
+</section>
 
+
+{% endblock %}
