@@ -177,5 +177,11 @@ def random_fav(user_id):
         choice = random.choice(faves)
         return redirect("/movie/"+str(choice))
 
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+
 if __name__ == '__main__':
     app.run(debug=True)
