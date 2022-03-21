@@ -58,16 +58,21 @@ class DislikeMovie(db.Model):
 			return False
 
 
-
-
 class FavoriteMovie(db.Model):
-	__table_name = 'favorite_movies'
+	__tablename__ = 'favorite_movies'
 
 	row_num = db.Column(db.Integer, primary_key=True)
 	user_id = db.Column(db.Integer, nullable=False)
 	title = db.Column(db.String(80), nullable=False)
 	movie_id = db.Column(db.Integer, nullable=False)
 
+
+class FeedbackDB(db.Model):
+	__tablename__ = 'feedback'
+
+	id = db.Column(db.Integer, primary_key=True)
+	user_id = db.Column(db.Integer, nullable=False)
+	message = db.Column(db.String, nullable=False)
 
 # stores the user id during session
 @login.user_loader

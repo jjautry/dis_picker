@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, session, flash, get_flashed_messages
 from flask_login import login_required, current_user, login_user, logout_user
 from movie_selector import dis_countdown
-from models import  db, login, UserModel, DislikeMovie, MovieDB, FavoriteMovie
+from models import  db, login, UserModel, DislikeMovie, MovieDB, FavoriteMovie, FeedbackDB
 import random
 
 app = Flask(__name__)
@@ -178,8 +178,22 @@ def random_fav(user_id):
         return redirect("/movie/"+str(choice))
 
 
-@app.route("/about")
+@app.route("/about", methods=['POST', 'GET'])
 def about():
+    if request.method == 'POST':
+        if current_user.is_authenticated:
+            user_id = current_user.id
+            message = request.form['feedback']
+            fb = FeedbackDB(user_id=user_id, message=message)
+            db.session.add(fb)
+            db.session.commit()
+        else:
+            user_id = 000000
+            message = request.form['feedback']
+            fb = FeedbackDB(user_id=user_id, message=message)
+            db.session.add(fb)
+            db.session.commit()
+
     return render_template("about.html")
 
 
