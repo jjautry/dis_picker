@@ -59,7 +59,7 @@ class DislikeMovie(db.Model):
 
 
 class FavoriteMovie(db.Model):
-	__tablename__ = 'favorite_movies'
+	__tablename__ = 'favorite_movie'
 
 	row_num = db.Column(db.Integer, primary_key=True)
 	user_id = db.Column(db.Integer, nullable=False)
