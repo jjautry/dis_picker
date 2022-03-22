@@ -14,7 +14,7 @@ db.init_app(app)
 login.init_app(app)
 login.login_view = 'login'
 
-
+# if no tables are in databases, create them
 @app.before_first_request
 def create_table():
     db.create_all()
@@ -64,7 +64,7 @@ def register():
     return render_template('register.html')
 
 
-@app.route("/my_page")
+@app.route("/user_page")
 @login_required
 def my_page():
     return render_template("userpage.html")

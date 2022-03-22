@@ -48,6 +48,7 @@ class DislikeMovie(db.Model):
 	movie_id = db.Column(db.Integer, nullable=False)
 
 	def check_in(self, user_id, movie_id):
+		"""Checks if user_id and movie_id have a match in disliked movies"""
 		usr_lst = []
 		result = DislikeMovie.query.filter_by(user_id=user_id)
 		for movie in result:
@@ -58,6 +59,7 @@ class DislikeMovie(db.Model):
 			return False
 
 
+# user's favorite movies
 class FavoriteMovie(db.Model):
 	__tablename__ = 'favorite_movie'
 
@@ -67,12 +69,14 @@ class FavoriteMovie(db.Model):
 	movie_id = db.Column(db.Integer, nullable=False)
 
 
+# user feedback from about page
 class FeedbackDB(db.Model):
 	__tablename__ = 'feedback'
 
 	id = db.Column(db.Integer, primary_key=True)
 	user_id = db.Column(db.Integer, nullable=False)
 	message = db.Column(db.String, nullable=False)
+
 
 # stores the user id during session
 @login.user_loader
