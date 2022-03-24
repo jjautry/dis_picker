@@ -3,7 +3,7 @@
 {% block content %}
 
 <section id="block">
-    <div class="container-lg my-5">
+    <div class="container-lg my-2">
         <div class="row">
             <div class="col">
             </div>
@@ -11,20 +11,43 @@
     </div>
 </section>
 
-<section id="user-movies">
-    <div class="container-md m-5 bg-light rounded-3 border border-5 border-light">
-            <!--cast member badge-->
-            <div class="row flex">
-                <div class="col- col-sm-2">
-                    <div class="card bg-transparent border-0 text-center d-none d-md-block">
-                        <img src="/static/castmember_badge_ccexpress.png" class="card-img d-none d-md-block">
-                        <div class="card-img-overlay">
-                        <p class="h6-md h5 pt-2 mt-5 text-dark d-none d-md-block">{{ current_user.username | upper }}</p>
-                        </div>
-                        <p class="small text-muted">Member since 2022</p>
-                    </div>
-                </div>
+<section id="userInfo">
+    <div class="row justify-content-center pt-4">
+        <div class="col-6 col-md-3 text-center">
+            <p class="display-6 text-light">
+                {{ current_user.username | upper }}
+            </p>
+            <p class="small text-muted">
+                Member since 2022
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="userContent">
+    <div class="container-md bg-light rounded-3 border border-5 border-light">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 pt-3">
+                <ul class="nav nav-pills justify-content-center p-0">
+                    <li class="nav-item">
+                      <a class="nav-link active small" aria-current="page" href="#">Likes</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link small" href="#">Dislikes</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link disabled small" href="#">Countdown</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link disabled small">Bucket List</a>
+                    </li>
+                  </ul>
             </div>
+        </div>
+
+        <div class="row">
+
+        </div>
     </div>
 </section>
 

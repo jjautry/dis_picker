@@ -28,14 +28,14 @@ def index():
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     if current_user.is_authenticated:
-        return redirect('/preference')
+        return redirect('/user_page')
 
     if request.method == 'POST':
         username = request.form['username']
         user = UserModel.query.filter_by(username=username).first()
         if user is not None and user.check_password(request.form['password']):
             login_user(user)
-            return redirect('/preference')
+            return redirect('/user_page')
 
     return render_template('login.html')
 
@@ -43,7 +43,7 @@ def login():
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     if current_user.is_authenticated:
-        return redirect('/preference')
+        return redirect('/user_page')
 
     if request.method == 'POST':
         email = request.form['email']
