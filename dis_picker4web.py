@@ -99,7 +99,7 @@ def preference():
 @login_required
 def restore(movie_id):
     db.engine.execute(f"DELETE FROM disliked_movies WHERE user_id ={current_user.id} AND movie_id={movie_id};")
-    return redirect("/preference")
+    return redirect("/user_page/dislikes")
 
 
 @app.route("/remove/<movie_id>")
@@ -108,7 +108,7 @@ def remove(movie_id):
     db.engine.execute(f"DELETE FROM favorite_movie "
                       f"WHERE user_id ={current_user.id} "
                       f"AND movie_id={movie_id};")
-    return redirect("/preference")
+    return redirect("/user_page/likes")
 
 
 @app.route("/countdown")
@@ -174,7 +174,7 @@ def movie(movie_id):
                 fav = FavoriteMovie(user_id=current_user.id, title=result.title, movie_id=result.id)
                 db.session.add(fav)
                 db.session.commit()
-                return redirect('/preference')
+                return redirect('/user_page/likes')
 
     return render_template("movie.html", result=result)
 
