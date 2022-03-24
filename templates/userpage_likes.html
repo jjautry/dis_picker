@@ -30,10 +30,10 @@
             <div class="col-12 col-md-6 pt-3">
                 <ul class="nav nav-pills justify-content-center pb-1 border-bottom border-2">
                     <li class="nav-item">
-                      <a class="nav-link active small" aria-current="page" href="user_page/likes">Likes</a>
+                      <a class="nav-link active small" aria-current="page" href="/user_page/likes">Likes</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link small" href="../dislikes">Dislikes</a>
+                      <a class="nav-link small" href="/user_page/dislikes">Dislikes</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link disabled small" href="#">Countdown</a>
@@ -45,18 +45,25 @@
             </div>
         </div>
 
+        <div class="row text-center justify-content-center mt-5">
+            <div class="col-8 text-center">
+                <a href="/random-faves/{{current_user.id}}" class="btn btn-sm btn-success">Random movie from Favorites</a>
+            </div>
+        </div>
+
+
         <div class="row">
             <div class="col-5">
             </div>
         </div>
-        <div class="row justify-content-center my-5">
+        <div class="row justify-content-center mt-4 mt-md-5 mb-5">
             <!--favorite/dislike movie accordian-->
             <div class="col-10 col-md-6">
-                <div class="accordion accordian-flush pt-5" id="accordionExample">
+                <div class="accordion accordian-flush" id="accordionExample">
                     <div class="accordion-item bg-dark">
                       <h2 class="accordion-header" id="headingOne">
                         <button class="accordion-button bg-secondary text-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                          Favorited Movies
+                          Liked Movies
                         </button>
                       </h2>
                       <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -71,25 +78,6 @@
                             </table>
                         </div>
                       </div>
-                    </div>
-                    <div class="accordion-item bg-dark">
-                      <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button bg-secondary text-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                          Disliked Movies
-                        </button>
-                      </h2>
-                      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <table class="table table-dark table-hover">
-                                {% for row in dislike %}
-                                <tr>
-                                    <td>{{ row.title }}</td>
-                                    <td><button class="btn btn-sm btn-outline-danger" onclick="location.href = '/restore/{{row.movie_id}}'">Remove</button></td>
-                                </tr>
-                                {% endfor %}
-                            </table>
-                        </div>
-                        </div>
                     </div>
                 </div>
             </div>

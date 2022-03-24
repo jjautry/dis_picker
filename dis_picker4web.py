@@ -67,7 +67,23 @@ def register():
 @app.route("/user_page")
 @login_required
 def my_page():
-    return render_template("userpage.html")
+    return redirect("/user_page/likes")
+
+
+@app.route("/user_page/likes")
+@login_required
+def likes():
+    id = current_user.id
+    favorite = FavoriteMovie.query.filter_by(user_id=id).all()
+    return render_template("userpage_likes.html", favorite=favorite)
+
+
+@app.route("/user_page/dislikes")
+@login_required
+def dislikes():
+    id = current_user.id
+    dislike = DislikeMovie.query.filter_by(user_id=id).all()
+    return render_template("userpage_dislikes.html", dislike=dislike)
 
 
 @app.route("/preference")
