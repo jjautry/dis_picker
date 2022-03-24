@@ -1,7 +1,7 @@
-from flask import Flask, render_template, request, redirect, session, flash, get_flashed_messages
+from flask import Flask, render_template, request, redirect, session
 from flask_login import login_required, current_user, login_user, logout_user
 from movie_selector import dis_countdown
-from models import  db, login, UserModel, DislikeMovie, MovieDB, FavoriteMovie, FeedbackDB
+from models import db, login, UserModel, DislikeMovie, MovieDB, FavoriteMovie, FeedbackDB
 import random
 
 app = Flask(__name__)
@@ -104,7 +104,6 @@ def countdown():
 @app.route('/logout')
 def logout():
     logout_user()
-    flash("You have been logged out!", "info")
     return redirect('/')
 
 
