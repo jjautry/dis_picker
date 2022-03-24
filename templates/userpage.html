@@ -2,19 +2,31 @@
 
 {% block content %}
 
-<div class="container md">
-    <div class="row">
-        <div class="col-8 col-md-5 text-center text-light">
-            <h2>Login Successful!</h2>
-            <p>Welcome, {{ current_user.username }}!</p>
-            <br>
-            <a href="/preference">Movie Preferences</a>
-        <img src="{{ link }}"/>
-        <a href="/logout">Logout</a>
-            
+<section id="block">
+    <div class="container-lg my-5">
+        <div class="row">
+            <div class="col">
+            </div>
         </div>
     </div>
-</div>
+</section>
+
+<section id="user-movies">
+    <div class="container-md m-5 bg-light rounded-3 border border-5 border-light">
+            <!--cast member badge-->
+            <div class="row flex">
+                <div class="col- col-sm-2">
+                    <div class="card bg-transparent border-0 text-center d-none d-md-block">
+                        <img src="/static/castmember_badge_ccexpress.png" class="card-img d-none d-md-block">
+                        <div class="card-img-overlay">
+                        <p class="h6-md h5 pt-2 mt-5 text-dark d-none d-md-block">{{ current_user.username | upper }}</p>
+                        </div>
+                        <p class="small text-muted">Member since 2022</p>
+                    </div>
+                </div>
+            </div>
+    </div>
+</section>
 
 
 {% endblock %}
