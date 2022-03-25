@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, flash
 from flask_login import login_required, current_user, login_user, logout_user
 from models import db, login, UserModel, DislikeMovie, MovieDB, FavoriteMovie, FeedbackDB, dis_countdown
 from datetime import datetime
 import random
+import time
 
 app = Flask(__name__)
 app.secret_key = 'slinkydogdash'
@@ -43,7 +44,6 @@ def login():
 	return render_template('login.html')
 
 
-@app.route('/sign-up', methods=['POST', 'GET'])
 @app.route('/register', methods=['POST', 'GET'])
 def register():
 	if current_user.is_authenticated:
@@ -205,7 +205,7 @@ def movie(movie_id):
 				db.session.commit()
 				return redirect('/user_page/likes')
 
-	return render_template("movie.html", result=result)
+	return render_template("movie.html", result=result, id=movie_id)
 
 
 @app.route("/random-faves/<user_id>")
@@ -254,6 +254,26 @@ def admin():
 		return render_template("admin.html", users=users, feedback=feedback, user_count=user_count, feedback_count=feedback_count)
 	else:
 		return redirect("/")
+
+
+@app.route('/feedback')
+@app.route('/missing-poster/<movie_id>')
+def feedback(movie_id=None):
+	if movie_id:
+		id = current_user.id
+		missing_msg = "Missing Poster for movie #" + movie_id
+		date = datetime.today().date()
+		fb = FeedbackDB(user_id=id, message=missing_msg, date=date)
+		db.session.add(fb)
+		db.session.commit()
+	return redirect("/#movie-options")
+
+@app.route('/remove/feedback/<id>')
+def remove_feedback(id):
+	db.engine.execute(f"DELETE FROM feedback WHERE id ={id};")
+
+	return redirect("/admin")
+
 
 if __name__ == '__main__':
 	app.run(debug=True)

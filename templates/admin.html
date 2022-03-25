@@ -34,11 +34,11 @@
                 <div class="accordion accordian-flush pt-5" id="accordionExample">
                     <div class="accordion-item bg-dark">
                       <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button bg-secondary text-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        <button class="accordion-button bg-secondary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                           Users: {{ user_count }}
                         </button>
                       </h2>
-                      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                      <div id="collapseOne" class="accordion-collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <table class="table table-dark table-hover">
 								<thead>
@@ -65,11 +65,11 @@
                     </div>
                     <div class="accordion-item bg-dark">
                       <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button bg-secondary text-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <button class="accordion-button bg-secondary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                           Feedback: {{ feedback_count }}
                         </button>
                       </h2>
-                      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                      <div id="collapseTwo" class="accordion-collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <table class="table table-dark table-hover">
 								<thead>
@@ -86,6 +86,7 @@
 									<td>{{ row.user_id }}</td>
 									<td>{{ row.message }}</td>
 									<td>{{ row.date }}</td>
+                  <td><button class="btn btn-sm btn-outline-danger" onclick="location.href = '/remove/feedback/{{row.id}}'">Remove</button></td>
                                 </tr>
                                 {% endfor %}
                             </table>
