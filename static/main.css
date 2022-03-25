@@ -1,141 +1,30 @@
-* {
-	font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+@font-face {
+    font-family: 'WaltographRegular';
+        src: url('/assets/fonts/waltograph-disney/915f4b1df4111a8e0d1c781ca6dfbf62/ab260a56f2b852b78f81eac337e0a2fc/WaltographRegular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+      }
 
-}
-/*
-body {
-	background-color: slategray;
-}
-*/
-
-
-.box input {
-	display: block;
-	color: whitesmoke;
-	background-color: rgb(112, 128, 144);
-	border: slategrey;
-	margin-top: 50px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.logo {
-	max-width: 550px;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 20px;
-}
-
-.footnote {
-
-	color: silver;
-	text-align: center;
-	margin-top: 85px;
-}
-
-.moviebox {
-	display: block;
-	background: #F2F2F2;
-	width: 650px;
-	height: auto;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 50px;
-	padding: 15px;
-	text-align: center;
-	align-content: center;
-	box-shadow:
-       inset 0 -3em 3em rgba(0,0,0,0.1),
-             0 0  0 2px rgb(255,255,255),
-             0.3em 0.3em 1em rgba(0,0,0,0.3);
-}
-
-.genie {
-	width: 250px;
-	height: 137px;
-	margin-top: 25px;
-	margin-bottom: 50px;
-}
-
-.moviebox h3 {
-	margin-top: 20px;
-}
+@font-face {
+    font-family: 'WaltographUIBold';
+        src: url('/assets/fonts/waltograph-disney/915f4b1df4111a8e0d1c781ca6dfbf62/ef6f8e5937cde4dd88d6b51d1b023ed9/WaltographUIBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+      }
 
 
-.countdown-box {
-	display: block;
-	max-width: 700px;
-	height: 650px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 50px;
-	box-shadow:
-		inset 0 -3em 3em rgba(0,0,0,0.1),
-			0 0  0 2px rgb(255,255,255),
-			s0.3em 0.3em 1em rgba(0,0,0,0.3);
-	background-image: url(../static/mak_drink.jpg);
-	background-size: cover;
-	
-	
-}
 
-.countdown {
-	display: block;
-	text-align: center;
-	padding-top: 200px;
-}
 
-.countdown h1 {
+.waltograph {
 	font-family: 'WaltographRegular';
-	font-size: 10em;
-
+	font-weight: normal;
+	font-style: normal;
+	font-size: x-large;
 }
 
-.countdown img {
-	padding-top: 75px;
-	max-width: 625px;
-}
-
-.img-fluid {
-	max-height: 300px;
-
-}
-
-.container {
-	background-color: #F2F2F2;
-	margin-top: 25px;
-	padding-top: 1.5em;
-	padding-bottom: 1.5em;
-	
-}
-
-body {
-	background-color: slategray;
-}
-
-.studio-selections {
-	margin: 20px auto 20px auto;
-	text-align: center;
-}
-
-
-.studio-collage {
-	max-width: 700px;
-	box-shadow:
-		inset 0 -3em 3em rgba(0,0,0,0.1),
-			0 0  0 2px rgb(255,255,255),
-			s0.3em 0.3em 1em rgba(0,0,0,0.3);
-	margin-top: 5px;
-
-}
-
-button[name="studio_select"] {
-	background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+.waltographBold {
+	font-family: 'WaltographUIBold';
+	font-weight: normal;
+	font-style: normal;
+	font-size: xx-large;
 }

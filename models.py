@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin, LoginManager, current_user
+from datetime import datetime
 
 # using LoginManager
 login = LoginManager()
@@ -16,6 +17,7 @@ class UserModel(UserMixin, db.Model):
 	email = db.Column(db.String(80), unique=True)
 	username = db.Column(db.String(100), unique=True)
 	password_hash = db.Column(db.String())
+	disney_date = db.Column(db.Date())
 
 	def set_password(self, password):
 		self.password_hash = generate_password_hash(password)
@@ -82,3 +84,11 @@ class FeedbackDB(db.Model):
 @login.user_loader
 def load_user(id):
 	return UserModel.query.get(int(id))
+
+
+
+def dis_countdown(disney_date):
+    """Takes current date and returns days left until Disney trip"""
+    today = datetime.today().date()
+    delta = disney_date - today
+    return delta.days

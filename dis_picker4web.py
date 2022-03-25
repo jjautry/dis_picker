@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, session
 from flask_login import login_required, current_user, login_user, logout_user
-from movie_selector import dis_countdown
-from models import db, login, UserModel, DislikeMovie, MovieDB, FavoriteMovie, FeedbackDB
+from models import db, login, UserModel, DislikeMovie, MovieDB, FavoriteMovie, FeedbackDB, dis_countdown
+from datetime import datetime
 import random
 
 app = Flask(__name__)
@@ -86,6 +86,37 @@ def dislikes():
     return render_template("userpage_dislikes.html", dislike=dislike)
 
 
+@app.route("/user_page/countdown", methods=["POST", "GET"])
+@login_required
+def countdown():
+    id = current_user.id
+    if request.method == "POST":
+        user = UserModel.query.filter_by(id=id).first()
+        date = datetime.strptime(request.form['disney_date'], '%Y-%m-%d').date()
+        user.disney_date = date
+        db.session.commit()
+        return redirect("/user_page/countdown")
+
+    user = UserModel.query.filter_by(id=id).first()
+    if user.disney_date:
+        days = dis_countdown(user.disney_date)
+    else:
+        days = 0
+
+    return render_template("userpage_countdown.html", days=days)
+
+
+@app.route("/remove-dis-date")
+@login_required
+def remove_dis_date():
+    id = current_user.id
+    user = UserModel.query.filter_by(id=id).first()
+    user.disney_date = None
+    db.session.commit()
+    return redirect("/user_page/countdown")
+
+
+
 @app.route("/preference")
 @login_required
 def preference():
@@ -109,12 +140,6 @@ def remove(movie_id):
                       f"WHERE user_id ={current_user.id} "
                       f"AND movie_id={movie_id};")
     return redirect("/user_page/likes")
-
-
-@app.route("/countdown")
-def countdown():
-    days = dis_countdown()
-    return render_template("countdown.html", temp_days=days)
 
 
 @app.route('/logout')

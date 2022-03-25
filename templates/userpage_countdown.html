@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section id="block">
+    <div class="container-lg my-2">
+        <div class="row">
+            <div class="col">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="userInfo">
+    <div class="row justify-content-center pt-4">
+        <div class="col-6 col-md-3 text-center">
+            <p class="display-6 text-light">
+                {{ current_user.username | upper }}
+            </p>
+            <p class="small text-muted">
+                Member since 2022
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="userContent">
+    <div class="container-md bg-light rounded-3 border border-5 border-light">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 pt-5">
+                <ul class="nav nav-pills justify-content-center pb-1 border-bottom border-2">
+                    <li class="nav-item small">
+                      <a class="nav-link small" href="../user_page/likes">Likes</a>
+                    </li>
+                    <li class="nav-item small">
+                      <a class="nav-link small" href="../user_page/dislikes">Dislikes</a>
+                    </li>
+                    <li class="nav-item small">
+                      <a class="nav-link active small" href="#">Countdown</a>
+                    </li>
+                    <li class="nav-item small">
+                      <a class="nav-link disabled small">Bucket List</a>
+                    </li>
+                  </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+            </div>
+        </div>
+        {% if days > 0 %}
+        <div class="row justify-content-center mt-5">
+            <div class="card mb-3 bg-light border-0" style="max-width: 540px; justify-content: center;">
+                <div class="row align-items-center">
+                  <div class="col-md-7">
+                    <img src="/static/castle_countdown.png" class="img-fluid rounded-start shadow" alt="Cinderella's Castle">
+                  </div>
+                  <div class="col-md-5 text-center">
+                    <div class="card-body bg-light">
+                      <h5 class="card-title waltographBold">{{ days }}</h5>
+                      <p class="card-text waltograph">Days till Disney!</p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="my-5">
+            <div class="row my-5">
+                <div class="col">
+                </div>
+            </div>
+        </section>
+
+        <section class="my-5">
+            <div class="row justify-content-center">
+                <div class="col-10 col-md-4 text-center">
+                    <button class="btn btn btn-outline-danger" onclick="location.href = '/remove-dis-date'">Remove Disney Vacation Date</button>
+                </div>
+            </div>
+        </section>
+
+
+        {% else %}
+
+        <div class="row my-5">
+            <div class="col">
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <p class="waltograph text-center">
+                    Upcoming Disney trip?
+                </p>
+            </div>
+        </div>
+        <div class="row g-3 align-items-center justify-content-center mb-5">
+            <div class="col-auto text-center mt-3">
+            <form action="#" method="POST">
+              <input type="date" id="disney_date" name="disney_date" class="form-control">
+              <button type="submit" class="btn btn-secondary mt-4">Submit</button>
+            </div>
+          </div>
+        {% endif %}
+        
+        
+
+
+    </div>
+</section>
+
+
+{% endblock %}
