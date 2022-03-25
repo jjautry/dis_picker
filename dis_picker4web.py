@@ -35,11 +35,14 @@ def login():
         user = UserModel.query.filter_by(username=username).first()
         if user is not None and user.check_password(request.form['password']):
             login_user(user)
+            user.num_logins += 1
+            user.last_login = datetime.today().date()
+            db.session.commit()
             return redirect('/user_page')
 
     return render_template('login.html')
 
-
+@app.route('/sign-up')
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     if current_user.is_authenticated:
