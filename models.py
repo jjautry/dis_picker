@@ -80,6 +80,7 @@ class FeedbackDB(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	user_id = db.Column(db.Integer, nullable=False)
 	message = db.Column(db.String, nullable=False)
+	date = db.Column(db.Date())
 
 
 # stores the user id during session
