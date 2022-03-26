@@ -152,7 +152,7 @@ def logout():
 	return redirect('/')
 
 
-@app.route('/random-movie')
+@app.route('/random-movie', methods=['POST','GET'])
 def random_movie():
 	result = db.engine.execute("SELECT * FROM movies ORDER BY RANDOM() LIMIT 1;")
 	if current_user.is_authenticated:
