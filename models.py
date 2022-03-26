@@ -83,6 +83,18 @@ class FeedbackDB(db.Model):
 	date = db.Column(db.Date())
 
 
+# disney world attraction table
+class AttractionDB(db.Model):
+	__tablename__ = 'attractions'
+
+	id = db.Column(db.Integer, primary_key=True)
+	park = db.Column(db.String, nullable=False)
+	land = db.Column(db.String, nullable=False)
+	name = db.Column(db.String, nullable=False)
+	dis_link = db.Column(db.String)
+	img = db.Column(db.String)
+
+
 # stores the user id during session
 @login.user_loader
 def load_user(id):

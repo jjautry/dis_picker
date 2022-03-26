@@ -15,6 +15,7 @@ db.init_app(app)
 login.init_app(app)
 login.login_view = 'login'
 
+
 # if no tables are in databases, create them
 @app.before_first_request
 def create_table():
@@ -118,7 +119,6 @@ def remove_dis_date():
 	user.disney_date = None
 	db.session.commit()
 	return redirect("/user_page/countdown")
-
 
 
 @app.route("/preference")

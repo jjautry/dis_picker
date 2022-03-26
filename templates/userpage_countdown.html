@@ -2,6 +2,7 @@
 
 {% block content %}
 
+<!--spacing block-->
 <section id="block">
     <div class="container-lg my-2">
         <div class="row">
@@ -11,6 +12,7 @@
     </div>
 </section>
 
+<!--username greeting-->
 <section id="userInfo">
     <div class="row justify-content-center pt-4">
         <div class="col-6 col-md-3 text-center">
@@ -24,6 +26,7 @@
     </div>
 </section>
 
+<!--user account nav bar-->
 <section id="userContent">
     <div class="container-md bg-light rounded-3 border border-5 border-light">
         <div class="row justify-content-center">
@@ -45,10 +48,13 @@
             </div>
         </div>
 
+        <!--spacing block-->
         <div class="row">
             <div class="col">
             </div>
         </div>
+
+        <!--days till disney-->
         {% if days > 0 %}
         <div class="row justify-content-center mt-5">
             <div class="card mb-3 bg-light border-0" style="max-width: 540px; justify-content: center;">
@@ -66,6 +72,7 @@
             </div>
         </div>
 
+        <!--spacing block-->
         <section class="my-5">
             <div class="row my-5">
                 <div class="col">
@@ -73,6 +80,7 @@
             </div>
         </section>
 
+        <!--remove disney trip button-->
         <section class="my-5">
             <div class="row justify-content-center">
                 <div class="col-10 col-md-4 text-center">
@@ -83,12 +91,13 @@
 
 
         {% else %}
-
+        <!--spacing block-->
         <div class="row my-5">
             <div class="col">
             </div>
         </div>
 
+        <!--upcoming disney trip date input-->
         <div class="row justify-content-center">
             <div class="col-8">
                 <p class="waltograph text-center">
@@ -103,11 +112,8 @@
               <button type="submit" class="btn btn-secondary mt-4">Submit</button>
             </div>
           </div>
+          
         {% endif %}
-        
-        
-
-
     </div>
 </section>
 
