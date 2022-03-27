@@ -307,25 +307,25 @@ def bucket_list():
 						   wdw_total=wdw_total, user_lst=user_lst, percent=percent)
 
 
-@app.route('/add-attraction/<id>')
+@app.route('/add-attraction/<park>/<id>')
 @login_required
-def add_attraction(id):
+def add_attraction(id, park):
 	user_id = current_user.id
 	att_info = AttractionDB.query.filter_by(id=id).first()
 	user_att = UserAttractionDB(user_id=user_id, attraction_id=id, park=att_info.park, land=att_info.land, attraction=att_info.attraction)
 	db.session.add(user_att)
 	db.session.commit()
 
-	return redirect('/user_page/bucket_list')
+	return redirect(f"/user_page/bucket_list/{park}#ride-selection")
 
 
-@app.route('/remove-attraction/<id>')
+@app.route('/remove-attraction/<park>/<id>')
 @login_required
-def remove_attraction(id):
+def remove_attraction(id,park):
 	db.engine.execute(f"DELETE FROM user_attractionDB "
 					  f"WHERE user_id ={current_user.id} "
 					  f"AND attraction_id={id};")
-	return redirect("/user_page/bucket_list")
+	return redirect(f"/user_page/bucket_list/{park}#ride-selection")
 
 
 @app.route('/user_page/bucket_list/<park>')
@@ -334,7 +334,22 @@ def bucket_list_park(park):
 	attractions = AttractionDB.query.filter_by(park=park).all()
 	attraction_count = AttractionDB.query.filter_by(park=park).count()
 	user_count = UserAttractionDB.query.filter_by(park=park).count()
-	return render_template("park.html", attractions=attractions, attraction_count=attraction_count, user_count=user_count)
+
+	user_lst = []
+	for ride in UserAttractionDB.query.filter_by(user_id=current_user.id).all():
+		user_lst.append(ride.attraction_id)
+
+	image = ""
+	if park == "Magic Kingdom":
+		image = "/static/mk_logo.png"
+	elif park == "Epcot":
+		image = "/static/epcot_logo.webp"
+	elif park == "Hollywood Studios":
+		image = "/static/hs_logo.gif"
+	else:
+		image = "/static/ak_logo.webp"
+
+	return render_template("park.html", image=image, park=park, attractions=attractions, attraction_count=attraction_count, user_count=user_count, user_lst=user_lst)
 
 
 if __name__ == '__main__':

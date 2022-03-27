@@ -64,18 +64,17 @@
                 <img src="/static/bucket_list.png" alt="" class="img-fluid mb-5">
             </div>
         </div>
-    </div>
 
 	
 
 	<!--Walt Disney World Attraction total-->
 	<div class="row justify-content-center mb-5">
 		<div class="col-8 col-md-8 text-center">
-			<img src="/static/wdw_logo.png" alt="" class="img-fluid">
+			<img src="/static/wdw_logo.png" alt="" class="img-fluid" id="dwd-logo">
 		</div>
 		<div class="col-10 col-md-5 align-items-center mt-2 mt-md-5 text-center">
 			<div class="progress" style="height: 60px">
-				<div class="progress-bar justify-content-center" role="progressbar" aria-valuenow="{{percent}}" aria-valuemin="0" aria-valuemax="100" style="width:{{percent}}%">{{ percent }}%</div>
+				<div class="progress-bar" role="progressbar" aria-valuenow="{{percent}}" aria-valuemin="0" aria-valuemax="100" style="width:{{percent}}%">{{ percent }}%</div>
 			  </div>
 			  <p class="small text-muted text-center">% of total Disney World attractions</p>
 		</div>
@@ -99,7 +98,7 @@
 	<!--Epcot total-->
 	<div class="row justify-content-center mt-5 border border border-bottom-dark align-items-center">
 		<div class="col-6 col-md-4">
-			<a href="/user_page/bucket_list/epcot" class="btn">
+			<a href="/user_page/bucket_list/Epcot" class="btn">
 			<img src="/static/epcot_logo.webp" alt="" class="img-fluid">
 			</a>
 		</div>
@@ -114,7 +113,7 @@
 	<!--Hollywood Studios total-->
 	<div class="row justify-content-center mt-5 border border border-bottom-dark align-items-center">
 		<div class="col-6 col-md-4">
-			<a href="/user_page/bucket_list/hollywood-studios" class="btn">
+			<a href="/user_page/bucket_list/Hollywood Studios" class="btn">
 			<img src="/static/hs_logo.gif" alt="" class="img-fluid">
 			</a>
 		</div>
@@ -127,9 +126,9 @@
 	</div>
 
 	<!--Animal Kingdom total-->
-	<div class="row justify-content-center mt-5 border border border-bottom-dark align-items-center">
+	<div class="row justify-content-center my-5 border border border-bottom-dark align-items-center">
 		<div class="col-6 col-md-4">
-			<a class="btn" href="/user_page/bucket_list/animal-kingdom">
+			<a class="btn" href="/user_page/bucket_list/Animal Kingdom">
 			<img src="/static/ak_logo.webp" alt="" class="img-fluid">
 			</a>
 		</div>
@@ -140,49 +139,13 @@
 			<p class="small text-muted text-center mt-0">Attractions experienced</p>
 		</div>
 	</div>
-
-
-        <!--disney world attractions list-->
-    <div class="row justify-content-center my-5">
-        <div class="col-10 col-md-8">
-            <div class="accordion accordian-flush pt-5" id="accordionExample">
-                <div class="accordion-item bg-dark">
-                	<h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button bg-secondary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                          Walt Disney World Attractions
-                    </button>
-                    </h2>
-                	<div id="collapseOne" class="accordion-collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <table class="table table-dark table-hover">
-							<thead>
-								<tr>
-									<th scope="col">Attraction</th>
-								  <th scope="col">Park</th>
-								  <th scope="col">Land</th>
-                                  <th scope="col"></th>
-								</tr>
-							  </thead>
-                            {% for row in attractions %}
-                            <tr>
-                                <td>{{ row.attraction }}</td>
-								<td>{{ row.park }}</td>
-								<td>{{ row.land }}</td>
-                                {% if row.id in user_lst %}
-                                <td><a href="/remove-attraction/{{ row.id }}" class="btn btn-sm btn-outline-danger">Remove</a></td>
-                                {% else %}
-								<td><a href="/add-attraction/{{ row.id }}" class="btn btn-sm btn-outline-success">Ridden?</a></td>
-                                {% endif %}
-                            </tr>
-                            {% endfor %}
-                        </table>
-                    </div>
-                  </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	
 </section>
+
+<div class="row py-5">
+	<div class="col-12">
+	</div>
+</div>
 
 
 {% endblock %}
