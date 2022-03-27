@@ -332,7 +332,9 @@ def remove_attraction(id):
 @login_required
 def bucket_list_park(park):
 	attractions = AttractionDB.query.filter_by(park=park).all()
-	return render_template("park.html", attractions=attractions)
+	attraction_count = AttractionDB.query.filter_by(park=park).count()
+	user_count = UserAttractionDB.query.filter_by(park=park).count()
+	return render_template("park.html", attractions=attractions, attraction_count=attraction_count, user_count=user_count)
 
 
 if __name__ == '__main__':
