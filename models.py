@@ -90,10 +90,31 @@ class AttractionDB(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	park = db.Column(db.String, nullable=False)
 	land = db.Column(db.String, nullable=False)
-	name = db.Column(db.String, nullable=False)
+	attraction = db.Column(db.String, nullable=False)
 	dis_link = db.Column(db.String)
 	img = db.Column(db.String)
 
+
+class UserAttractionDB(db.Model):
+	__table_name = 'user_attraction'
+
+	id = db.Column(db.Integer, primary_key=True)
+	user_id = db.Column(db.Integer, nullable=False)
+	attraction_id = db.Column(db.Integer, nullable=False)
+	park = db.Column(db.String, nullable=False)
+	land = db.Column(db.String, nullable=False)
+	attraction = db.Column(db.String, nullable=False)
+
+	def check_in(self, user_id, attraction_id):
+		"""Checks if user_id and attraction_id have a match in user attraction"""
+		usr_lst = []
+		result = UserAttractionDB.query.filter_by(user_id=user_id)
+		for attraction in result:
+			usr_lst.append(attraction.attraction.id)
+		if attraction_id in usr_lst:
+			return True
+		else:
+			return False
 
 # stores the user id during session
 @login.user_loader

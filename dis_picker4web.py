@@ -1,9 +1,9 @@
 from flask import Flask, render_template, request, redirect, session, flash
 from flask_login import login_required, current_user, login_user, logout_user
-from models import db, login, UserModel, DislikeMovie, MovieDB, FavoriteMovie, FeedbackDB, dis_countdown
+from models import db, login, UserModel, DislikeMovie, MovieDB, FavoriteMovie, FeedbackDB, dis_countdown, AttractionDB, UserAttractionDB
 from datetime import datetime
 import random
-import time
+from math import floor
 
 app = Flask(__name__)
 app.secret_key = 'slinkydogdash'
@@ -198,7 +198,7 @@ def movie(movie_id):
 				reject = DislikeMovie(user_id=current_user.id, title=result.title, movie_id=result.id)
 				db.session.add(reject)
 				db.session.commit()
-				return redirect("/studio")
+				return redirect("/#movie-options")
 			elif request.form['submit_button'] == 'Favorite':
 				fav = FavoriteMovie(user_id=current_user.id, title=result.title, movie_id=result.id)
 				db.session.add(fav)
@@ -273,6 +273,66 @@ def remove_feedback(id):
 	db.engine.execute(f"DELETE FROM feedback WHERE id ={id};")
 
 	return redirect("/admin")
+
+
+@app.route('/user_page/bucket_list')
+@login_required
+def bucket_list():
+	"""Queries all counts of attractions in parks and user ridden"""
+	id = current_user.id
+	attractions = AttractionDB.query.all()
+
+	# user totals
+	user_total = UserAttractionDB.query.filter_by(user_id=id).count()
+	mk_user = UserAttractionDB.query.filter_by(park="Magic Kingdom", user_id=id).count()
+	hs_user = UserAttractionDB.query.filter_by(park="Hollywood Studios", user_id=id).count()
+	ep_user = UserAttractionDB.query.filter_by(park="Epcot", user_id=id).count()
+	ak_user = UserAttractionDB.query.filter_by(park="Animal Kingdom", user_id=id).count()
+	user_lst = []
+	for ride in UserAttractionDB.query.filter_by(user_id=id).all():
+		user_lst.append(ride.attraction_id)
+
+	# park totals
+	wdw_total = AttractionDB.query.count()
+	mk_total = AttractionDB.query.filter_by(park="Magic Kingdom").count()
+	hs_total = AttractionDB.query.filter_by(park="Hollywood Studios").count()
+	ep_total = AttractionDB.query.filter_by(park="Epcot").count()
+	ak_total = AttractionDB.query.filter_by(park="Animal Kingdom").count()
+
+	percent = floor((user_total/wdw_total) * 100)
+
+	return render_template("bucket-list.html", attractions=attractions, mk_total=mk_total,
+						   mk_user=mk_user, hs_user=hs_user, hs_total=hs_total, ep_user=ep_user,
+						   ep_total=ep_total, ak_user=ak_user, ak_total=ak_total, user_total=user_total,
+						   wdw_total=wdw_total, user_lst=user_lst, percent=percent)
+
+
+@app.route('/add-attraction/<id>')
+@login_required
+def add_attraction(id):
+	user_id = current_user.id
+	att_info = AttractionDB.query.filter_by(id=id).first()
+	user_att = UserAttractionDB(user_id=user_id, attraction_id=id, park=att_info.park, land=att_info.land, attraction=att_info.attraction)
+	db.session.add(user_att)
+	db.session.commit()
+
+	return redirect('/user_page/bucket_list')
+
+
+@app.route('/remove-attraction/<id>')
+@login_required
+def remove_attraction(id):
+	db.engine.execute(f"DELETE FROM user_attractionDB "
+					  f"WHERE user_id ={current_user.id} "
+					  f"AND attraction_id={id};")
+	return redirect("/user_page/bucket_list")
+
+
+@app.route('/user_page/bucket_list/<park>')
+@login_required
+def bucket_list_park(park):
+	attractions = AttractionDB.query.filter_by(park=park).all()
+	return render_template("park.html", attractions=attractions)
 
 
 if __name__ == '__main__':

@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!--spacing block-->
+<section id="block">
+    <div class="container-lg my-2">
+        <div class="row">
+            <div class="col">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--username greeting-->
+<section id="userInfo">
+    <div class="row justify-content-center pt-4">
+        <div class="col-6 col-md-3 text-center">
+            <p class="display-6 text-light">
+                {{ current_user.username | upper }}
+            </p>
+            <p class="small text-muted">
+                Member since 2022
+            </p>
+        </div>
+    </div>
+</section>
+
+<!--user account nav bar-->
+<section id="userContent">
+    <div class="container bg-light rounded-3 border border-5 border-light">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 pt-5">
+                <ul class="nav nav-pills justify-content-center pb-1 border-bottom border-2">
+                    <li class="nav-item small">
+                      <a class="nav-link small" href="../user_page/likes">Likes</a>
+                    </li>
+                    <li class="nav-item small">
+                      <a class="nav-link small" href="../user_page/dislikes">Dislikes</a>
+                    </li>
+                    <li class="nav-item small">
+                      <a class="nav-link small" href="../user_page/countdown">Countdown</a>
+                    </li>
+                    <li class="nav-item small">
+                      <a class="nav-link active small" href="#">Bucket List</a>
+                    </li>
+                  </ul>
+            </div>
+        </div>
+
+        <!--spacing block-->
+        <div class="row">
+            <div class="col">
+            </div>
+        </div>
+
+
+
+    <div class="container-md bg-light rounded-3 border border-5 border-light">
+       	<!--bucket list logo-->
+        <div class="row justify-content-center mt-5">
+            <div class="col-12 col-md-6 text-center">
+                <img src="/static/bucket_list.png" alt="" class="img-fluid mb-5">
+            </div>
+        </div>
+    </div>
+
+    <div class="container-md bg-light rounded-3 border border-5 border-light">
+		<!--back to bucket list-->
+	 <div class="row justify-content-center mt-3">
+		 <div class="col-12 col-md-6 text-center">
+			 <a href="/user_page/bucket_list" class="btn"><button class="btn btn-primary">Back to Park Select</button></a>
+		 </div>
+	 </div>
+ 	</div>
+
+   
+
+
+	<!--Magic Kingdom total-->
+	<div class="row justify-content-center mt-5 border border border-bottom-dark align-items-center">
+		<div class="col-6 col-md-4">
+			<a href="/user_page/bucket_list/magic-kingdom" class="btn">
+			<img src="/static/mk_logo.png" alt="" class="img-fluid">
+			</a>
+		</div>
+		<div class="col-6 col-md-4">
+			<p class="display-3 text-center">
+				{{ mk_user }} / {{ mk_total}}
+			</p>
+			<p class="small text-muted text-center mt-0">Attractions experienced</p>
+		</div>
+	</div>
+
+
+
+        <!--disney world attractions list-->
+    <div class="row justify-content-center my-5">
+        <div class="col-10 col-md-8">
+            <div class="accordion accordian-flush pt-5" id="accordionExample">
+                <div class="accordion-item bg-dark">
+                	<h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button bg-secondary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    </button>
+                    </h2>
+                	<div id="collapseOne" class="accordion-collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <table class="table table-dark table-hover">
+							<thead>
+								<tr>
+									<th scope="col">Attraction</th>
+								  <th scope="col">Park</th>
+								  <th scope="col">Land</th>
+                                  <th scope="col"></th>
+								</tr>
+							  </thead>
+                            {% for row in attractions %}
+                            <tr>
+                                <td>{{ row.attraction }}</td>
+								<td>{{ row.park }}</td>
+								<td>{{ row.land }}</td>
+                                {% if row.id in user_lst %}
+                                <td><a href="/remove-attraction/{{ row.id }}" class="btn btn-sm btn-outline-danger">Remove</a></td>
+                                {% else %}
+								<td><a href="/add-attraction/{{ row.id }}" class="btn btn-sm btn-outline-success">Ridden?</a></td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}
