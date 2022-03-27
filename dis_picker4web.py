@@ -349,7 +349,7 @@ def bucket_list_park(park):
 	else:
 		image = "/static/ak_logo.webp"
 
-	return render_template("park.html", image=image, park=park, attractions=attractions, attraction_count=attraction_count, user_count=user_count, user_lst=user_lst)
+	return render_template("park.html", image=image, park=park, attractions=attractions, attraction_count=attraction_count, user_count=user_count, user_lst=user_lst,)
 
 
 if __name__ == '__main__':

@@ -33,13 +33,13 @@
             <div class="col-12 col-md-6 pt-5">
                 <ul class="nav nav-pills justify-content-center pb-1 border-bottom border-2">
                     <li class="nav-item small">
-                      <a class="nav-link small" href="../user_page/likes">Likes</a>
+                      <a class="nav-link small" href="../../user_page/likes">Likes</a>
                     </li>
                     <li class="nav-item small">
-                      <a class="nav-link small" href="../user_page/dislikes">Dislikes</a>
+                      <a class="nav-link small" href="../../user_page/dislikes">Dislikes</a>
                     </li>
                     <li class="nav-item small">
-                      <a class="nav-link small" href="../user_page/countdown">Countdown</a>
+                      <a class="nav-link small" href="../../user_page/countdown">Countdown</a>
                     </li>
                     <li class="nav-item small">
                       <a class="nav-link active small" href="#">Bucket List</a>
@@ -83,27 +83,45 @@
 </section>
 
 <section>
+    <div class="row justify-content-center my-4">
+        <div class="col-10 col-md-5">
+            <p class="small text-muted text-center">Click red X to mark as ridden</p>
+        </div>
+    </div>
+
     <!--park attractions list-->
-    <div class="row justify-content-center my-5">
+    <div class="row justify-content-center mb-5">
         <div class="col-11 col-md-8">
             <table class="table table-dark table-hover">
                 <thead>
                     <tr id="ride-selection" class="text-center">
                         <th scope="col">Attraction</th>
                       <th scope="col">Land</th>
-                      <th scope="col"></th>
+                      <th scope="col">Ridden?</th>
                     </tr>
                   </thead>
                 {% for row in attractions %}
+                {% if not row.id in user_lst %}
                 <tr>
                     <td><p class="small">{{ row.attraction }}</p></td>
                     <td class="text-center"><p class="small">{{ row.land }}</p></td>
                     {% if row.id in user_lst %}
-                    <td><a href="/remove-attraction/{{ row.park }}/{{ row.id }}" class="btn btn-sm btn-outline-danger small">Remove</a></td>
+                    <td class="text-center"><a href="/remove-attraction/{{ row.park }}/{{ row.id }}" class="btn"><i class="bi bi-check-circle-fill text-success"></i></a></td>
                     {% else %}
-                    <td><a href="/add-attraction/{{ row.park }}/{{ row.id }}" class="btn btn-sm btn-outline-success small">Done it</a></td>
+                    <td class="text-center"><a href="/add-attraction/{{ row.park }}/{{ row.id }}" class="btn"><i class="bi bi-x-lg text-danger"></i></a></td>
                     {% endif %}
                 </tr>
+                {% else %}
+                <tr>
+                    <td><p class="small">{{ row.attraction }}</p></td>
+                    <td class="text-center"><p class="small">{{ row.land }}</p></td>
+                    {% if row.id in user_lst %}
+                    <td class="text-center"><a href="/remove-attraction/{{ row.park }}/{{ row.id }}" class="btn"><i class="bi bi-check-circle-fill text-success"></i></a></td>
+                    {% else %}
+                    <td class="text-center"><a href="/add-attraction/{{ row.park }}/{{ row.id }}" class="btn"><i class="bi bi-x-lg text-danger"></i></a></td>
+                    {% endif %}
+                </tr>
+                {% endif %}
                 {% endfor %}
             </table>
         </div>
@@ -112,3 +130,47 @@
 </section>
 
 {% endblock %}
+
+
+<section>
+    <!--park attractions list-->
+    <div class="row justify-content-center my-5">
+        <div class="col-11 col-md-8">
+            <table class="table table-dark table-hover">
+                <thead>
+                    <tr id="ride-selection" class="text-center">
+                        <th scope="col">Attraction</th>
+                      <th scope="col">Land</th>
+                      <th scope="col">Ridden?</th>
+                    </tr>
+                  </thead>
+                {% for row in attractions %}
+                {% if not row.id in user_lst %}
+                <tr>
+                    <td><p class="small">{{ row.attraction }}</p></td>
+                    <td class="text-center"><p class="small">{{ row.land }}</p></td>
+                    {% if row.id in user_lst %}
+                    <td class="text-center"><a href="/remove-attraction/{{ row.park }}/{{ row.id }}" class="btn"><i class="bi bi-check-circle-fill text-success"></i></a></td>
+                    {% else %}
+                    <td class="text-center"><a href="/add-attraction/{{ row.park }}/{{ row.id }}" class="btn"><i class="bi bi-x-lg text-danger"></i></a></td>
+                    {% endif %}
+                </tr>
+                {% endif %}
+                {% if row.id in user_lst%}
+                <tr>
+                    <td><p class="small">{{ row.attraction }}</p></td>
+                    <td class="text-center"><p class="small">{{ row.land }}</p></td>
+                    {% if row.id in user_lst %}
+                    <td class="text-center"><a href="/remove-attraction/{{ row.park }}/{{ row.id }}" class="btn"><i class="bi bi-check-circle-fill text-success"></i></a></td>
+                    {% else %}
+                    <td class="text-center"><a href="/add-attraction/{{ row.park }}/{{ row.id }}" class="btn"><i class="bi bi-x-lg text-danger"></i></a></td>
+                    {% endif %}
+                </tr>
+                {% endif %}
+
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+</section>
