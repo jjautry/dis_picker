@@ -335,11 +335,13 @@ def bucket_list_park(park):
 	attraction_count = AttractionDB.query.filter_by(park=park).count()
 	user_count = UserAttractionDB.query.filter_by(park=park).count()
 
+
 	user_lst = []
 	for ride in UserAttractionDB.query.filter_by(user_id=current_user.id).all():
 		user_lst.append(ride.attraction_id)
 
 	image = ""
+	land_lst = []
 	if park == "Magic Kingdom":
 		image = "/static/mk_logo.png"
 	elif park == "Epcot":
