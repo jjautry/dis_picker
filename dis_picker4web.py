@@ -208,6 +208,7 @@ def movie(movie_id):
 	return render_template("movie.html", result=result, id=movie_id)
 
 
+# random movie from user favorites
 @app.route("/random-faves/<user_id>")
 def random_fav(user_id):
 	id = user_id
@@ -222,6 +223,7 @@ def random_fav(user_id):
 		return redirect("/movie/"+str(choice))
 
 
+# about me page
 @app.route("/about", methods=['POST', 'GET'])
 def about():
 	if request.method == 'POST':
@@ -243,6 +245,7 @@ def about():
 	return render_template("about.html")
 
 
+# admin page
 @app.route('/admin')
 @login_required
 def admin():
@@ -256,6 +259,7 @@ def admin():
 		return redirect("/")
 
 
+# sends feedback/missing poster message to fb data
 @app.route('/feedback')
 @app.route('/missing-poster/<movie_id>')
 def feedback(movie_id=None):
@@ -275,6 +279,7 @@ def remove_feedback(id):
 	return redirect("/admin")
 
 
+# user bucket list page
 @app.route('/user_page/bucket_list')
 @login_required
 def bucket_list():
@@ -307,6 +312,7 @@ def bucket_list():
 						   wdw_total=wdw_total, user_lst=user_lst, percent=percent)
 
 
+# add attraction to user profile
 @app.route('/add-attraction/<park>/<id>')
 @login_required
 def add_attraction(id, park):
@@ -319,6 +325,7 @@ def add_attraction(id, park):
 	return redirect(f"/user_page/bucket_list/{park}#ride-selection")
 
 
+# remove attraction from user profile
 @app.route('/remove-attraction/<park>/<id>')
 @login_required
 def remove_attraction(id,park):
@@ -328,6 +335,7 @@ def remove_attraction(id,park):
 	return redirect(f"/user_page/bucket_list/{park}#ride-selection")
 
 
+# bucket list park page
 @app.route('/user_page/bucket_list/<park>')
 @login_required
 def bucket_list_park(park):

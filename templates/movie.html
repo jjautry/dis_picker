@@ -5,20 +5,24 @@
 <section id="movie-poster" class="mt-5">
     <div class="container-md">
         <div class="row justify-content-center align-items-center">
-            <div class="col-7 col-md-5 col-lg-3 text-center">
+            <div class="col-6 col-md-4 col-lg-3 text-center">
             <h1>
                 <img src="{{ result.poster }}" alt="" class="img-fluid rounded-3 shadow">
             </h1>
-            <p class="small text-muted">Missing movie poster?<a href="/missing-poster/{{ id }}" class="small">Click here</a></p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-8 text-center">
+                <p class="small text-muted">Missing movie poster? <a href="/missing-poster/{{ id }}" class="small">Click here</a></p>
+            </div>
         </div>
     </div>
 </section>
 <!--Movie info-->
-<section id="movie-info" class="py-5">
+<section id="movie-info" class="my-3">
     <div class="container-sm justify-content-center align-items-center text-light">
         <div class="row text-center">
             <div class="col-fluid">
-                <h1 class="display-4 fw-bolder">
+                <h1 class="display-6 fw-bolder">
                     {{ result.title }}
                 </h1>
             </div>

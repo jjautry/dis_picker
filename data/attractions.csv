@@ -19,71 +19,68 @@ id,park,land,attraction,dis_link,img
 18,Magic Kingdom,Fantasyland,Mad Tea Party,https://disneyworld.disney.go.com/attractions/magic-kingdom/mad-tea-party/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/parks-and-tickets/attractions/magic-kingdom/mad-tea-party/mad-tea-party-00.jpg?1634619687993
 19,Magic Kingdom,Fantasyland,Mickey's PhilharMagic,https://disneyworld.disney.go.com/attractions/magic-kingdom/mickeys-philharmagic/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/gallery/attractions/magic-kingdom/mickeys-philharmagic/mickeys-philharmagic-gallery01.jpg?1551208516468
 20,Magic Kingdom,Fantasyland,Peter Pan's Flight,https://disneyworld.disney.go.com/attractions/magic-kingdom/peter-pan-flight/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/gallery/attractions/magic-kingdom/peter-pans-flight/peter-pans-flight-gallery03.jpg?1559892376214
-21,Magic Kingdom,Fantasyland,Pete's Silly Slideshow,,
-22,Magic Kingdom,Fantasyland,Prince Charming Regal Carousel,,
-23,Magic Kingdom,Fantasyland,Princess Fairytale Hall,,
-24,Magic Kingdom,Fantasyland,Seven Dwarfs Mine Train,,
-25,Magic Kingdom,Fantasyland,The Barnstormer,,
-26,Magic Kingdom,Fantasyland,The Many Adventures of Winnie the Pooh,,
-27,Magic Kingdom,Fantasyland,Under the Sea: Journey of the Little Mermaid,,
-28,Magic Kingdom,Tomorrowland,Astro Orbiter,,
-29,Magic Kingdom,Tomorrowland,Buzz Lightyear's Space Ranger Spin,,
-30,Magic Kingdom,Tomorrowland,"Monsters, Inc. Laugh Floor",,
-31,Magic Kingdom,Tomorrowland,Space Mountain,,
-32,Magic Kingdom,Tomorrowland,Tomorowland Speedway,,
-33,Magic Kingdom,Tomorrowland,Tomorrowland Transit Authority PeopleMover,,
-34,Magic Kingdom,Tomorrowland,Walt Disney's Carosel of Progress,,
-35,Magic Kingdom,Fantasyland,Enchantment - Nighttime Spectacular,,
-36,Epcot,World Celebration,Spaceship Earth,,
-37,Epcot,World Celebration,Journey into Imagination with Figment,,
-38,Epcot,World Discovery,Mission: Space,,
-39,Epcot,World Discovery,Test Track,,
-40,Epcot,World Nature,Living with the Land,,
-41,Epcot,World Nature,Soarin' Around the World,,
-42,Epcot,World Nature,The Seas with Nemo & Friends,,
-43,Epcot,World Showcase,Gran Fiesta Tour Starring the Three Caballeros,,
-44,Epcot,World Showcase,Frozen Ever After,,
-45,Epcot,World Showcase,Reflections of China,,
-46,Epcot,World Showcase,The American Adventure,,
-47,Epcot,World Showcase,Impressions de France,,
-48,Epcot,World Showcase,Beauty and the Beast Sing-Along,,
-49,Epcot,World Showcase,Remy's Ratatouille Adventure,,
-50,Epcot,World Showcase,Canada: Far and Wide,,
-51,Epcot,World Showcase,Harmonious,,
-52,Animal Kingdom,Discovery Island,It's Tough to Be a Bug,,
-53,Animal Kingdom,Discovery Island,Discovery Island Trails,,
-54,Animal Kingdom,Discovery Island,The Tree of Life,,
-55,Animal Kingdom,Discovery Island,Avatar Flight of Passage,,
-56,Animal Kingdom,Discovery Island,Na'vi River Journey,,
-57,Animal Kingdom,Africa,Kilimanjaro Safari,,
-58,Animal Kingdom,Africa,Gorilla Falls Exploration Trail,,
-59,Animal Kingdom,Africa,Wildlife Express Train,,
-60,Animal Kingdom,Africa,A Celebration of Festival of the Lion King,,
-61,Animal Kingdom,Asia,Expedition Everest,,
-62,Animal Kingdom,Asia,Kali River Rapids,,
-63,Animal Kingdom,Asia,Maharajah Jungle Trek,,
-64,Animal Kingdom,Asia,Feathered Friends Flight,,
-65,Animal Kingdom,DinoLand U.S.A.,Dinosaur,,
-66,Animal Kingdom,DinoLand U.S.A.,Cretaceous Trail,,
-67,Animal Kingdom,DinoLand U.S.A.,The Boneyard,,
-68,Animal Kingdom,DinoLand U.S.A.,Chester and Hester's Dino-Rama,,
-69,Hollywood Studios,Hollywood Boulevard,Mickey & Minnie's Runaway Railway,,
-70,Hollywood Studios,Echo Lake,Star Tours - The Adventure Continues,,
-71,Hollywood Studios,Echo Lake,Indiana Jones Epic Stunt Spectacular!,,
-72,Hollywood Studios,Echo Lake,For the First Time in Forever: A Frozen Sing-Along Celebration,,
-73,Hollywood Studios,Echo Lake,Jedi Training: Trials of the Temple,,
-74,Hollywood Studios,Grand Avenue,Muppet*Vision 3D,,
-75,Hollywood Studios,Star Wars: Galaxy's Edge,Millennium Falcon: Smugglers Run,,
-76,Hollywood Studios,Star Wars: Galaxy's Edge,Star Wars: Rise of the Resistance,,
-77,Hollywood Studios,Toy Story Land ,Toy Story Mania!,,
-78,Hollywood Studios,Toy Story Land ,Slinky Dog Dash,,
-79,Hollywood Studios,Toy Story Land ,Alien Swirling Saucers,,
-80,Hollywood Studios,Animation Courtyard,Disney Junior Dance Party!,,
-81,Hollywood Studios,Animation Courtyard,Star Wars Launch Bay,,
-82,Hollywood Studios,Animation Courtyard,Voyage of the Little Mermaid,,
-83,Hollywood Studios,Animation Courtyard,Walt Disney Presents,,
-84,Hollywood Studios,Sunset Boulevard,The Twilight Zone Tower of Terror,,
-85,Hollywood Studios,Sunset Boulevard,Rock 'n' Roller Coaster Starring Aerosmith,,
-86,Hollywood Studios,Sunset Boulevard,Lightning McQueen's Racing Academy,,
-87,Hollywood Studios,Sunset Boulevard,Beauty and the Beast - Live on Stage,,
-88,Hollywood Studios,Sunset Boulevard,Fantasmic!,,
+22,Magic Kingdom,Fantasyland,Prince Charming Regal Carousel,https://disneyworld.disney.go.com/attractions/magic-kingdom/prince-charming-regal-carrousel/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/gallery/attractions/magic-kingdom/prince-charming-regal-carrousel/prince-charming-regal-carrousel-gallery00.jpg?1551208126701
+23,Magic Kingdom,Fantasyland,Princess Fairytale Hall,https://disneyworld.disney.go.com/entertainment/magic-kingdom/character-meet-princess-fairytale-hall/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/vision-dam/digital/parks-platform/parks-global-assets/disney-world/PFTH-Tiana-distanced-16x9.jpg?2021-10-29T15:34:39+00:00
+24,Magic Kingdom,Fantasyland,Seven Dwarfs Mine Train,https://disneyworld.disney.go.com/attractions/magic-kingdom/seven-dwarfs-mine-train/,https://cdn1.parksmedia.wdprapps.disney.com/media/blog/wp-content/uploads/2014/05/TRAIN345.jpg
+25,Magic Kingdom,Fantasyland,The Barnstormer,https://disneyworld.disney.go.com/attractions/magic-kingdom/barnstormer-starring-great-goofini/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/630/354/90/media/disneyparksjapan-prod/disneyparksjapan_v0001/1/media/wdw/attractions/barnstormer-starring-great-goofini-00.jpg
+26,Magic Kingdom,Fantasyland,The Many Adventures of Winnie the Pooh,https://disneyworld.disney.go.com/attractions/magic-kingdom/many-adventures-of-winnie-the-pooh/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/parks-and-tickets/attractions/magic-kingdom/the-many-adventures-of-winnie-the-pooh/many-adventures-of-winnie-the-pooh-00.jpg?1636138049797
+27,Magic Kingdom,Fantasyland,Under the Sea: Journey of the Little Mermaid,https://disneyworld.disney.go.com/attractions/magic-kingdom/under-the-sea-journey-of-the-little-mermaid/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/parks-and-tickets/attractions/magic-kingdom/under-the-sea-journey-of-the-little-mermaid/under-the-sea-journey-of-the-little-mermaid-new-00.jpg?1634619836144
+28,Magic Kingdom,Tomorrowland,Astro Orbiter,https://disneyworld.disney.go.com/attractions/magic-kingdom/astro-orbiter/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/gallery/attractions/magic-kingdom/astro-orbiter/astro-orbiter-gallery04.jpg?1550820901417
+29,Magic Kingdom,Tomorrowland,Buzz Lightyear's Space Ranger Spin,https://disneyworld.disney.go.com/attractions/magic-kingdom/buzz-lightyear-space-ranger-spin/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/parks-and-tickets/attractions/magic-kingdom/buzz-lightyears-space-ranger-spin/buzz-lightyear-space-ranger-spin-00.jpg?1559892286107
+30,Magic Kingdom,Tomorrowland,"Monsters, Inc. Laugh Floor",https://disneyworld.disney.go.com/attractions/magic-kingdom/monsters-inc-laugh-floor/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/gallery/attractions/magic-kingdom/monsters-inc-laugh-floor/monsters-inc-laugh-floor-gallery04.jpg?1581453837790
+31,Magic Kingdom,Tomorrowland,Space Mountain,https://disneyworld.disney.go.com/attractions/magic-kingdom/space-mountain/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/parks-and-tickets/attractions/magic-kingdom/space-mountain/space-mountain-00.jpg?1559892391044
+32,Magic Kingdom,Tomorrowland,Tomorowland Speedway,https://disneyworld.disney.go.com/attractions/magic-kingdom/tomorrowland-speedway/,https://www.wdw-magazine.com/wp-content/uploads/2021/08/tomorrowland-speedway-facts_featured_billick.jpeg
+33,Magic Kingdom,Tomorrowland,Tomorrowland Transit Authority PeopleMover,https://disneyworld.disney.go.com/attractions/magic-kingdom/tomorrowland-transit-authority-peoplemover/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/parks-and-tickets/attractions/magic-kingdom/tomorrowland-transit-authority-peoplemover/tomorrowland-transit-authority-peoplemover-00.jpg?1638982344912
+34,Magic Kingdom,Tomorrowland,Walt Disney's Carosel of Progress,https://disneyworld.disney.go.com/attractions/magic-kingdom/walt-disney-carousel-of-progress/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/parks-and-tickets/attractions/magic-kingdom/walt-disneys-carousel-of-progress/walt-disney-carousel-of-progress-00.jpg?1632405393832
+35,Magic Kingdom,Fantasyland,Enchantment - Nighttime Spectacular,https://disneyworld.disney.go.com/entertainment/magic-kingdom/disney-enchantment/,https://www.wdw-magazine.com/wp-content/uploads/2021/08/disney-enchantment-nighttime-spectacular-concept-art-featured_disney-parks-blog.jpg
+36,Epcot,World Celebration,Spaceship Earth,https://disneyworld.disney.go.com/attractions/epcot/spaceship-earth/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/gallery/attractions/epcot/spaceship-earth/spaceship-earth-gallery00.jpg?1559892180952
+37,Epcot,World Celebration,Journey into Imagination with Figment,https://disneyworld.disney.go.com/attractions/epcot/journey-into-imagination-with-figment/,https://ziggyknowsdisney.com/wp-content/uploads/2020/08/journey-into-imagination-5.jpg
+38,Epcot,World Discovery,Mission: Space,https://disneyworld.disney.go.com/attractions/epcot/mission-space/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/gallery/attractions/epcot/mission-space/mission-space-gallery00.jpg?1559892121038
+39,Epcot,World Discovery,Test Track,https://disneyworld.disney.go.com/attractions/epcot/test-track/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/parks-and-tickets/attractions/epcot/test-track/test-track-presented-by-chevrolet-00.jpg?1634619823087
+40,Epcot,World Nature,Living with the Land,https://disneyworld.disney.go.com/attractions/epcot/living-with-the-land/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/parks-and-tickets/attractions/epcot/living-with-the-land/living-with-the-land-00.jpg?1641312971030
+41,Epcot,World Nature,Soarin' Around the World,https://disneyworld.disney.go.com/attractions/epcot/soarin-around-world/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/gallery/attractions/epcot/soarin/soarin-gallery07.jpg?1559892150947
+42,Epcot,World Nature,The Seas with Nemo & Friends,https://disneyworld.disney.go.com/attractions/epcot/seas-with-nemo-and-friends/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/gallery/attractions/epcot/the-seas-with-nemo-and-friends/seas-with-nemo-and-friends-gallery00.jpg?1573161846190
+43,Epcot,World Showcase,Gran Fiesta Tour Starring the Three Caballeros,https://disneyworld.disney.go.com/attractions/epcot/gran-fiesta-tour-starring-three-caballeros/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/gallery/attractions/epcot/gran-fiesta-tour/gran-fiesta-tour-starring-the-three-caballeros-gallery01.jpg?1551208051556
+44,Epcot,World Showcase,Frozen Ever After,https://disneyworld.disney.go.com/attractions/epcot/frozen-ever-after/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/disney-world/attractions/epcot/frozen-ever-after/frozen-ever-after-olaf-anna-elsa-16x9.jpg?1635179489414
+45,Epcot,World Showcase,Reflections of China,https://disneyworld.disney.go.com/attractions/epcot/reflections-of-china/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/gallery/attractions/epcot/reflections-of-china/reflections-of-china-gallery01.jpg?1551208546463
+46,Epcot,World Showcase,The American Adventure,https://disneyworld.disney.go.com/attractions/epcot/american-adventure/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/gallery/attractions/epcot/the-american-adventure/american-adventure-gallery01.jpg?1551208576543
+47,Epcot,World Showcase,Impressions de France,https://disneyworld.disney.go.com/attractions/epcot/impressions-de-france/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/gallery/attractions/epcot/impressions-de-france/impressions-de-france-gallery01.jpg?1586806691062
+48,Epcot,World Showcase,Beauty and the Beast Sing-Along,https://disneyworld.disney.go.com/attractions/epcot/beauty-and-the-beast-sing-along/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/disney-world/attractions/epcot/beauty-and-the-beast-sing-along/Beauty-and-the-Beast-Sing-Along-16x9.jpg?1632337504571
+49,Epcot,World Showcase,Remy's Ratatouille Adventure,https://disneyworld.disney.go.com/attractions/epcot/remys-ratatouille-adventure/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/disney-world/attractions/epcot/remys-ratatouille-adventure/RatatouilleKV_16x9.jpg?1643139695472
+50,Epcot,World Showcase,Canada: Far and Wide,https://disneyworld.disney.go.com/attractions/epcot/canada-far-and-wide/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/disney-world/attractions/epcot/canada-far-and-wide/canada-far-and-wide-16x9.jpg?1613071634869
+51,Epcot,World Showcase,Harmonious,https://disneyworld.disney.go.com/entertainment/epcot/harmonious/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/vision-dam/digital/parks-platform/parks-global-assets/disney-world/0618ZP_0087DR_JLM_WDW-82237-16x9.jpg?2021-06-30T18:02:29+00:00
+52,Animal Kingdom,Discovery Island,It's Tough to Be a Bug,https://disneyworld.disney.go.com/attractions/animal-kingdom/its-tough-to-be-a-bug/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/parks-and-tickets/attractions/animal-kingdom/its-tough-to-be-a-bug/its-tough-to-be-a-bug-00.jpg?1634619911071
+53,Animal Kingdom,Discovery Island,Discovery Island Trails,https://disneyworld.disney.go.com/attractions/animal-kingdom/discovery-island-trails/,https://e6zrk7x26xe.exactdn.com/reports13/animal_kingdom_rivers_light_stadium-57.jpg?strip=all&lossy=1&w=1920&ssl=1
+54,Animal Kingdom,Discovery Island,The Tree of Life,https://disneyworld.disney.go.com/attractions/animal-kingdom/tree-of-life/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/parks-and-tickets/attractions/animal-kingdom/tree-of-life/tree-of-life-00.jpg?1632755874244
+55,Animal Kingdom,Discovery Island,Avatar Flight of Passage,https://disneyworld.disney.go.com/attractions/animal-kingdom/avatar-flight-of-passage/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/parks-and-tickets/attractions/animal-kingdom/flight-of-passage/flight-of-passage-in-ride-16x9.jpg?1639083470749
+56,Animal Kingdom,Discovery Island,Na'vi River Journey,https://disneyworld.disney.go.com/attractions/animal-kingdom/navi-river-journey/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/parks-and-tickets/attractions/animal-kingdom/navi-river-journey/pandora-navi-river-journey-full-boat-16x9.jpg?1634752135995
+57,Animal Kingdom,Africa,Kilimanjaro Safari,https://disneyworld.disney.go.com/attractions/animal-kingdom/kilimanjaro-safaris/,https://cdn1.parksmedia.wdprapps.disney.com/media/blog/wp-content/uploads/2012/10/gss809174LARGE.jpg
+58,Animal Kingdom,Africa,Gorilla Falls Exploration Trail,https://disneyworld.disney.go.com/attractions/animal-kingdom/gorilla-falls-forest-exploration-trail/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/vision-dam/digital/parks-platform/parks-global-assets/disney-world/Gorilla-Bachelors-Waterfall-Resting-16x9.jpg?2022-01-14T21:44:08+00:00
+59,Animal Kingdom,Africa,Wildlife Express Train,https://disneyworld.disney.go.com/attractions/animal-kingdom/wildlife-express-train/,https://d3bo0mk5kk7egf.cloudfront.net/imgstore/elements/Wildlife-Express.jpg;width=1200;height=630;mode=crop;scale=both;encoder=freeimage;quality=50;progressive=true
+60,Animal Kingdom,Africa,A Celebration of Festival of the Lion King,https://disneyworld.disney.go.com/entertainment/animal-kingdom/festival-of-the-lion-king/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/gallery/entertainment/animal-kingdom/festival-of-the-lion-king/festival-of-the-lion-king-gallery00.jpg?1620414365007
+61,Animal Kingdom,Asia,Expedition Everest,https://disneyworld.disney.go.com/attractions/animal-kingdom/expedition-everest/,https://cdn1.parksmedia.wdprapps.disney.com/media/blog/wp-content/uploads/2011/04/eeh019381LARGE.jpg
+62,Animal Kingdom,Asia,Kali River Rapids,https://disneyworld.disney.go.com/attractions/animal-kingdom/kali-river-rapids/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/630/354/90/media/disneyparksjapan-prod/disneyparksjapan_v0001/1/media/wdw/attractions/kali-river-rapids-00.jpg
+63,Animal Kingdom,Asia,Maharajah Jungle Trek,https://disneyworld.disney.go.com/attractions/animal-kingdom/maharajah-jungle-trek/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/gallery/attractions/animal-kingdom/maharajah-jungle-trek/maharajah-jungle-trek-gallery01.jpg?1551208666502
+64,Animal Kingdom,Asia,Feathered Friends Flight,https://disneyworld.disney.go.com/entertainment/animal-kingdom/feathered-friends/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/disney-world/entertainment/animal-kingdom/new-entertainment/vulture-16x9.jpg?1637158333146
+65,Animal Kingdom,DinoLand U.S.A.,Dinosaur,https://disneyworld.disney.go.com/attractions/animal-kingdom/dinosaur/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/parks-and-tickets/attractions/animal-kingdom/dinosaur/dinosaur-00.jpg?1634619896244
+67,Animal Kingdom,DinoLand U.S.A.,The Boneyard,https://disneyworld.disney.go.com/attractions/animal-kingdom/boneyard/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/parks-and-tickets/attractions/animal-kingdom/the-boneyard/the-boneyard-00.jpg?1632755812605
+68,Animal Kingdom,DinoLand U.S.A.,Chester and Hester's Dino-Rama,https://disneyworld.disney.go.com/shops/animal-kingdom/chester-and-hesters-dinosaur-treasures/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/things-to-do/more/shops/animal-kingdom/chester-and-hester-dinosaur-treasures/chester-and-hesters-dinosaur-treasures-00.jpg?1583973826499
+69,Hollywood Studios,Hollywood Boulevard,Mickey & Minnie's Runaway Railway,https://disneyworld.disney.go.com/attractions/hollywood-studios/mickey-minnies-runaway-railway/,https://cdn1.parksmedia.wdprapps.disney.com/media/blog/wp-content/uploads/2019/12/mbhgyu7898-624x350-624x350.jpg
+70,Hollywood Studios,Echo Lake,Star Tours - The Adventure Continues,https://disneyworld.disney.go.com/attractions/hollywood-studios/star-tours/,https://cdn1.parksmedia.wdprapps.disney.com/media/blog/wp-content/uploads/2017/11/11_17_WDI_9004_1280.jpg
+71,Hollywood Studios,Echo Lake,Indiana Jones Epic Stunt Spectacular!,https://disneyworld.disney.go.com/entertainment/hollywood-studios/indiana-jones-epic-stunt-spectacular/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/parks-and-tickets/entertainment/hollywood-studios/indiana-jones-stunt-spectacular-gallery02.jpg?1640811572364
+72,Hollywood Studios,Echo Lake,For the First Time in Forever: A Frozen Sing-Along Celebration,https://disneyworld.disney.go.com/entertainment/hollywood-studios/frozen-sing-along-celebration/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/parks-and-tickets/entertainment/hollywood-studios/frozen-sing-along-celebration/summer-update-00.jpg?1641315717037
+74,Hollywood Studios,Grand Avenue,Muppet*Vision 3D,https://disneyworld.disney.go.com/attractions/hollywood-studios/muppet-vision-3d/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/gallery/attractions/hollywood-studios/muppet-vision-3d/muppet-vision-3d-gallery02.jpg?1559892225794
+75,Hollywood Studios,Star Wars: Galaxy's Edge,Millennium Falcon: Smugglers Run,https://disneyworld.disney.go.com/attractions/hollywood-studios/millennium-falcon-smugglers-run/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/630/354/90/media/disneyparksjapan-prod/disneyparksjapan_v0001/1/media/dlr/destinations/smugglers-run-interior-16x9.jpg
+76,Hollywood Studios,Star Wars: Galaxy's Edge,Star Wars: Rise of the Resistance,https://disneyworld.disney.go.com/attractions/hollywood-studios/star-wars-rise-of-the-resistance/,https://cdn1.parksmedia.wdprapps.disney.com/media/blog/wp-content/uploads/2019/08/slrghl6n8i9o9-624x351.jpg
+77,Hollywood Studios,Toy Story Land ,Toy Story Mania!,https://disneyworld.disney.go.com/attractions/hollywood-studios/toy-story-mania/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/gallery/attractions/hollywood-studios/toy-story-mania/toy-story-mania-gallery00.jpg?1559892255928
+78,Hollywood Studios,Toy Story Land ,Slinky Dog Dash,https://disneyworld.disney.go.com/attractions/hollywood-studios/slinky-dog-dash/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/disney-world/destinations/hollywood-studios/toy-story-land/toy-story-slinky-dog-ride-16x9.jpg?1637954514038
+79,Hollywood Studios,Toy Story Land ,Alien Swirling Saucers,https://disneyworld.disney.go.com/attractions/hollywood-studios/alien-swirling-saucers/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/disney-world/attractions/hollywood-studios/alien-swirling-saucers/toy-story-alien-swirling-saucers-entrance-16x9.jpg?1560801030851
+80,Hollywood Studios,Animation Courtyard,Disney Junior Play and Dance!,https://disneyworld.disney.go.com/entertainment/hollywood-studios/disney-junior-play-dance/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/disney-world/entertainment/hollywood-studios/new-entertainment/dinsey-jurnior-play-dance-16x9.jpg?1646948395246
+81,Hollywood Studios,Animation Courtyard,Star Wars Launch Bay,https://disneyworld.disney.go.com/attractions/hollywood-studios/star-wars-launch-bay/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/parks-and-tickets/attractions/hollywood-studios/star-wars/star-wars-35.jpg?1645791717771
+82,Hollywood Studios,Animation Courtyard,Voyage of the Little Mermaid,https://disneyworld.disney.go.com/attractions/magic-kingdom/under-the-sea-journey-of-the-little-mermaid/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/parks-and-tickets/attractions/magic-kingdom/under-the-sea-journey-of-the-little-mermaid/under-the-sea-journey-of-the-little-mermaid-new-00.jpg?1634619836144
+83,Hollywood Studios,Animation Courtyard,Walt Disney Presents,https://disneyworld.disney.go.com/attractions/hollywood-studios/walt-disney-presents/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/gallery/attractions/hollywood-studios/walt-disney-one-mans-dream/walt-disney-one-mans-dream-gallery02.jpg?1648237514157
+84,Hollywood Studios,Sunset Boulevard,The Twilight Zone Tower of Terror,https://disneyworld.disney.go.com/attractions/hollywood-studios/twilight-zone-tower-of-terror/,https://static.wikia.nocookie.net/disney/images/4/48/TowerOfTerror_MGM.jpg/revision/latest?cb=20160206020516
+85,Hollywood Studios,Sunset Boulevard,Rock 'n' Roller Coaster Starring Aerosmith,https://disneyworld.disney.go.com/attractions/hollywood-studios/rock-and-roller-coaster-starring-aerosmith/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/gallery/attractions/hollywood-studios/rock-and-roller-coaster-starring-aerosmith/rock-and-roller-coaster-starring-aerosmith-gallery01.jpg?1551208906640
+86,Hollywood Studios,Sunset Boulevard,Lightning McQueen's Racing Academy,https://disneyworld.disney.go.com/attractions/hollywood-studios/lightning-mcqueens-racing-academy/,https://cdn1.parksmedia.wdprapps.disney.com/media/blog/wp-content/uploads/2019/03/mnckjvbsdkfhdsijfdsg392fs.jpg
+87,Hollywood Studios,Sunset Boulevard,Beauty and the Beast - Live on Stage,https://disneyworld.disney.go.com/entertainment/hollywood-studios/beauty-and-the-beast-live-on-stage/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/parks-and-tickets/entertainment/hollywood-studios/beauty-and-the-beast-live-on-stage/beauty-and-the-beast-live-on-stage-06.jpg?1634617857407
+88,Hollywood Studios,Sunset Boulevard,Fantasmic!,https://disneyworld.disney.go.com/entertainment/hollywood-studios/fantasmic/,https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/vision-dam/digital/parks-platform/parks-global-assets/disney-world/Fantasmic16x9-16x9.jpg?2021-11-16T16:07:23+00:00

@@ -103,7 +103,7 @@
                 {% for row in attractions %}
                 {% if not row.id in user_lst %}
                 <tr>
-                    <td><p class="small">{{ row.attraction }}</p></td>
+                    <td><a href="{{ row.dis_link }}" class="btn"><p class="small text-light">{{ row.attraction }}</p></a></td>
                     <td class="text-center"><p class="small">{{ row.land }}</p></td>
                     {% if row.id in user_lst %}
                     <td class="text-center"><a href="/remove-attraction/{{ row.park }}/{{ row.id }}" class="btn"><i class="bi bi-check-circle-fill text-success"></i></a></td>
