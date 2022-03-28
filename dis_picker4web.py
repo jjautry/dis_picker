@@ -333,8 +333,7 @@ def remove_attraction(id,park):
 def bucket_list_park(park):
 	attractions = AttractionDB.query.filter_by(park=park).all()
 	attraction_count = AttractionDB.query.filter_by(park=park).count()
-	user_count = UserAttractionDB.query.filter_by(park=park).count()
-
+	user_count = UserAttractionDB.query.filter_by(park=park, user_id=current_user.id).count()
 
 	user_lst = []
 	for ride in UserAttractionDB.query.filter_by(user_id=current_user.id).all():
@@ -351,7 +350,7 @@ def bucket_list_park(park):
 	else:
 		image = "/static/ak_logo.webp"
 
-	return render_template("park.html", image=image, park=park, attractions=attractions, attraction_count=attraction_count, user_count=user_count, user_lst=user_lst,)
+	return render_template("park.html", image=image, park=park, attractions=attractions, attraction_count=attraction_count, user_count=user_count, user_lst=user_lst)
 
 
 if __name__ == '__main__':

@@ -95,6 +95,7 @@ class AttractionDB(db.Model):
 	img = db.Column(db.String)
 
 
+# user's ridden attractions table
 class UserAttractionDB(db.Model):
 	__table_name = 'user_attraction'
 
@@ -116,15 +117,15 @@ class UserAttractionDB(db.Model):
 		else:
 			return False
 
+
 # stores the user id during session
 @login.user_loader
 def load_user(id):
 	return UserModel.query.get(int(id))
 
 
-
 def dis_countdown(disney_date):
-    """Takes current date and returns days left until Disney trip"""
-    today = datetime.today().date()
-    delta = disney_date - today
-    return delta.days
+	"""Takes current date and returns days left until Disney trip"""
+	today = datetime.today().date()
+	delta = disney_date - today
+	return delta.days

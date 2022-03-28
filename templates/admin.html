@@ -5,7 +5,7 @@
 <section id="block">
     <div class="container-lg my-2">
         <div class="row">
-            <div class="col">
+        	<div class="col">
             </div>
         </div>
     </div>
@@ -22,15 +22,16 @@
 </section>
 
 <section id="userContent">
-    <div class="container-md bg-light rounded-3 border border-5 border-light">
+    <div class="container-md">
 
         <div class="row">
             <div class="col-5">
             </div>
         </div>
+
         <!--user login info table-->
         <div class="row justify-content-center my-5">
-            <div class="col-10 col-md-6">
+            <div class="col-12 col-md-6">
                 <div class="accordion accordian-flush pt-5" id="accordionExample">
                     <div class="accordion-item bg-dark">
                       <h2 class="accordion-header" id="headingOne">
@@ -63,12 +64,14 @@
                         </div>
                       </div>
                     </div>
+
+                    <!--user feedback table-->
                     <div class="accordion-item bg-dark">
-                      <h2 class="accordion-header" id="headingTwo">
+                    	<h2 class="accordion-header" id="headingTwo">
                         <button class="accordion-button bg-secondary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                           Feedback: {{ feedback_count }}
                         </button>
-                      </h2>
+                      	</h2>
                       <div id="collapseTwo" class="accordion-collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <table class="table table-dark table-hover">
