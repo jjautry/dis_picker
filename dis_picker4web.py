@@ -22,11 +22,13 @@ def create_table():
 	db.create_all()
 
 
+# homepage
 @app.route('/')
 def index():
 	return render_template('index-2.html')
 
 
+# login page
 @app.route('/login', methods=['POST', 'GET'])
 def login():
 	if current_user.is_authenticated:
@@ -45,6 +47,7 @@ def login():
 	return render_template('login.html')
 
 
+#register page
 @app.route('/register', methods=['POST', 'GET'])
 def register():
 	if current_user.is_authenticated:
@@ -64,17 +67,26 @@ def register():
 		user.set_password(password)
 		db.session.add(user)
 		db.session.commit()
-		return redirect('/login')
+
+		login_user(user)
+		user.num_logins += 1
+		user.last_login = datetime.today().date()
+		db.session.commit()
+
+		newAccount = True
+		return render_template("userpage_likes.html", newAccount=newAccount)
 
 	return render_template('register.html')
 
 
+# user page -> redirects to likes
 @app.route("/user_page")
 @login_required
 def my_page():
 	return redirect("/user_page/likes")
 
 
+# user's liked movies
 @app.route("/user_page/likes")
 @login_required
 def likes():
@@ -83,6 +95,7 @@ def likes():
 	return render_template("userpage_likes.html", favorite=favorite)
 
 
+# user's disliked movies
 @app.route("/user_page/dislikes")
 @login_required
 def dislikes():
@@ -91,6 +104,7 @@ def dislikes():
 	return render_template("userpage_dislikes.html", dislike=dislike)
 
 
+# user's disney trip countdown
 @app.route("/user_page/countdown", methods=["POST", "GET"])
 @login_required
 def countdown():
@@ -111,6 +125,7 @@ def countdown():
 	return render_template("userpage_countdown.html", days=days)
 
 
+# removes user's disney trip date
 @app.route("/remove-dis-date")
 @login_required
 def remove_dis_date():
@@ -121,15 +136,7 @@ def remove_dis_date():
 	return redirect("/user_page/countdown")
 
 
-@app.route("/preference")
-@login_required
-def preference():
-	id = current_user.id
-	dislike = DislikeMovie.query.filter_by(user_id=id).all()
-	favorite = FavoriteMovie.query.filter_by(user_id=id).all()
-	return render_template("preference.html", dislike=dislike, favorite=favorite)
-
-
+# takes movie out of user's disliked
 @app.route("/restore/<movie_id>")
 @login_required
 def restore(movie_id):
@@ -137,6 +144,7 @@ def restore(movie_id):
 	return redirect("/user_page/dislikes")
 
 
+# takes movie out of user's liked
 @app.route("/remove/<movie_id>")
 @login_required
 def remove(movie_id):
@@ -146,12 +154,14 @@ def remove(movie_id):
 	return redirect("/user_page/likes")
 
 
+# logout -> redirects to homepage
 @app.route('/logout')
 def logout():
 	logout_user()
 	return redirect('/')
 
 
+# function to give random movie
 @app.route('/random-movie', methods=['POST','GET'])
 def random_movie():
 	result = db.engine.execute("SELECT * FROM movies ORDER BY RANDOM() LIMIT 1;")
@@ -160,7 +170,7 @@ def random_movie():
 			new_result = line.id
 			check = DislikeMovie().check_in(current_user.id, new_result)
 			if check:
-				return studio()
+				return random_movie()
 			else:
 				pass
 	for movie in result:
@@ -168,8 +178,9 @@ def random_movie():
 	return redirect('/movie/'+ str(new_result))
 
 
+# random movie from chosen studio
 @app.route("/studio", methods=['POST', 'GET'])
-def studio():
+def studio(name=None):
 	if request.method == 'POST':
 		result = db.engine.execute(f"SELECT * FROM movies WHERE studio='{request.form['studio_select']}' "
 								   f"ORDER BY RANDOM() LIMIT 1;")
@@ -188,6 +199,7 @@ def studio():
 	return render_template("studio.html")
 
 
+# movie page
 @app.route("/movie/<movie_id>", methods=['GET','POST'])
 def movie(movie_id):
 	result = MovieDB.query.filter_by(id=movie_id).first()
@@ -217,7 +229,8 @@ def random_fav(user_id):
 	for movie in result:
 		faves.append(movie.movie_id)
 	if len(faves) < 1:
-		return "<h1>You don't have any favorites!</h1>"
+		noFavorites = True
+		return render_template("userpage_likes.html", noFavorites=noFavorites)
 	else:
 		choice = random.choice(faves)
 		return redirect("/movie/"+str(choice))

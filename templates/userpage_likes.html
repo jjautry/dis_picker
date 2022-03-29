@@ -89,6 +89,12 @@
         </div>
     </div>
 </section>
-
+{% if noFavorites %}
+<script>alert("You don't have any favorites!");</script>
+{% endif %}
+{% if newAccount %}
+<script>alert("Account created successfully!");</script>
+{% endif %}
 
 {% endblock %}
+

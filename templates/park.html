@@ -101,27 +101,15 @@
                     </tr>
                   </thead>
                 {% for row in attractions %}
-                {% if not row.id in user_lst %}
                 <tr>
-                    <td><a href="{{ row.dis_link }}" class="btn"><p class="small text-light">{{ row.attraction }}</p></a></td>
-                    <td class="text-center"><p class="small">{{ row.land }}</p></td>
+                    <td><p class="small text-light text-start"><a href="{{ row.dis_link }}" class="btn text-light text-start">{{ row.attraction }}</a></p></td>
+                    <td  class="text-center"><p class="small">{{ row.land }}</p></td>
                     {% if row.id in user_lst %}
                     <td class="text-center"><a href="/remove-attraction/{{ row.park }}/{{ row.id }}" class="btn"><i class="bi bi-check-circle-fill text-success"></i></a></td>
                     {% else %}
                     <td class="text-center"><a href="/add-attraction/{{ row.park }}/{{ row.id }}" class="btn"><i class="bi bi-x-lg text-danger"></i></a></td>
                     {% endif %}
                 </tr>
-                {% else %}
-                <tr>
-                    <td><p class="small">{{ row.attraction }}</p></td>
-                    <td class="text-center"><p class="small">{{ row.land }}</p></td>
-                    {% if row.id in user_lst %}
-                    <td class="text-center"><a href="/remove-attraction/{{ row.park }}/{{ row.id }}" class="btn"><i class="bi bi-check-circle-fill text-success"></i></a></td>
-                    {% else %}
-                    <td class="text-center"><a href="/add-attraction/{{ row.park }}/{{ row.id }}" class="btn"><i class="bi bi-x-lg text-danger"></i></a></td>
-                    {% endif %}
-                </tr>
-                {% endif %}
                 {% endfor %}
             </table>
         </div>
@@ -130,47 +118,3 @@
 </section>
 
 {% endblock %}
-
-
-<section>
-    <!--park attractions list-->
-    <div class="row justify-content-center my-5">
-        <div class="col-11 col-md-8">
-            <table class="table table-dark table-hover">
-                <thead>
-                    <tr id="ride-selection" class="text-center">
-                        <th scope="col">Attraction</th>
-                      <th scope="col">Land</th>
-                      <th scope="col">Ridden?</th>
-                    </tr>
-                  </thead>
-                {% for row in attractions %}
-                {% if not row.id in user_lst %}
-                <tr>
-                    <td><p class="small">{{ row.attraction }}</p></td>
-                    <td class="text-center"><p class="small">{{ row.land }}</p></td>
-                    {% if row.id in user_lst %}
-                    <td class="text-center"><a href="/remove-attraction/{{ row.park }}/{{ row.id }}" class="btn"><i class="bi bi-check-circle-fill text-success"></i></a></td>
-                    {% else %}
-                    <td class="text-center"><a href="/add-attraction/{{ row.park }}/{{ row.id }}" class="btn"><i class="bi bi-x-lg text-danger"></i></a></td>
-                    {% endif %}
-                </tr>
-                {% endif %}
-                {% if row.id in user_lst%}
-                <tr>
-                    <td><p class="small">{{ row.attraction }}</p></td>
-                    <td class="text-center"><p class="small">{{ row.land }}</p></td>
-                    {% if row.id in user_lst %}
-                    <td class="text-center"><a href="/remove-attraction/{{ row.park }}/{{ row.id }}" class="btn"><i class="bi bi-check-circle-fill text-success"></i></a></td>
-                    {% else %}
-                    <td class="text-center"><a href="/add-attraction/{{ row.park }}/{{ row.id }}" class="btn"><i class="bi bi-x-lg text-danger"></i></a></td>
-                    {% endif %}
-                </tr>
-                {% endif %}
-
-                {% endfor %}
-            </table>
-        </div>
-    </div>
-
-</section>

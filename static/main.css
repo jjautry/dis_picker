@@ -17,14 +17,11 @@
 
 .waltograph {
 	font-family: 'WaltographRegular';
-	font-weight: normal;
-	font-style: normal;
-	font-size: x-large;
+    font-size: 55px;
+
 }
 
 .waltographBold {
 	font-family: 'WaltographUIBold';
-	font-weight: normal;
-	font-style: normal;
-	font-size: xx-large;
+    font-size: 60px;
 }
