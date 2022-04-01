@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session, flash
+from flask import Flask, render_template, request, redirect, send_from_directory, session, flash
 from flask_login import login_required, current_user, login_user, logout_user
 from models import db, login, UserModel, DislikeMovie, MovieDB, FavoriteMovie, FeedbackDB, dis_countdown, AttractionDB, UserAttractionDB
 from datetime import datetime
@@ -372,6 +372,12 @@ def bucket_list_park(park):
 		image = "/static/ak_logo.webp"
 
 	return render_template("park.html", image=image, park=park, attractions=attractions, attraction_count=attraction_count, user_count=user_count, user_lst=user_lst)
+
+
+@app.route('/robots.txt')
+@app.route('/sitemap.xml')
+def static_from_root():
+    return send_from_directory(app.static_folder, request.path[1:])
 
 
 if __name__ == '__main__':
