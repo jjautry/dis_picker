@@ -4,32 +4,62 @@
 {% endblock%}
 
 {% block content %}
-<section id="studio-selector mt-5">
+<section id="studio-selector my-5">
     <div class="container-lg justify-content-center">
-        <div class="col-md-3">
-            <div class="container">
-                <a href="#" class="invisible">Hello</a>
-            </div>
-        </div>
+		<div class="row justify-content-center my-5">
+			<div class="col-10 col-md-5 text-center">
+				<div class="container bg-light bg-gradient rounded-3 border border-5 border-light">
+					<img src="/static/new_dismovie.png" alt="disney+ movie picker logo" class="img-fluid">
+				</div>
+				<a href="#studio-select" class="btn"><p class="text-muted small d-block d-md-none">Jump to Studio select</p></a>
+			</div>
+		</div>
         <!--studio selector buttons-->
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-5 justify-content-center">
-            <form method="POST">
+        <div class="row row-cols-1 row-cols-md-3 justify-content-evenly">
+			<div class="col-10 col-md-4">
+				<h2 class="h3 text-light text-center border-bottom border-light">Random Disney Movie</h2>
 
-                <button class="btn" type="submit" name="studio_select" value="Disney"> <img src="../static/dis_studio.jpg" class="img-fluid rounded-pill"/></button>
+				<div class="card-body text-center py-4">
+					<img src="/static/random_studio.png" alt="disney studios collage" class="img-fluid">
+					<p class="mt-2 text-muted">Selects a random movie from Disney's entire catalog including Marvel, Star Wars, and more...</p>
+					<a href="/random-movie" class="btn btn-outline-primary btn-lg mt-1">Random Movie</a>
+				</div>
 
-                <button class="btn" type="submit" name="studio_select" value="Pixar"> <img src="../static/pixar_studio.png" class="img-fluid rounded-pill"/></button>
+			</div>
+			<div class="col-2 d-none d-md-block bg-light bg-gradient mx-2" style="width: 1rem;">
+			</div>
 
-                <button class="btn" type="submit" name="studio_select" value="Lucasfilm"> <img src="../static/lucasfilm_studio.jpg" class="img-fluid rounded-pill"/></button>
+			<div class="col-12 d-block d-md-none my-5 bg-secondary" style="height: 2rem;">
+				<p class="h1 text-center text-light"><i class="bi bi-dash"></i>OR<i class="bi bi-dash"></i></p>
+			</div>
 
-                <button class="btn" type="submit" name="studio_select" value="Marvel"> <img src="../static/marvel_studio.jpg" class="img-fluid rounded-pill"/></button>
-
-                <button class="btn" type="submit" name="studio_select" value="Disney Channel"> <img src="../static/dis_channel_studio.jpg" class="img-fluid rounded-pill"/></button>
-
-            </form>
+            <div class="col-9 col-md-4 justify-content-center">
+				<h2 class="h3 text-light text-center border-bottom border-light" id="studio-select">Select by Studio</h2>
+				<p class="text-muted small my-2 text-center">
+					Click on studio button below
+				</p>
+                <form method="POST">
+					<button class="btn" type="submit" name="studio_select" value="Disney"> <img src="../static/dis_studio.jpg" class="img-fluid rounded-pill" alt="walt disney production studio logo"/></button>
+					<button class="btn" type="submit" name="studio_select" value="Pixar"> <img src="../static/pixar_studio.png" class="img-fluid rounded-pill" alt="pixar studio logo"/></button>
+					<button class="btn" type="submit" name="studio_select" value="Lucasfilm"> <img src="../static/lucasfilm_studio.jpg" class="img-fluid rounded-pill" alt="lucasfilm studio logo"/></button>
+                    <button class="btn" type="submit" name="studio_select" value="Marvel"> <img src="../static/marvel_studio.jpg" class="img-fluid rounded-pill" alt="marvel studio logo"/></button>
+                    <button class="btn" type="submit" name="studio_select" value="Disney Channel"> <img src="../static/dis_channel_studio.jpg" class="img-fluid rounded-pill" alt="disney channel logo"/></button>
+                </form>
             </div>
         </div>
     </div>
 </section>
+
+<!--Footer-->
+<div class="container">
+    <footer class="pt-5 mt-5">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+        <li class="nav-item"><a href="/user_page" class="nav-link px-2 text-muted">Account</a></li>
+        <li class="nav-item"><a href="/about" class="nav-link px-2 text-muted">About</a></li>
+        </ul>
+        <p class="text-center text-muted">James Autry | 2022</p>
+    </footer>
+</div>
 
 {% endblock %}

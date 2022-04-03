@@ -1,114 +1,99 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<title>Dis Picker | Random Disney Movie | Disney World Bucket List</title>
+<title>Dis Picker | Random Disney Movie | Disney World Bucket List | Disney Trip Countdown</title>
 {% endblock %}
 
 {% block content %}
-        <!--Title block-->
-        <section id="intro" class="px-5 mt-5">
-            <div class="container-md bg-light rounded-3 border border-5 border-light py-3 py-md-0">
-                <div class="row justify-content-evenly align-items-center ">
-                    <div class="col-md-4">
-                    <h1>
-                        <img src="/static/dis_picker.png" alt="" class="img-fluid">
-                    </h1>
-                    </div>
-                    <div class="col-md-4 my-5 text-center d-none d-md-block">
-                        <img class=img-fluid src="/static/Disney-Plus-Logo_supplied_1536x864-1024x576_1.jpeg" alt="ebook-cover">
-                    </div>
-                </div>
+<!--Title block-->
+<section id="intro" class="mt-5">
+    <div class="container-md bg-light rounded-3 border border-5 border-light py-3 py-md-0">
+        <div class="row justify-content-evenly align-items-center ">
+            <div class="col-10 col-md-4">
+            <h1>
+                <img src="/static/dis_picker.png" alt="dis picker logo" class="img-fluid">
+            </h1>
             </div>
-        </section>
-
-        <!--Movie Picker title-->
-        <section id="movie-options" class="my-5">
-            <div class="container-lg">
-                <div class="row text-center justify-content-center align-items-center pt-md-3 pb-0 my-3 border-bottom border-3 border-secondary">
-                    <h1 class="display-4 text-light fw-bolder mb-3">Disney+ Movie Picker</h1>
-                </div>
-                <div class="row justify-content-center align-items-start mb-5">
-                    <di class="col text-center">
-                        <p class="display-6 fw-bolder text-light mb-0">295</p>
-                        <p class="fw-lighter text-secondary">movies in catalog</p>
-                    </di>
-                    <di class="col text-center">
-                        <p class="display-6 fw-bolder text-light mb-0">85</p>
-                        <p class="fw-lighter text-secondary">years of stories</p>
-                    </di> 
-                    <di class="col text-center">
-                        <p class="display-6 fw-bolder text-light mb-0">5</p>
-                        <p class= "fw-lighter text-secondary">studios</p>
-                    </di>  
-                </div>
-
-                <!--Random/Studio select buttons-->
-                <div class="row justify-content-center align-items-center my-5">
-                    <div class="col-10 col-md-5 py-2">
-                        <div class="card bg-light border-0">
-                            <div class="card-body text-center py-4">
-                                <h4 class="card-title display-6">Random Movie</h4>
-                                <p class="card-text mx-md-5 mt-2 text-muted d-non d-lg-block">Selects a random movie from Disney's entire catalog including Marvel and Star Wars</p>
-                                <a href="/random-movie" class="btn btn-outline-primary btn-lg mt-1">Click Here</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-10 col-md-5 py-2">
-                        <div class="card bg-light border-0">
-                            <div class="card-body text-center py-4">
-                                <h4 class="card-title display-6">Pick by Studio</h4>
-                                <p class="card-text mx-md-5 mt-2 text-muted d-non d-lg-block">Pick between Disney, Pixar, Marvel, Lucasfilm, & Disney Channel</p>
-                                <a href="/studio" class="btn btn-outline-primary btn-lg mt-1">Click Here</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-4 my-5 text-center d-none d-md-block">
+                <img class=img-fluid src="/static/Disney-Plus-Logo_supplied_1536x864-1024x576_1.jpeg" alt="Disney+ cover logo">
             </div>
-        </section>
-        <!--Account features-->
-        <section id="account-features" class="px-3 my-5">
-            <div class="container-lg bg-light rounded-3 border border-5 border-light pt-1 pt-md-5">
-                <div class="row align-items-center justify-content-center my-5">
-                    <div class="col-md-4 text-center mx-4">
-                        <h1 class="display-4">Account Features</h1>
-                        <a href="/register" class="btn btn-primary mt-3 mt-md-5 mb-5">Sign Up Now</a>
-                    </div>
-
-                    <div class="col-md-5">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item bg-light">Disney Parks Bucket List</li>
-                            <li class="list-group-item bg-light">Disney Trip Countdown</li>
-                            <li class="list-group-item bg-light">Save favorite Disney movies</li>
-                            <li class="list-group-item bg-light">Pick random favorite Disney movie to watch</li>
-                            <li class="list-group-item bg-light fw-bold">Upcoming:</li>
-                            <li class="list-group-item bg-light text-muted">Track progress vs total Disney catalog or individual studio</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!--Spacing block-->
-        <section id="block">
-            <div class="container-lg my-5">
-                <div class="row">
-                    <div class="col">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!--Footer-->
-        <div class="container">
-            <footer class="pt-5 mt-5">
-              <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href="/user_page" class="nav-link px-2 text-muted">Account</a></li>
-                <li class="nav-item"><a href="/about" class="nav-link px-2 text-muted">About</a></li>
-              </ul>
-              <p class="text-center text-muted">James Autry | 2022</p>
-            </footer>
         </div>
+    </div>
+</section>
+
+<!--Application cards-->
+<section id="app-features" class="container text-center">
+	<div class="row pt-2 pt-md-5 justify-content-center">
+		<div class="col-12 justify-content-center">
+			<h2 class="display-3 text-lignt fw-bolder d-block d-md-none">
+				Features:
+			</h2>
+			<h2 class="display-3 text-light fw-bolder">
+				Dis Picker Features:
+			</h2>
+		</div>
+	</div>
+
+	<div class="row justify-content-evenly align-items-center mt-5 pt-4">
+		<div class="col-10 col-md-3 d-block d-md-inline justify-content-center">
+			<div class="card my-3" style="width: 20rem; height: 25rem;">
+				<img src="/static/new_dismovie.png" class="card-img-top img-fluid">
+				<div class="card-body ">
+					<h1 class="card-title h4 my-2">Disney+ Movie Picker</h1>
+					<p class="card-text text-muted">Get a random Disney movie including movies from Pixar, Lucasfilm, Marvel, and Disney Channel!</p>
+				</div>
+				<div class="card-footer bg-transparent border-0 mb-2">
+					<a href="/studio" class="btn btn-lg btn-primary" style="width: 10rem;">Go</a>
+				</div>
+			  </div>
+		</div>
+		<div class="col-10 col-md-3 m-1 d-block d-md-inline">
+			<div class="card my-3" style="width: 20rem; height: 25rem;">
+				<img src="/static/bucket_list_new.png" class="card-img-top img-fluid">
+				<div class="card-body">
+				  <h1 class="card-title h4 my-2">Disney World Bucket List</h1>
+				  <p class="card-text text-muted">View all attractions in the 4 Walt Disney World Resort. Check off your ridden attractions and complete your Disney Bucket List!</p>
+				</div>
+				<div class="card-footer bg-transparent border-0 mb-2">
+					<a href="/user_page/bucket_list" class="btn btn-lg btn-primary" style="width: 10rem;">Go</a>
+				</div>
+			  </div>
+		</div>
+		<div class="col-10 col-md-3 d-block d-md-inline">
+			<div class="card my-3" style="width: 20rem; height: 25rem;">
+				<img src="/static/new_countdown.png" class="card-img-top img-fluid">
+				<div class="card-body" style="height: 15rem;">
+				  <h1 class="card-title h4 my-2">Disney Trip Countdown</h1>
+				  <p class="card-text text-muted">Have a Disney trip coming up? Count down the days here!</p>
+				</div>
+				<div class="card-footer bg-transparent border-0 mb-2">
+					<a href="/user_page/countdown" class="btn btn-lg btn-primary" style="width: 10rem;">Go</a>
+				</div>
+			  </div>
+		</div>
+	</div>
+</section>
+
+<!--Spacing block-->
+<section id="block">
+    <div class="container-lg my-5">
+        <div class="row">
+            <div class="col">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Footer-->
+<div class="container">
+    <footer class="pt-5 mt-5">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+        <li class="nav-item"><a href="/user_page" class="nav-link px-2 text-muted">Account</a></li>
+        <li class="nav-item"><a href="/about" class="nav-link px-2 text-muted">About</a></li>
+        </ul>
+        <p class="text-center text-muted">James Autry | 2022</p>
+    </footer>
+</div>
 
 {% endblock %}
