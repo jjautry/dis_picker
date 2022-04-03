@@ -302,10 +302,10 @@ def bucket_list():
 
 	# user totals
 	user_total = UserAttractionDB.query.filter_by(user_id=id).count()
-	mk_user = UserAttractionDB.query.filter_by(park="Magic Kingdom", user_id=id).count()
-	hs_user = UserAttractionDB.query.filter_by(park="Hollywood Studios", user_id=id).count()
-	ep_user = UserAttractionDB.query.filter_by(park="Epcot", user_id=id).count()
-	ak_user = UserAttractionDB.query.filter_by(park="Animal Kingdom", user_id=id).count()
+	mk_user = UserAttractionDB.query.filter_by(user_id=id, park="Magic Kingdom").count()
+	hs_user = UserAttractionDB.query.filter_by(user_id=id, park="Hollywood Studios").count()
+	ep_user = UserAttractionDB.query.filter_by(user_id=id, park="Epcot").count()
+	ak_user = UserAttractionDB.query.filter_by(user_id=id, park="Animal Kingdom").count()
 	user_lst = []
 	for ride in UserAttractionDB.query.filter_by(user_id=id).all():
 		user_lst.append(ride.attraction_id)
