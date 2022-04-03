@@ -124,6 +124,33 @@ def countdown():
 
 	return render_template("userpage_countdown.html", days=days)
 
+# disney trip countdown
+@app.route("/countdown", methods=["POST", "GET"])
+def countdown_v2():
+    if current_user.is_authenticated:
+        user = UserModel.query.filter_by(id=current_user.id).first()
+        if request.method == "POST":
+            date = datetime.strptime(request.form['disney_date'], '%Y-%m-%d').date()
+            user.disney_date = date
+            db.session.commit()
+            return redirect("/countdown")
+        
+        if user.disney_date:
+            days = dis_countdown(user.disney_date)
+        else:
+            days = 0
+        return render_template("countdown.html", days=days)
+    
+    else:
+        if request.method == "POST":
+            user_date = datetime.strptime(request.form['disney_date'], '%Y-%m-%d').date()
+            days = dis_countdown(user_date)
+            return render_template("countdown.html", days=days)
+    
+    return render_template("countdown.html")
+            
+
+
 
 # removes user's disney trip date
 @app.route("/remove-dis-date")

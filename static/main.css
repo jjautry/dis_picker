@@ -18,12 +18,14 @@
 .waltograph {
 	font-family: 'WaltographRegular';
     font-size: 55px;
+    color: whitesmoke;
 
 }
 
 .waltographBold {
 	font-family: 'WaltographUIBold';
     font-size: 60px;
+    color: whitesmoke;
 }
 
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {

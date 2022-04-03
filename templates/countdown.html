@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block title %}
+<title>Disney Trip Countdown</title>
+{% endblock %}
+
+{% block content %}
+
+<!--spacing block-->
+<section id="block">
+    <div class="container-lg my-2">
+        <div class="row">
+            <div class="col">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--username greeting-->
+<section id="userInfo">
+    <div class="row justify-content-center pt-4">
+        <div class="col-6 col-md-3 text-center">
+            <p class="display-6 text-light">
+                {{ current_user.username | upper }}
+            </p>
+        </div>
+    </div>
+</section>
+
+<!--user account nav bar-->
+<section id="userContent">
+    <div class="container-md">
+        <!--spacing block-->
+        <div class="row">
+            <div class="col">
+            </div>
+        </div>
+
+        <!--days till disney-->
+        {% if days %}
+        <div class="row justify-content-center mt-5">
+            <div class="card mb-3 bg-transparent" style="max-width: 540px; justify-content: center;">
+                <div class="row justify-content-center">
+                  <div class="col-md-7">
+                    <img src="/static/castle_countdown.png" class="img-fluid rounded-start shadow" alt="Cinderella's Castle">
+                  </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-2">
+            <div class="col-12 col-md-6 text-center">
+                <h1 class="h1 waltographBold">{{ days }}</h1>
+                <p class="waltograph">Days till Disney!</p>
+            </div>
+        </div>
+
+        <!--remove disney trip button-->
+        <section class="my-5">
+            <div class="row justify-content-center">
+                <div class="col-10 col-md-4 text-center">
+					{% if current_user.is_authenticated %}
+                    <button class="btn btn btn-outline-danger" onclick="location.href = '/remove-dis-date'">Remove Disney Vacation Date</button>
+					{% else %}
+					<p class="text-muted small">
+						<a href="/login">Login/Register</a> to save your Disney Trip Countdown
+					</p>
+					{% endif %}
+                </div>
+            </div>
+        </section>
+
+
+        {% else %}
+        <!--spacing block-->
+        <div class="row my-5">
+            <div class="col">
+            </div>
+        </div>
+
+        <!--upcoming disney trip date input-->
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <p class="waltograph text-center">
+                    Upcoming Disney trip?
+                </p>
+            </div>
+        </div>
+        <div class="row g-3 align-items-center justify-content-center mb-5">
+            <div class="col-auto text-center mt-3">
+            <form action="#" method="POST">
+              <input type="date" id="disney_date" name="disney_date" class="form-control">
+              <button type="submit" class="btn btn-secondary mt-4">Submit</button>
+            </div>
+          </div>
+
+        {% endif %}
+    </div>
+</section>
+
+
+
+<!--Footer-->
+<div class="container mt-5">
+    <footer class="pt-5 mt-5">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a href="/" class="nav-link px-2 text-muted">Home</a></li>
+        <li class="nav-item"><a href="/user_page" class="nav-link px-2 text-muted">Account</a></li>
+        <li class="nav-item"><a href="/about" class="nav-link px-2 text-muted">About</a></li>
+        </ul>
+        <p class="text-center text-muted">James Autry | 2022</p>
+    </footer>
+</div>
+
+
+{% endblock %}
