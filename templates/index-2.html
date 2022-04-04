@@ -4,6 +4,36 @@
 <title>Dis Picker | Random Disney Movie | Disney World Bucket List | Disney Trip Countdown</title>
 {% endblock %}
 
+{% block nav %}
+<!-- navbar -->
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+	<div class="container-lg">
+		<a class="navbar-brand" href="/">
+		<img src="/static/dp_logo.png" alt="" width="37.5" height="30">
+		  </a>
+		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+		  </button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		<div class="navbar-nav">
+		  <a class="nav-link active" aria-current="page" href="/">Home</a>
+		  {% if current_user.is_authenticated %}
+		  <a class="nav-link" href="/user_page">Account</a>
+		  {% else %}
+		  <a class="nav-link" href="/login">Login / Sign-up</a>
+		  {% endif %}
+		  <a class="nav-link" href="/studio">Movie Picker</a>
+		  <a href="/bucket_list" class="nav-link">Bucket List</a>
+		  {% if current_user.is_authenticated %}
+		  <a href="/logout" class="nav-link">Logout</a>
+		  {% endif %}
+		</div>
+	  </div>
+	</div>
+</nav>
+{% endblock %}
+
+
 {% block content %}
 <!--Title block-->
 <section id="intro" class="mt-5">
@@ -55,7 +85,7 @@
 				  <p class="card-text text-muted">Check off your ridden attractions and complete your Disney bucket list!</p>
 				</div>
 				<div class="card-footer bg-transparent border-0 mb-5">
-					<a href="/user_page/bucket_list" class="btn btn-primary" style="width: 10rem;">Go</a>
+					<a href="/bucket_list" class="btn btn-primary" style="width: 10rem;">Go</a>
 				</div>
 			  </div>
 		</div>

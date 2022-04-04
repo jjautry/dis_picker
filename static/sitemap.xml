@@ -9,43 +9,73 @@
 
 <url>
   <loc>https://www.dispicker.com/</loc>
-  <lastmod>2022-04-01T01:35:45+00:00</lastmod>
+  <lastmod>2022-04-04T02:48:17+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://www.dispicker.com/login</loc>
-  <lastmod>2022-04-01T01:35:45+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.dispicker.com/user_page/bucket_list</loc>
-  <lastmod>2022-04-01T01:35:45+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.dispicker.com/movie/54</loc>
-  <lastmod>2022-04-01T01:35:45+00:00</lastmod>
+  <lastmod>2022-04-04T02:48:17+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.dispicker.com/studio</loc>
-  <lastmod>2022-04-01T01:35:45+00:00</lastmod>
+  <lastmod>2022-04-04T02:48:17+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.dispicker.com/register</loc>
-  <lastmod>2022-04-01T01:35:45+00:00</lastmod>
+  <loc>https://www.dispicker.com/bucket_list</loc>
+  <lastmod>2022-04-04T02:48:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.dispicker.com/countdown</loc>
+  <lastmod>2022-04-04T02:48:17+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.dispicker.com/login?next=%2Fuser_page</loc>
-  <lastmod>2022-04-01T01:35:45+00:00</lastmod>
+  <lastmod>2022-04-04T02:48:17+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.dispicker.com/about</loc>
-  <lastmod>2022-04-01T01:35:45+00:00</lastmod>
+  <lastmod>2022-04-04T02:48:17+00:00</lastmod>
   <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.dispicker.com/register</loc>
+  <lastmod>2022-04-04T02:48:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.dispicker.com/movie/140</loc>
+  <lastmod>2022-04-04T02:48:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.dispicker.com/bucket_list/Magic%20Kingdom</loc>
+  <lastmod>2022-04-04T02:48:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.dispicker.com/bucket_list/Epcot</loc>
+  <lastmod>2022-04-04T02:48:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.dispicker.com/bucket_list/Hollywood%20Studios</loc>
+  <lastmod>2022-04-04T02:48:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.dispicker.com/bucket_list/Animal%20Kingdom</loc>
+  <lastmod>2022-04-04T02:48:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.dispicker.com/user_page/bucket_list</loc>
+  <lastmod>2022-04-04T02:48:17+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 
 

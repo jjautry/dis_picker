@@ -1,12 +1,218 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block title %}
-<title>Disney World Attraction Bucket List | Track your Disney Rides</title>
+<title>Disney World Bucket List | Disney World Attraction Tracker</title>
+{% endblock %}
+
+{% block nav %}
+<!-- navbar -->
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+	<div class="container-lg">
+		<a class="navbar-brand" href="/">
+		<img src="/static/dp_logo.png" alt="" width="37.5" height="30">
+		  </a>
+		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+		  </button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		<div class="navbar-nav">
+		  <a class="nav-link" aria-current="page" href="/">Home</a>
+		  {% if current_user.is_authenticated %}
+		  <a class="nav-link" href="/user_page">Account</a>
+		  {% else %}
+		  <a class="nav-link" href="/login">Login / Sign-up</a>
+		  {% endif %}
+		  <a class="nav-link" href="/studio">Movie Picker</a>
+		  <a href="/bucket_list" class="nav-link active">Bucket List</a>
+		  {% if current_user.is_authenticated %}
+		  <a href="/logout" class="nav-link">Logout</a>
+		  {% endif %}
+		</div>
+	  </div>
+	</div>
+</nav>
 {% endblock %}
 
 {% block content %}
 
-<!--Create a landing page with info on the Bucket list feature-->
+<!--spacing block-->
+<section id="block">
+    <div class="container-lg my-2">
+        <div class="row">
+            <div class="col">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!--bucket list logo-->
+<div class="container">
+    <div class="row justify-content-center my-5">
+        <div class="col-8 col-md-5 text-center">
+            <div class="container bg-light bg-gradient rounded-3 border border-5 border-light">
+                <img src="/static/bucket_list_new.png" alt="Disney Bucket List logo" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if current_user.is_authenticated %}
+<!--NEW BUCKET LIST-->
+<div class="container-fluid bg-light bg-gradient rounded-3 border border-5 border-light">
+    <div class="row justify-content-evenly justify-content-md-center my-3 my-md-5 align-items-center border-bottom border-secondary border-2 mx-md-5">
+        <div class="col-10 col-md-4 text-center">
+            <img src="/static/Walt_Disney_World_1971.svg" alt="Disney World Resort logo" class="img-fluid" id="wdw-logo">
+        </div>
+        <div class="col-8 col-md-3 align-items-center mt-4 mt-md-5 text-center">
+            <div class="progress" style="height: 30px">
+                <div class="progress-bar" role="progressbar" aria-valuenow="{{percent}}" aria-valuemin="0" aria-valuemax="100" style="width:{{ percent }}%">{{ percent }}%</div>
+            </div>
+            <p class="small text-muted text-center">% of total attractions visited</p>
+        </div>
+    </div>
+    
+    <div class="row justify-content-center my-3">
+        <div class="col-8 text-center">
+            <p class="text-muted">Select a park to explore it's attractions     <i class="bi bi-arrow-down-circle"></i> </p>
+        </div>
+    </div>
+
+    <!--Magic kingdom totals-->
+    <div class="row justify-content-center align-items-center">
+        <div class="col-6 col-md-4 text-center align-items-center">
+            <a href="/bucket_list/Magic Kingdom" class="btn">
+                <img src="/static/mk_logo.png" alt="Magic Kingdom Logo" class="img-fluid" style="height: 8rem; width: 20rem;">
+                </a>
+        </div>
+        <div class="col-6 col-md-4 text-center align-items-center">
+            <p class="display-5 text-center">
+                {{ mk_user }} / {{ mk_total}}
+            </p>
+            <p class="small text-muted text-center">Attractions visited</p>
+        </div>
+    </div>
+
+    <!--Epcot totals-->
+    <div class="row justify-content-center align-items-center my-2">
+        <div class="col-6 col-md-4 text-center align-items-center">
+            <a href="/bucket_list/Epcot" class="btn">
+                <img src="/static/epcot_logo.webp" alt="Epcot logo" class="img-fluid" style="height: 8rem; width: 20rem;">
+                </a>
+        </div>
+        <div class="col-6 col-md-4 text-center align-items-center">
+            <p class="display-5 text-center">
+                {{ ep_user }} / {{ ep_total}}
+            </p>
+            <p class="small text-muted text-center">Attractions visited</p>
+        </div>
+    </div>
+
+    <!--Hollywood Studios totals-->
+    <div class="row justify-content-center align-items-center my-2">
+        <div class="col-6 col-md-4 text-center align-items-center">
+            <a href="/bucket_list/Hollywood Studios" class="btn">
+                <img src="/static/hs_logo.gif" alt="Hollywood Stuidos Logo" class="img-fluid" style="height: 8rem; width: 20rem;">
+                </a>
+        </div>
+        <div class="col-6 col-md-4 text-center align-items-center">
+            <p class="display-5 text-center">
+                {{ hs_user }} / {{ hs_total}}
+            </p>
+            <p class="small text-muted text-center">Attractions visited</p>
+        </div>
+    </div>
+
+    <!--Animal Kingdom totals-->
+    <div class="row justify-content-center align-items-center mb-5">
+        <div class="col-6 col-md-4 text-center align-items-center">
+            <a href="/bucket_list/Animal Kingdom" class="btn">
+                <img src="/static/ak_logo.webp" alt="Animal Kingdom Logo" class="img-fluid" style="height: 8rem; width: 20rem;">
+                </a>
+        </div>
+        <div class="col-6 col-md-4 text-center align-items-center">
+            <p class="display-5 text-center">
+                {{ ak_user }} / {{ ak_total}}
+            </p>
+            <p class="small text-muted text-center">Attractions visited</p>
+        </div>
+    </div>
+</div>
+
+{% else %}
+
+<div class="row justify-content-center">
+    <div class="col-10 text-center">
+        <a href="/login" class="btn">
+            <p class="text-center text-muted"><a href="/login">Login</a> to save visited attractions!</p>
+        </a>
+    </div>
+</div>
+
+<!--Disney World Total Attractions-->
+<div class="container-fluid bg-light bg-gradient rounded-3 border border-5 border-light">
+    <div class="row justify-content-evenly justify-content-md-center my-3 my-md-5 align-items-center border-bottom border-secondary border-2 mx-md-5">
+        <div class="col-10 col-md-4 text-center">
+            <img src="/static/Walt_Disney_World_1971.svg" alt="Disney World Resort logo" class="img-fluid" id="wdw-logo">
+        </div>
+        <div class="col-8 col-md-3 align-items-center mt-4 mt-md-5 text-center">
+            <p class="display-6">Total Attractions: <p class="display-5 fw-bold mt-0">{{ wdw_total }}</p></p>
+        </div>
+    </div>
+    
+    <div class="row justify-content-center my-3">
+        <div class="col-8 text-center">
+            <p class="text-muted">Select a park to explore it's attractions     <i class="bi bi-arrow-down-circle"></i> </p>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-6 col-md-4 text-center align-items-center">
+            <a href="/bucket_list/Magic Kingdom" class="btn">
+                <img src="/static/mk_logo.png" alt="Magic Kingdom Logo" class="img-fluid" style="height: 8rem; width: 19rem;">
+                </a>
+        </div>
+        <div class="col-6 col-md-4 text-center align-items-center">
+            <a href="/bucket_list/Epcot" class="btn">
+                <img src="/static/epcot_logo.webp" alt="Epcot Logo" class="img-fluid" style="height: 8rem; width: 19rem;">
+                </a>
+        </div>
+    </div>
+    <div class="row justify-content-center mb-5 mt-md-2">
+        <div class="col-6 col-md-4 text-center align-items-center">
+            <a href="/bucket_list/Hollywood Studios" class="btn">
+                <img src="/static/hs_logo.gif" alt="Hollywood Studios Logo" class="img-fluid" style="height: 8rem; width: 19rem;">
+                </a>
+        </div>
+        <div class="col-6 col-md-4 text-center align-items-center">
+            <a href="/bucket_list/Animal Kingdom" class="btn">
+                <img src="/static/ak_logo.webp" alt="Animal Kingdom Logo" class="img-fluid ps-0 ps-md-5" style="height: 8rem; width: 19rem;">
+                </a>
+        </div>
+    </div>
+</div>
+
+
+{% endif %}
+
+
+<div class="row my-5">
+	<div class="col-12">
+	</div>
+</div>
+
+<!--Footer-->
+<div class="container">
+    <footer class="pt-5 mt-5">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a href="/" class="nav-link px-2 text-muted">Home</a></li>
+        <li class="nav-item"><a href="/user_page" class="nav-link px-2 text-muted">Account</a></li>
+        <li class="nav-item"><a href="/about" class="nav-link px-2 text-muted">About</a></li>
+        </ul>
+        <p class="text-center text-muted">James Autry | 2022</p>
+    </footer>
+</div>
 
 
 {% endblock %}

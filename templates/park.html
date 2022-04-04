@@ -4,6 +4,35 @@
 <title>Disney World Attraction Tracker | Magic Kingdom | Epcot | Hollywood Studios | Animal Kingdom</title>
 {% endblock %}
 
+{% block nav %}
+<!-- navbar -->
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+	<div class="container-lg">
+		<a class="navbar-brand" href="/">
+		<img src="/static/dp_logo.png" alt="" width="37.5" height="30">
+		  </a>
+		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+		  </button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		<div class="navbar-nav">
+		  <a class="nav-link" aria-current="page" href="/">Home</a>
+		  {% if current_user.is_authenticated %}
+		  <a class="nav-link" href="/user_page">Account</a>
+		  {% else %}
+		  <a class="nav-link" href="/login">Login / Sign-up</a>
+		  {% endif %}
+		  <a class="nav-link" href="/studio">Movie Picker</a>
+		  <a href="/bucket_list" class="nav-link active">Bucket List</a>
+		  {% if current_user.is_authenticated %}
+		  <a href="/logout" class="nav-link">Logout</a>
+		  {% endif %}
+		</div>
+	  </div>
+	</div>
+</nav>
+{% endblock %}
+
 {% block content %}
 
 <!--spacing block-->
@@ -16,72 +45,41 @@
     </div>
 </section>
 
-<!--username greeting-->
-<section id="userInfo">
-    <div class="row justify-content-center pt-4">
-        <div class="col-6 col-md-3 text-center">
-            <p class="display-6 text-light">
-                {{ current_user.username | upper }}
-            </p>
-            <p class="small text-muted">
-                Member since 2022
-            </p>
+<!--bucket list logo-->
+<div class="container">
+    <div class="row justify-content-center my-5">
+        <div class="col-8 col-md-5 text-center">
+            <div class="container bg-light bg-gradient rounded-3 border border-5 border-light">
+                <img src="/static/bucket_list_new.png" alt="Disney Bucket List logo" class="img-fluid">
+            </div>
         </div>
     </div>
-</section>
+</div>
 
-<!--user account nav bar-->
+{% if current_user.is_authenticated %}
+
 <section id="userContent">
-    <div class="container bg-light rounded-3 border border-5 border-light">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-6 pt-5">
-                <ul class="nav nav-pills justify-content-center pb-1 border-bottom border-2">
-                    <li class="nav-item small">
-                      <a class="nav-link small" href="../../user_page/likes">Likes</a>
-                    </li>
-                    <li class="nav-item small">
-                      <a class="nav-link small" href="../../user_page/dislikes">Dislikes</a>
-                    </li>
-                    <li class="nav-item small">
-                      <a class="nav-link small" href="../../user_page/countdown">Countdown</a>
-                    </li>
-                    <li class="nav-item small">
-                      <a class="nav-link active small" href="#">Bucket List</a>
-                    </li>
-                  </ul>
-            </div>
-        </div>
-
-        <!--spacing block-->
-        <div class="row py-2">
-            <div class="col">
-            </div>
-        </div>
-
-    <div class="container-md bg-light rounded-3 border border-5 border-light">
+    <div class="container-md">
 		<!--back to bucket list-->
-	 <div class="row justify-content-center mt-3">
-		 <div class="col-12 col-md-6 text-center">
-			 <a href="/user_page/bucket_list#wdw-logo" class="btn"><button class="btn btn-secondary">Back to Park Select</button></a>
-		 </div>
-	 </div>
+	    <div class="row justify-content-center mt-3">
+		    <div class="col-12 col-md-6 text-center">
+			    <a href="/user_page/bucket_list#wdw-logo" class="btn"><button class="btn btn-secondary">Back to Park Select</button></a>
+		    </div>
+	    </div>
  	</div>
-
-   
-
 
 	<!--Magic Kingdom total-->
 	<div class="row justify-content-center my-5 border border border-bottom-dark align-items-center">
-		<div class="col-6 col-md-4">
+		<div class="col-7 col-md-6 text-center">
 			<a href="#" class="btn">
 			<img src="{{ image }}" alt="" class="img-fluid">
 			</a>
 		</div>
-		<div class="col-6 col-md-4">
-			<p class="display-3 text-center">
+		<div class="col-5 col-md-3 text-center text-md-start">
+			<p class="display-6 text-light pt-2">
 				{{ user_count }} / {{ attraction_count }}
 			</p>
-			<p class="small text-muted text-center mt-0">Attractions experienced</p>
+			<p class="small text-muted mt-0">Attractions experienced</p>
 		</div>
 	</div>
 </section>
@@ -89,7 +87,7 @@
 <section>
     <div class="row justify-content-center my-4">
         <div class="col-10 col-md-5">
-            <p class="small text-muted text-center">Click red X to mark as ridden</p>
+            <p class="small text-muted text-center fw-bold"><i class="bi bi-info-circle"></i>  Click red X to mark attraction as visited</p>
         </div>
     </div>
 
@@ -120,5 +118,71 @@
     </div>
 
 </section>
+
+{% else %}
+
+<section id="userContent">
+    <div class="container-md">
+		<!--back to bucket list-->
+	    <div class="row justify-content-center mt-3">
+		    <div class="col-12 col-md-6 text-center">
+			    <a href="/user_page/bucket_list#wdw-logo" class="btn"><button class="btn btn-secondary">Back to Park Select</button></a>
+		    </div>
+            <div class="col-10 text-center">
+                <a href="/login" class="btn">
+                    <p class="text-center text-muted"><a href="/login">Login</a> to save visited attractions!</p>
+                </a>
+            </div>
+	    </div>
+ 	</div>
+
+	<!--Magic Kingdom total-->
+	<div class="row justify-content-center my-5 border border border-bottom-dark align-items-center">
+		<div class="col-7 col-md-6 text-center">
+			<a href="#" class="btn">
+			<img src="{{ image }}" alt="" class="img-fluid">
+			</a>
+		</div>
+		<div class="col-5 col-md-3 text-center text-md-start">
+			<p class="display-6 text-light pt-2">
+				{{ attraction_count }}
+			</p>
+			<p class="small text-muted mt-0">Attractions</p>
+		</div>
+	</div>
+</section>
+
+
+<section>
+    <div class="row justify-content-center my-4">
+        <div class="col-10 col-md-5">
+            <p class="small text-muted text-center fw-bold"><i class="bi bi-info-circle"></i>  Click on attraction name for more info</p>
+        </div>
+    </div>
+
+    <!--park attractions list-->
+    <div class="row justify-content-center mb-5">
+        <div class="col-11 col-md-8">
+            <table class="table table-dark table-hover">
+                <thead>
+                    <tr id="ride-selection" class="text-center">
+                        <th scope="col">Attraction</th>
+                      <th scope="col">Land</th>
+                    </tr>
+                  </thead>
+                {% for row in attractions %}
+                <tr>
+                    <td><p class="small text-light text-center"><a href="{{ row.dis_link }}" class="btn text-light text-center">{{ row.attraction }}</a></p></td>
+                    <td  class="text-center"><p class="small">{{ row.land }}</p></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+</section>
+
+
+{% endif %}
 
 {% endblock %}

@@ -321,35 +321,37 @@ def remove_feedback(id):
 
 # user bucket list page
 @app.route('/user_page/bucket_list')
-@login_required
+@app.route('/bucket_list')
 def bucket_list():
-	"""Queries all counts of attractions in parks and user ridden"""
-	id = current_user.id
-	attractions = AttractionDB.query.all()
-
-	# user totals
-	user_total = UserAttractionDB.query.filter_by(user_id=id).count()
-	mk_user = UserAttractionDB.query.filter_by(user_id=id, park="Magic Kingdom").count()
-	hs_user = UserAttractionDB.query.filter_by(user_id=id, park="Hollywood Studios").count()
-	ep_user = UserAttractionDB.query.filter_by(user_id=id, park="Epcot").count()
-	ak_user = UserAttractionDB.query.filter_by(user_id=id, park="Animal Kingdom").count()
-	user_lst = []
-	for ride in UserAttractionDB.query.filter_by(user_id=id).all():
-		user_lst.append(ride.attraction_id)
-
-	# park totals
-	wdw_total = AttractionDB.query.count()
-	mk_total = AttractionDB.query.filter_by(park="Magic Kingdom").count()
-	hs_total = AttractionDB.query.filter_by(park="Hollywood Studios").count()
-	ep_total = AttractionDB.query.filter_by(park="Epcot").count()
-	ak_total = AttractionDB.query.filter_by(park="Animal Kingdom").count()
-
-	percent = floor((user_total/wdw_total) * 100)
-
-	return render_template("bucket-list.html", attractions=attractions, mk_total=mk_total,
-						   mk_user=mk_user, hs_user=hs_user, hs_total=hs_total, ep_user=ep_user,
-						   ep_total=ep_total, ak_user=ak_user, ak_total=ak_total, user_total=user_total,
-						   wdw_total=wdw_total, user_lst=user_lst, percent=percent)
+    attractions = AttractionDB.query.all()
+    # park totals
+    wdw_total = AttractionDB.query.count()
+    mk_total = AttractionDB.query.filter_by(park="Magic Kingdom").count()
+    hs_total = AttractionDB.query.filter_by(park="Hollywood Studios").count()
+    ep_total = AttractionDB.query.filter_by(park="Epcot").count()
+    ak_total = AttractionDB.query.filter_by(park="Animal Kingdom").count()
+    
+    if current_user.is_authenticated:
+        """Queries all counts of attractions in parks and user ridden"""
+        id = current_user.id
+        # user totals
+        user_total = UserAttractionDB.query.filter_by(user_id=id).count()
+        mk_user = UserAttractionDB.query.filter_by(user_id=id, park="Magic Kingdom").count()
+        hs_user = UserAttractionDB.query.filter_by(user_id=id, park="Hollywood Studios").count()
+        ep_user = UserAttractionDB.query.filter_by(user_id=id, park="Epcot").count()
+        ak_user = UserAttractionDB.query.filter_by(user_id=id, park="Animal Kingdom").count()
+        user_lst = []
+        for ride in UserAttractionDB.query.filter_by(user_id=id).all():
+            user_lst.append(ride.attraction_id)
+        
+        percent = floor((user_total/wdw_total) * 100)
+        return render_template("bucket-landing.html", attractions=attractions, mk_total=mk_total,
+							mk_user=mk_user, hs_user=hs_user, hs_total=hs_total, ep_user=ep_user,
+							ep_total=ep_total, ak_user=ak_user, ak_total=ak_total, user_total=user_total,
+							wdw_total=wdw_total, user_lst=user_lst, percent=percent)
+    
+    return render_template("bucket-landing.html", attractions=attractions, wdw_total=wdw_total, mk_total=mk_total,
+                        hs_total=hs_total, ep_total=ep_total, ak_total=ak_total)
 
 
 # add attraction to user profile
@@ -362,7 +364,7 @@ def add_attraction(id, park):
 	db.session.add(user_att)
 	db.session.commit()
 
-	return redirect(f"/user_page/bucket_list/{park}#ride-selection")
+	return redirect(f"/bucket_list/{park}#ride-selection")
 
 
 # remove attraction from user profile
@@ -372,23 +374,16 @@ def remove_attraction(id,park):
 	db.engine.execute(f"DELETE FROM user_attractionDB "
 					  f"WHERE user_id ={current_user.id} "
 					  f"AND attraction_id={id};")
-	return redirect(f"/user_page/bucket_list/{park}#ride-selection")
+	return redirect(f"/bucket_list/{park}#ride-selection")
 
 
 # bucket list park page
-@app.route('/user_page/bucket_list/<park>')
-@login_required
+@app.route('/bucket_list/<park>')
 def bucket_list_park(park):
 	attractions = AttractionDB.query.filter_by(park=park).all()
 	attraction_count = AttractionDB.query.filter_by(park=park).count()
-	user_count = UserAttractionDB.query.filter_by(park=park, user_id=current_user.id).count()
-
-	user_lst = []
-	for ride in UserAttractionDB.query.filter_by(user_id=current_user.id).all():
-		user_lst.append(ride.attraction_id)
-
+ 
 	image = ""
-	land_lst = []
 	if park == "Magic Kingdom":
 		image = "/static/mk_logo.png"
 	elif park == "Epcot":
@@ -397,8 +392,18 @@ def bucket_list_park(park):
 		image = "/static/hs_logo.gif"
 	else:
 		image = "/static/ak_logo.webp"
+ 
+	if current_user.is_authenticated:
+		user_count = UserAttractionDB.query.filter_by(park=park, user_id=current_user.id).count()
 
-	return render_template("park.html", image=image, park=park, attractions=attractions, attraction_count=attraction_count, user_count=user_count, user_lst=user_lst)
+		user_lst = []
+		for ride in UserAttractionDB.query.filter_by(user_id=current_user.id).all():
+			user_lst.append(ride.attraction_id)
+
+		return render_template("park.html", image=image, park=park, attractions=attractions, attraction_count=attraction_count, user_count=user_count, user_lst=user_lst)
+
+
+	return render_template("park.html", image=image, park=park, attractions=attractions, attraction_count=attraction_count)
 
 
 @app.route('/robots.txt')
