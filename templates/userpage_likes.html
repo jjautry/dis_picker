@@ -71,6 +71,11 @@
                     <li class="nav-item small">
                       <a class="nav-link small" href="../user_page/dislikes">Dislikes</a>
                     </li>
+                    {% if current_user.id == 1 %}
+                    <li class="nav-item small">
+                        <a href="/admin" class="nav-link small text-danger">ADMIN</a>
+                    </li>
+                    {% endif %}
                   </ul>
             </div>
         </div>
