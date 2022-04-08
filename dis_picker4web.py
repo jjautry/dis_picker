@@ -320,7 +320,6 @@ def remove_feedback(id):
 
 
 # user bucket list page
-@app.route('/user_page/bucket_list')
 @app.route('/bucket_list')
 def bucket_list():
     attractions = AttractionDB.query.all()
