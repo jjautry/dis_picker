@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block title %}
 <meta name="keywords" content="Disney Trip Countdown, custom disney countdown, disneyland countdown, disney world countdown">
+<meta name="description" content="Countdown to your Disney World or Disneyland trip with this custom countdown!">
 
 <title>Disney Trip Countdown</title>
 {% endblock %}
@@ -19,12 +20,12 @@
 		<div class="navbar-nav">
 		  <a class="nav-link" aria-current="page" href="/">Home</a>
 		  {% if current_user.is_authenticated %}
-		  <a class="nav-link" href="/user_page">Account</a>
+		  <a class="nav-link" href="/user-page">Account</a>
 		  {% else %}
 		  <a class="nav-link" href="/login">Login / Sign-up</a>
 		  {% endif %}
 		  <a class="nav-link" href="/studio">Movie Picker</a>
-		  <a href="/bucket_list" class="nav-link">Bucket List</a>
+		  <a href="/bucket-list" class="nav-link">Bucket List</a>
 		  {% if current_user.is_authenticated %}
 		  <a href="/logout" class="nav-link">Logout</a>
 		  {% endif %}
@@ -53,6 +54,7 @@
             <p class="display-6 text-light">
                 {{ current_user.username | upper }}
             </p>
+            <h1 class="d-none">Disney Trip Countdown</h1>
         </div>
     </div>
 </section>
@@ -135,7 +137,7 @@
     <footer class="pt-5 mt-5">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3 mt-5">
         <li class="nav-item"><a href="/" class="nav-link px-2 text-muted">Home</a></li>
-        <li class="nav-item"><a href="/user_page" class="nav-link px-2 text-muted">Account</a></li>
+        <li class="nav-item"><a href="/user-page" class="nav-link px-2 text-muted">Account</a></li>
         <li class="nav-item"><a href="/about" class="nav-link px-2 text-muted">About</a></li>
         </ul>
         <p class="text-center text-muted">James Autry | 2022</p>

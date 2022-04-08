@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}
 <meta name="keywords" content="Random disney movie, random pixar movie, random star wars movie, random disney channel movie, random marvel movie">
-<title>Random Disney, Marvel, Star Wars, Pixar, Disney Channel Movie Picker</title>
+<title>Random Disney Movie Picker</title>
 {% endblock%}
 
 {% block nav %}
@@ -18,12 +18,12 @@
 		<div class="navbar-nav">
 		  <a class="nav-link" aria-current="page" href="/">Home</a>
 		  {% if current_user.is_authenticated %}
-		  <a class="nav-link" href="/user_page">Account</a>
+		  <a class="nav-link" href="/user-page">Account</a>
 		  {% else %}
 		  <a class="nav-link" href="/login">Login / Sign-up</a>
 		  {% endif %}
 		  <a class="nav-link active" href="/studio">Movie Picker</a>
-		  <a href="/bucket_list" class="nav-link">Bucket List</a>
+		  <a href="/bucket-list" class="nav-link">Bucket List</a>
 		  {% if current_user.is_authenticated %}
 		  <a href="/logout" class="nav-link">Logout</a>
 		  {% endif %}
@@ -48,6 +48,7 @@
         <!--studio selector buttons-->
         <div class="row row-cols-1 row-cols-md-3 justify-content-evenly">
 			<div class="col-10 col-md-4">
+				<h1 class="d-none">Random Disney, Marvel, Star Wars, Pixar, Disney Channel Movie Picker</h1>
 				<h2 class="h3 text-light text-center border-bottom border-light">Random Disney Movie</h2>
 
 				<div class="card-body text-center py-4">
@@ -86,7 +87,7 @@
     <footer class="pt-5 mt-5">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-        <li class="nav-item"><a href="/user_page" class="nav-link px-2 text-muted">Account</a></li>
+        <li class="nav-item"><a href="/user-page" class="nav-link px-2 text-muted">Account</a></li>
         <li class="nav-item"><a href="/about" class="nav-link px-2 text-muted">About</a></li>
         </ul>
         <p class="text-center text-muted">James Autry | 2022</p>

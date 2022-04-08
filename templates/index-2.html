@@ -21,12 +21,12 @@
 		<div class="navbar-nav">
 		  <a class="nav-link active" aria-current="page" href="/">Home</a>
 		  {% if current_user.is_authenticated %}
-		  <a class="nav-link" href="/user_page">Account</a>
+		  <a class="nav-link" href="/user-page">Account</a>
 		  {% else %}
 		  <a class="nav-link" href="/login">Login / Sign-up</a>
 		  {% endif %}
 		  <a class="nav-link" href="/studio">Movie Picker</a>
-		  <a href="/bucket_list" class="nav-link">Bucket List</a>
+		  <a href="/bucket-list" class="nav-link">Bucket List</a>
 		  {% if current_user.is_authenticated %}
 		  <a href="/logout" class="nav-link">Logout</a>
 		  {% endif %}
@@ -70,7 +70,7 @@
 	<div class="row justify-content-evenly align-items-center mt-5 pt-4">
 		<div class="col-10 col-md-5 col-xl-3 d-block d-md-inline justify-content-center">
 			<div class="card my-3" style="height: 25rem;">
-				<img src="/static/new_dismovie.png" class="card-img-top img-fluid">
+				<img src="/static/new_dismovie.png" class="card-img-top img-fluid" alt="Disney Movie Picker logo">
 				<div class="card-body ">
 					<h1 class="card-title h4 my-2">Disney+ Movie Picker</h1>
 					<p class="card-text text-muted">Get a random Disney movie including Pixar, Lucasfilm, Marvel, and Disney Channel!</p>
@@ -82,19 +82,19 @@
 		</div>
 		<div class="col-10 col-md-5 col-xl-3 m-1 d-block d-md-inline">
 			<div class="card my-3" style="height: 25rem;">
-				<img src="/static/bucket_list_new.png" class="card-img-top img-fluid">
+				<img src="/static/bucket_list_new.png" class="card-img-top img-fluid" alt="Disney Bucket List logo">
 				<div class="card-body">
 				  <h1 class="card-title h4 my-2">Disney World Bucket List</h1>
 				  <p class="card-text text-muted">Check off your ridden attractions and complete your Disney bucket list!</p>
 				</div>
 				<div class="card-footer bg-transparent border-0 mb-5">
-					<a href="/bucket_list" class="btn btn-primary" style="width: 10rem;">Go</a>
+					<a href="/bucket-list" class="btn btn-primary" style="width: 10rem;">Go</a>
 				</div>
 			  </div>
 		</div>
 		<div class="col-10 col-md-5 col-xl-3 d-block d-md-inline">
 			<div class="card my-3" style="height: 25rem;">
-				<img src="/static/new_countdown.png" class="card-img-top img-fluid" href="/user_page/countdown">
+				<img src="/static/new_countdown.png" class="card-img-top img-fluid" href="/user-page/countdown" alt="Disney Trip Countdown logo">
 				<div class="card-body">
 				  <h1 class="card-title h4 my-2">Disney Trip Countdown</h1>
 				  <p class="card-text text-muted">Have a Disney trip coming up? Count down the days here with your own countdown!</p>
@@ -122,7 +122,7 @@
     <footer class="pt-5 mt-5">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-        <li class="nav-item"><a href="/user_page" class="nav-link px-2 text-muted">Account</a></li>
+        <li class="nav-item"><a href="/user-page" class="nav-link px-2 text-muted">Account</a></li>
         <li class="nav-item"><a href="/about" class="nav-link px-2 text-muted">About</a></li>
         </ul>
         <p class="text-center text-muted">James Autry | 2022</p>

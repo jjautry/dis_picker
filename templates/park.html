@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% block title %}
+<meta name="keywords" content="Disney World Ride List, disney world attraction list, disney world tracker, {{park}} rides, {{park}} attractions">
+
 <title>{{ park }} Ride List | Disney World Attraction Tracker | Disney Bucket List</title>
 {% endblock %}
 
@@ -18,12 +20,12 @@
 		<div class="navbar-nav">
 		  <a class="nav-link" aria-current="page" href="/">Home</a>
 		  {% if current_user.is_authenticated %}
-		  <a class="nav-link" href="/user_page">Account</a>
+		  <a class="nav-link" href="/user-page">Account</a>
 		  {% else %}
 		  <a class="nav-link" href="/login">Login / Sign-up</a>
 		  {% endif %}
 		  <a class="nav-link" href="/studio">Movie Picker</a>
-		  <a href="/bucket_list" class="nav-link active">Bucket List</a>
+		  <a href="/bucket-list" class="nav-link active">Bucket List</a>
 		  {% if current_user.is_authenticated %}
 		  <a href="/logout" class="nav-link">Logout</a>
 		  {% endif %}
@@ -51,6 +53,7 @@
         <div class="col-8 col-md-5 text-center">
             <div class="container bg-light bg-gradient rounded-3 border border-5 border-light">
                 <img src="/static/bucket_list_new.png" alt="Disney Bucket List logo" class="img-fluid">
+                <h1 class="d-none">{{park}} Ride List</h1>
             </div>
         </div>
     </div>
@@ -63,7 +66,7 @@
 		<!--back to bucket list-->
 	    <div class="row justify-content-center mt-3">
 		    <div class="col-12 col-md-6 text-center">
-			    <a href="/user_page/bucket_list#wdw-logo" class="btn"><button class="btn btn-secondary">Back to Park Select</button></a>
+			    <a href="/bucket-list#wdw-logo" class="btn"><button class="btn btn-secondary">Back to Park Select</button></a>
 		    </div>
 	    </div>
  	</div>
@@ -126,7 +129,7 @@
 		<!--back to bucket list-->
 	    <div class="row justify-content-center mt-3">
 		    <div class="col-12 col-md-6 text-center">
-			    <a href="/user_page/bucket_list#wdw-logo" class="btn"><button class="btn btn-secondary">Back to Park Select</button></a>
+			    <a href="/bucket-list#wdw-logo" class="btn"><button class="btn btn-secondary">Back to Park Select</button></a>
 		    </div>
             <div class="col-10 text-center">
                 <a href="/login" class="btn">

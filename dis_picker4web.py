@@ -32,7 +32,7 @@ def index():
 @app.route('/login', methods=['POST', 'GET'])
 def login():
 	if current_user.is_authenticated:
-		return redirect('/user_page')
+		return redirect('/user-page')
 
 	if request.method == 'POST':
 		username = request.form['username']
@@ -42,7 +42,7 @@ def login():
 			user.num_logins += 1
 			user.last_login = datetime.today().date()
 			db.session.commit()
-			return redirect('/user_page')
+			return redirect('/user-page')
 
 	return render_template('login.html')
 
@@ -51,7 +51,7 @@ def login():
 @app.route('/register', methods=['POST', 'GET'])
 def register():
 	if current_user.is_authenticated:
-		return redirect('/user_page')
+		return redirect('/user-page')
 
 	if request.method == 'POST':
 		email = request.form['email']
@@ -80,14 +80,14 @@ def register():
 
 
 # user page -> redirects to likes
-@app.route("/user_page")
+@app.route("/user-page")
 @login_required
 def my_page():
-	return redirect("/user_page/likes")
+	return redirect("/user-page/likes")
 
 
 # user's liked movies
-@app.route("/user_page/likes")
+@app.route("/user-page/likes")
 @login_required
 def likes():
 	id = current_user.id
@@ -96,7 +96,7 @@ def likes():
 
 
 # user's disliked movies
-@app.route("/user_page/dislikes")
+@app.route("/user-page/dislikes")
 @login_required
 def dislikes():
 	id = current_user.id
@@ -105,7 +105,7 @@ def dislikes():
 
 
 # user's disney trip countdown
-@app.route("/user_page/countdown", methods=["POST", "GET"])
+@app.route("/user-page/countdown", methods=["POST", "GET"])
 @login_required
 def countdown():
 	id = current_user.id
@@ -114,7 +114,7 @@ def countdown():
 		date = datetime.strptime(request.form['disney_date'], '%Y-%m-%d').date()
 		user.disney_date = date
 		db.session.commit()
-		return redirect("/user_page/countdown")
+		return redirect("/user-page/countdown")
 
 	user = UserModel.query.filter_by(id=id).first()
 	if user.disney_date:
@@ -160,7 +160,7 @@ def remove_dis_date():
 	user = UserModel.query.filter_by(id=id).first()
 	user.disney_date = None
 	db.session.commit()
-	return redirect("/user_page/countdown")
+	return redirect("/user-page/countdown")
 
 
 # takes movie out of user's disliked
@@ -168,7 +168,7 @@ def remove_dis_date():
 @login_required
 def restore(movie_id):
 	db.engine.execute(f"DELETE FROM disliked_movies WHERE user_id ={current_user.id} AND movie_id={movie_id};")
-	return redirect("/user_page/dislikes")
+	return redirect("/user-page/dislikes")
 
 
 # takes movie out of user's liked
@@ -178,7 +178,7 @@ def remove(movie_id):
 	db.engine.execute(f"DELETE FROM favorite_movie "
 					  f"WHERE user_id ={current_user.id} "
 					  f"AND movie_id={movie_id};")
-	return redirect("/user_page/likes")
+	return redirect("/user-page/likes")
 
 
 # logout -> redirects to homepage
@@ -242,7 +242,7 @@ def movie(movie_id):
 				fav = FavoriteMovie(user_id=current_user.id, title=result.title, movie_id=result.id)
 				db.session.add(fav)
 				db.session.commit()
-				return redirect('/user_page/likes')
+				return redirect('/user-page/likes')
 
 	return render_template("movie.html", result=result, id=movie_id)
 
@@ -320,7 +320,7 @@ def remove_feedback(id):
 
 
 # user bucket list page
-@app.route('/bucket_list')
+@app.route('/bucket-list')
 def bucket_list():
     attractions = AttractionDB.query.all()
     # park totals
@@ -363,7 +363,7 @@ def add_attraction(id, park):
 	db.session.add(user_att)
 	db.session.commit()
 
-	return redirect(f"/bucket_list/{park}#ride-selection")
+	return redirect(f"/bucket-list/{park}#ride-selection")
 
 
 # remove attraction from user profile
@@ -373,11 +373,11 @@ def remove_attraction(id,park):
 	db.engine.execute(f"DELETE FROM user_attractionDB "
 					  f"WHERE user_id ={current_user.id} "
 					  f"AND attraction_id={id};")
-	return redirect(f"/bucket_list/{park}#ride-selection")
+	return redirect(f"/bucket-list/{park}#ride-selection")
 
 
 # bucket list park page
-@app.route('/bucket_list/<park>')
+@app.route('/bucket-list/<park>')
 def bucket_list_park(park):
 	attractions = AttractionDB.query.filter_by(park=park).all()
 	attraction_count = AttractionDB.query.filter_by(park=park).count()
