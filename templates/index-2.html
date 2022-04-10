@@ -2,7 +2,7 @@
 
 {% block title %}
 <meta name="description" content="Free all-in-one app for Disney fans! Get random Disney movie or select by studio, track your progress in riding every ride in Disney World, and countdown the days till your next Disney trip!">
-<meta name="keywords" content="Disney+ movie picker, disney movie picker, marvel movie picker, star wars movie picker, pixar movie picker, Disney world attraction checklist, disney world bucketlist, bucket list, disney trip countdown, disney world ride checklist, Disney World Attractions, Marvel, Star Wars, Lucasfilm, Pixar, Disney Channel, dispicker, dis picker, disney movie randomizer, disney picker, random disney movie">
+<meta name="keywords" content="random disney movie generator, disney movie generator, disney plus movie generator, disney movie generator wheel, disney random movie generator, disney world rides list, disney world ride, epcot rides, magic kingdom rides, animal kingdom rides, hollywood studios rides, 2021, 2022, 2023">
 
 <title>Dis Picker | Random Disney Movie | Disney World Bucket List | Disney Trip Countdown</title>
 {% endblock %}
@@ -66,8 +66,15 @@
 			</h2>
 		</div>
 	</div>
-
-	<div class="row justify-content-evenly align-items-center mt-5 pt-4">
+	<div class="row justify-content-center pt-4">
+		<div class="col-10 justify-content-center">
+			<p class="text-muted">
+				Dis Picker includes three features: Disney+ Movie Picker, Disney World Bucket List, and Disney Trip Countdown. Read more about each below:
+			</p>
+		</div>
+	</div>
+	<!--Disney+ Movie Picker card-->
+	<div class="row justify-content-evenly align-items-center mt-0 mt-md-5 pt-4">
 		<div class="col-10 col-md-5 col-xl-3 d-block d-md-inline justify-content-center">
 			<div class="card my-3" style="height: 25rem;">
 				<img src="/static/new_dismovie.png" class="card-img-top img-fluid" alt="Disney Movie Picker logo">
@@ -80,6 +87,7 @@
 				</div>
 			  </div>
 		</div>
+		<!--Disney World Bucket List card-->
 		<div class="col-10 col-md-5 col-xl-3 m-1 d-block d-md-inline">
 			<div class="card my-3" style="height: 25rem;">
 				<img src="/static/bucket_list_new.png" class="card-img-top img-fluid" alt="Disney Bucket List logo">
@@ -92,6 +100,7 @@
 				</div>
 			  </div>
 		</div>
+		<!--Disney Trip Countdown card-->
 		<div class="col-10 col-md-5 col-xl-3 d-block d-md-inline">
 			<div class="card my-3" style="height: 25rem;">
 				<img src="/static/new_countdown.png" class="card-img-top img-fluid" href="/user-page/countdown" alt="Disney Trip Countdown logo">

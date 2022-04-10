@@ -152,7 +152,7 @@ def countdown_v2():
 
 
 
-# removes user's disney trip date
+# remove user's disney trip date
 @app.route("/remove-dis-date")
 @login_required
 def remove_dis_date():
@@ -163,7 +163,7 @@ def remove_dis_date():
 	return redirect("/user-page/countdown")
 
 
-# takes movie out of user's disliked
+# take movie out of user's disliked
 @app.route("/restore/<movie_id>")
 @login_required
 def restore(movie_id):
@@ -171,7 +171,7 @@ def restore(movie_id):
 	return redirect("/user-page/dislikes")
 
 
-# takes movie out of user's liked
+# take movie out of user's liked
 @app.route("/remove/<movie_id>")
 @login_required
 def remove(movie_id):
@@ -304,14 +304,19 @@ def admin():
 @app.route('/missing-poster/<movie_id>')
 def feedback(movie_id=None):
 	if movie_id:
-		id = current_user.id
+		if current_user.is_authenticated:
+			id = current_user.id
+		else:
+			id = 11420690
 		missing_msg = "Missing Poster for movie #" + movie_id
 		date = datetime.today().date()
 		fb = FeedbackDB(user_id=id, message=missing_msg, date=date)
 		db.session.add(fb)
 		db.session.commit()
-	return redirect("/#movie-options")
+	return redirect("/studio")
 
+
+# remove feedback
 @app.route('/remove/feedback/<id>')
 def remove_feedback(id):
 	db.engine.execute(f"DELETE FROM feedback WHERE id ={id};")
