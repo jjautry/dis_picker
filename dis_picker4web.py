@@ -115,7 +115,7 @@ def countdown():
         date = datetime.strptime(request.form['disney_date'], '%Y-%m-%d').date()
         user.disney_date = date
         db.session.commit()
-        return redirect("/user-page/countdown")
+        return redirect("/countdown")
 
     user = UserModel.query.filter_by(id=id).first()
     if user.disney_date:
@@ -160,7 +160,7 @@ def remove_dis_date():
     user = UserModel.query.filter_by(id=id).first()
     user.disney_date = None
     db.session.commit()
-    return redirect("/user-page/countdown")
+    return redirect("/countdown")
 
 
 # take movie out of user's disliked
