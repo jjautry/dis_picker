@@ -48,6 +48,22 @@
             </p>
         </div>
     </div>
+    <div class="row justify-content-center">
+            <div class="col-12 col-md-6 pt-5">
+                <ul class="nav nav-pills justify-content-center pb-1 border-bottom border-2">
+                    <li class="nav-item small">
+                      <a class="nav-link small" aria-current="page" href="../user-page/likes">Likes</a>
+                    </li>
+                    <li class="nav-item small">
+                      <a class="nav-link small" href="../user-page/dislikes">Dislikes</a>
+                    </li>
+                    {% if current_user.id == 1 %}
+                    <li class="nav-item small">
+                        <a href="#" class="nav-link active small">ADMIN</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
 </section>
 
 <section id="userContent">

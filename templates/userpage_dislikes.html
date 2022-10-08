@@ -53,9 +53,6 @@
             <p class="display-6 text-light">
                 {{ current_user.username | upper }}
             </p>
-            <p class="small text-muted">
-                Member since 2022
-            </p>
         </div>
     </div>
 </section>
@@ -67,12 +64,17 @@
             <div class="col-12 col-md-6 pt-5">
                 <ul class="nav nav-pills justify-content-center pb-1 border-bottom border-2">
                     <li class="nav-item small">
-                      <a class="nav-link small" href="../user-page/likes">Likes</a>
+                      <a class="nav-link small" aria-current="page" href="../user-page/likes">Likes</a>
                     </li>
                     <li class="nav-item small">
                       <a class="nav-link active small" href="#">Dislikes</a>
                     </li>
-                  </ul>
+                    {% if current_user.id == 1 %}
+                    <li class="nav-item small">
+                        <a href="/admin" class="nav-link small text-danger">ADMIN</a>
+                    </li>
+                    {% endif %}
+                </ul>
             </div>
         </div>
 
