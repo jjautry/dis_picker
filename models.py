@@ -118,6 +118,18 @@ class UserAttractionDB(db.Model):
 			return False
 
 
+# movie selection results
+class MovieSelectionDB(db.Model):
+	__table_name = 'movie_selection'
+
+	id = db.Column(db.Integer, primary_key=True)
+	date = db.Column(db.Date())
+	user_id = db.Column(db.Integer)
+	studio_selection = db.Column(db.String, nullable=False)
+	movie_result_id = db.Column(db.Integer, nullable=False)
+
+
+
 # stores the user id during session
 @login.user_loader
 def load_user(id):

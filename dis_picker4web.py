@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, send_from_directory, session, flash
 from flask_login import login_required, current_user, login_user, logout_user
 from models import db, login, UserModel, DislikeMovie, MovieDB, FavoriteMovie, FeedbackDB, \
-    dis_countdown, AttractionDB, UserAttractionDB
+    dis_countdown, AttractionDB, UserAttractionDB, MovieSelectionDB
 from datetime import datetime
 import random
 from math import floor
@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.secret_key = 'slinkydogdash'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
-app.config['SQLALCHEMY_TRACK_NOTIFICATIONS'] = False
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 login.init_app(app)
@@ -199,10 +199,18 @@ def random_movie():
             if check:
                 return random_movie()
             else:
-                pass
-    for movie in result:
-        new_result = movie.id
-    return redirect('/movie/' + str(new_result))
+                result_log = MovieSelectionDB(date=datetime.today().date(), user_id=current_user.id,
+                                              studio_selection='Random', movie_result_id=new_result)
+                db.session.add(result_log)
+                db.session.commit()
+                return redirect('/movie/' + str(new_result))
+    for line in result:
+        new_result = line.id
+        result_log = MovieSelectionDB(date=datetime.today().date(), user_id=None,
+                                      studio_selection='Random', movie_result_id=new_result)
+        db.session.add(result_log)
+        db.session.commit()
+        return redirect('/movie/' + str(new_result))
 
 
 # random movie from chosen studio
@@ -214,14 +222,20 @@ def studio(name=None):
         if current_user.is_authenticated:
             for line in result:
                 new_result = line.id
-                check = DislikeMovie().check_in(current_user.id, new_result)
-                if check:
-                    return studio()
-                else:
-                    pass
+                result_studio = line.studio
+                result_log = MovieSelectionDB(date=datetime.today().date(), user_id=current_user.id,
+                                              studio_selection=result_studio, movie_result_id=new_result)
+                db.session.add(result_log)
+                db.session.commit()
+                return redirect('/movie/' + str(new_result))
         for line in result:
             new_result = line.id
-        return redirect('/movie/' + str(new_result))
+            result_studio = line.studio
+            result_log = MovieSelectionDB(date=datetime.today().date(), user_id=None,
+                                          studio_selection=result_studio, movie_result_id=new_result)
+            db.session.add(result_log)
+            db.session.commit()
+            return redirect('/movie/' + str(new_result))
 
     return render_template("studio.html")
 
