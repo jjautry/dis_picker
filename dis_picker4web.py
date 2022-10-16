@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, send_from_directory, session, flash
+from flask import Flask, render_template, request, redirect, send_from_directory
 from flask_login import login_required, current_user, login_user, logout_user
 from models import db, login, UserModel, DislikeMovie, MovieDB, FavoriteMovie, FeedbackDB, \
     dis_countdown, AttractionDB, UserAttractionDB, MovieSelectionDB
@@ -60,9 +60,9 @@ def register():
         password = request.form['password']
 
         if UserModel.query.filter_by(email=email).first():
-            return ('Email already in use')
+            return 'Email already in use'
         elif UserModel.query.filter_by(username=username).first():
-            return ('Username already in use')
+            return 'Username already in use'
 
         user = UserModel(email=email, username=username)
         user.set_password(password)
@@ -74,8 +74,8 @@ def register():
         user.last_login = datetime.today().date()
         db.session.commit()
 
-        newAccount = True
-        return render_template("userpage_likes.html", newAccount=newAccount)
+        new_account = True
+        return render_template("userpage_likes.html", newAccount=new_account)
 
     return render_template('register.html')
 
@@ -191,7 +191,10 @@ def logout():
 # function to give random movie
 @app.route('/random-movie', methods=['POST', 'GET'])
 def random_movie():
-    result = db.engine.execute("SELECT * FROM movies ORDER BY RANDOM() LIMIT 1;")
+    result = db.engine.execute("SELECT * FROM movies "
+                               "WHERE studio='Disney' OR studio='Marvel' OR studio='Lucasfilm' OR studio='Pixar' "
+                               "ORDER BY RANDOM() "
+                               "LIMIT 1;")
     if current_user.is_authenticated:
         for line in result:
             new_result = line.id
@@ -256,7 +259,7 @@ def movie(movie_id):
                 fav = FavoriteMovie(user_id=current_user.id, title=result.title, movie_id=result.id)
                 db.session.add(fav)
                 db.session.commit()
-                return redirect('/user-page/likes')
+                return redirect('/#movie-options')
 
     return render_template("movie.html", result=result, id=movie_id)
 
