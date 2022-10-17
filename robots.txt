@@ -1,4 +1,5 @@
 User-Agent: *
+Disallow: /movie
 Disallow: /missing-poster
 Disallow: /feedback
 Sitemap: https://www.dispicker.com/sitemap.xml
