@@ -317,22 +317,6 @@ def admin():
         return redirect("/")
 
 
-# sends feedback/missing poster message to fb data
-@app.route('/feedback')
-@app.route('/missing-poster/<movie_id>')
-def feedback(movie_id=None):
-    if movie_id:
-        if current_user.is_authenticated:
-            id = current_user.id
-        else:
-            id = 11420690
-        missing_msg = "Missing Poster for movie #" + movie_id
-        date = datetime.today().date()
-        fb = FeedbackDB(user_id=id, message=missing_msg, date=date)
-        db.session.add(fb)
-        db.session.commit()
-    return redirect("/studio")
-
 
 # remove feedback
 @app.route('/remove/feedback/<id>')
