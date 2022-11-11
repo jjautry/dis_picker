@@ -129,7 +129,6 @@ class MovieSelectionDB(db.Model):
 	movie_result_id = db.Column(db.Integer, nullable=False)
 
 
-
 # stores the user id during session
 @login.user_loader
 def load_user(id):

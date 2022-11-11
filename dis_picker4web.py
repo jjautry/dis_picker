@@ -147,6 +147,8 @@ def countdown_v2():
         if request.method == "POST":
             user_date = datetime.strptime(request.form['disney_date'], '%Y-%m-%d').date()
             days = dis_countdown(user_date)
+            if days < 0:
+                days = 0
             return render_template("countdown.html", days=days)
 
     return render_template("countdown.html")
@@ -250,11 +252,13 @@ def movie(movie_id):
 
     if request.method == 'POST':
         if current_user.is_authenticated:
+            # Dislike button
             if request.form['submit_button'] == 'Dislike':
                 reject = DislikeMovie(user_id=current_user.id, title=result.title, movie_id=result.id)
                 db.session.add(reject)
                 db.session.commit()
                 return redirect("/#movie-options")
+            # Favorite button
             elif request.form['submit_button'] == 'Favorite':
                 fav = FavoriteMovie(user_id=current_user.id, title=result.title, movie_id=result.id)
                 db.session.add(fav)
@@ -315,7 +319,6 @@ def admin():
                                feedback_count=feedback_count)
     else:
         return redirect("/")
-
 
 
 # remove feedback
