@@ -72,6 +72,17 @@ class FavoriteMovie(db.Model):
 	title = db.Column(db.String(80), nullable=False)
 	movie_id = db.Column(db.Integer, nullable=False)
 
+	def check_in(self, user_id, movie_id):
+		"""Checks if user_id and movie_id have a match in disliked movies"""
+		usr_lst = []
+		result = FavoriteMovie.query.filter_by(user_id=user_id)
+		for movie in result:
+			usr_lst.append(movie.movie_id)
+		if movie_id in usr_lst:
+			return True
+		else:
+			return False
+
 
 # user feedback from about page
 class FeedbackDB(db.Model):

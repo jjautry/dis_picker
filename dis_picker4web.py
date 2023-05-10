@@ -122,7 +122,6 @@ def countdown():
         days = dis_countdown(user.disney_date)
     else:
         days = 0
-
     return render_template("countdown.html", days=days)
 
 
@@ -257,15 +256,28 @@ def movie(movie_id):
                 reject = DislikeMovie(user_id=current_user.id, title=result.title, movie_id=result.id)
                 db.session.add(reject)
                 db.session.commit()
-                return redirect("/#movie-options")
+                return redirect("/studio")
             # Favorite button
             elif request.form['submit_button'] == 'Favorite':
                 fav = FavoriteMovie(user_id=current_user.id, title=result.title, movie_id=result.id)
                 db.session.add(fav)
                 db.session.commit()
-                return redirect('/#movie-options')
+                return redirect('/user-page/likes')
 
-    return render_template("movie.html", result=result, id=movie_id)
+    if current_user.is_authenticated:
+        fav_check = False
+        for line in result:
+            new_result = line.id
+            check = FavoriteMovie().check_in(current_user.id, new_result)
+            if check:
+                fav_check = True
+                return fav_check
+            else:
+                fav_check = False
+                return fav_check
+
+
+    return render_template("movie.html", result=result, id=movie_id, fav_check=fav_check)
 
 
 # random movie from user favorites

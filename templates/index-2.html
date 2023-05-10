@@ -1,38 +1,38 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<meta name="description" content="Free all-in-one app for Disney fans! Get random Disney movie or select by studio, track your progress in riding every ride in Disney World, and countdown the days till your next Disney trip! Random Disney Marvel Star Wars Pixar Movie Generator">
+<meta name="description" content="Free all-in-one app for Disney fans! Random Disney Movie Generator or select by studio (Pixar, Marvel, Star Wars), track your progress in riding every ride in Disney World, and countdown the days till your next Disney trip!">
 <meta name="keywords" content="random disney movie generator, marvel movie picker, star wars movie generator, pixar movie generator, disney movie generator, disney plus movie generator, disney movie generator wheel, disney random movie generator, disney world rides list, disney world ride, epcot rides, magic kingdom rides, animal kingdom rides, hollywood studios rides, 2021, 2022, 2023">
 
-<title>Dis Picker | Random Disney Movie Marvel, Star Wars, Pixar | Disney World Bucket List | Disney Trip Countdown</title>
+<title>Dis Picker | Random Disney Movie Generator Marvel, Star Wars, Pixar | Disney World Bucket List | Disney Trip Countdown</title>
 {% endblock %}
 
 {% block nav %}
 <!-- navbar -->
 <nav class="navbar navbar-expand-md navbar-light bg-light">
-	<div class="container-lg">
-		<a class="navbar-brand" href="/">
-		<img src="/static/dp_logo.png" alt="" width="37.5" height="30">
-		  </a>
-		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-		  </button>
-		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-		<div class="navbar-nav">
-		  <a class="nav-link active" aria-current="page" href="/">Home</a>
-		  {% if current_user.is_authenticated %}
-		  <a class="nav-link" href="/user-page">Account</a>
-		  {% else %}
-		  <a class="nav-link" href="/login">Login / Sign-up</a>
-		  {% endif %}
-		  <a class="nav-link" href="/studio">Movie Picker</a>
-		  <a href="/bucket-list" class="nav-link">Bucket List</a>
-		  {% if current_user.is_authenticated %}
-		  <a href="/logout" class="nav-link">Logout</a>
-		  {% endif %}
-		</div>
-	  </div>
-	</div>
+  <div class="container-lg">
+    <a class="navbar-brand" href="/">
+      <img src="/static/dp_logo.png" alt="" width="37.5" height="30">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="#home">Home</a>
+        {% if current_user.is_authenticated %}
+        <a class="nav-link" href="/account">Account</a>
+        {% else %}
+        <a class="nav-link" href="/login">Login / Sign-up</a>
+        {% endif %}
+        <a class="nav-link" href="/movie-picker">Movie Picker</a>
+        <a href="/bucket-list" class="nav-link">Bucket List</a>
+        {% if current_user.is_authenticated %}
+        <a href="/logout" class="nav-link">Logout</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
 </nav>
 {% endblock %}
 
