@@ -106,11 +106,24 @@
                         </div>
                     </div>
                     <div class="col-6 text-start">
-                        <button class="btn btn-outline-success btn-lg w-auto" type="Submit" name="submit_button" value="Favorite">
-                            <i class="bi bi-hand-thumbs-up px-4 px-md-5"></i>
-                        </button>
+                            {% if fav_check %}
+                            <button class="btn btn-success btn-lg w-auto disabled">
+                                <i class="bi bi-hand-thumbs-up px-4 px-md-5"></i>
+                            </button>
+                            <div class="row justify-content-beginning">
+                                <div class="col-7 col-md-4 mt-2">
+                                    <p class="small text-muted text-center">
+                                        Movie already in favorites!
+                                    </p>
+                                </div>
+                            </div>
+                            {% else %}
+                            <button class="btn btn-outline-success btn-lg w-auto" type="Submit" name="submit_button" value="Favorite">
+                                <i class="bi bi-hand-thumbs-up px-4 px-md-5"></i>
+                            </button>
+                            {% endif %}
 
-                        {% else %}
+                            {% else %}
 
                         <button class="btn btn-outline-danger btn-lg w-auto disabled" type="Submit" name="submit_button" value="Dislike">
                             <i class="bi bi-hand-thumbs-down px-4 px-md-5"></i>

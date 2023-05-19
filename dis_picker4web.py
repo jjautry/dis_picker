@@ -231,6 +231,14 @@ def studio(name=None):
 def movie(movie_id):
     result = MovieDB.query.filter_by(id=movie_id).first()
 
+    if current_user.is_authenticated:
+        fav_check = False
+        check = FavoriteMovie().check_in(current_user.id, result.id)
+        if check:
+            fav_check = True
+        else:
+            fav_check = False
+
     if request.method == 'POST':
         if current_user.is_authenticated:
             # Dislike button
@@ -246,20 +254,8 @@ def movie(movie_id):
                 db.session.commit()
                 return redirect('/user-page/likes')
 
-    """if current_user.is_authenticated:
-        fav_check = False
-        for line in result:
-            new_result = line.id
-            check = FavoriteMovie().check_in(current_user.id, new_result)
-            if check:
-                fav_check = True
-                return fav_check
-            else:
-                fav_check = False
-                return fav_check"""
 
-
-    return render_template("movie.html", result=result, id=movie_id)
+    return render_template("movie.html", result=result, id=movie_id, fav_check=fav_check)
 
 
 # random movie from user favorites
