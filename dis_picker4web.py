@@ -5,6 +5,7 @@ from models import db, login, UserModel, DislikeMovie, MovieDB, FavoriteMovie, F
 from datetime import datetime
 import random
 from math import floor
+from sqlalchemy.sql.expression import func
 
 app = Flask(__name__)
 app.secret_key = 'slinkydogdash'
@@ -192,38 +193,19 @@ def logout():
 # function to give random movie
 @app.route('/random-movie', methods=['POST', 'GET'])
 def random_movie():
-    result = db.engine.execute("SELECT * FROM movies "
-                               "WHERE studio='Disney' OR studio='Marvel' OR studio='Lucasfilm' OR studio='Pixar' "
-                               "ORDER BY RANDOM() "
-                               "LIMIT 1;")
-    if current_user.is_authenticated:
-        for line in result:
-            new_result = line.id
-            check = DislikeMovie().check_in(current_user.id, new_result)
-            if check:
-                return random_movie()
-            else:
-                result_log = MovieSelectionDB(date=datetime.today().date(), user_id=current_user.id,
-                                              studio_selection='Random', movie_result_id=new_result)
-                db.session.add(result_log)
-                db.session.commit()
-                return redirect('/movie/' + str(new_result))
-    for line in result:
-        new_result = line.id
-        result_log = MovieSelectionDB(date=datetime.today().date(), user_id=None,
-                                      studio_selection='Random', movie_result_id=new_result)
-        db.session.add(result_log)
-        db.session.commit()
-        return redirect('/movie/' + str(new_result))
+    result = MovieDB.query.filter(MovieDB.studio!='Disney Channel').order_by(func.random()).first()
+    #for count in result:
+    #    return redirect('/movie/' + str(count.count))
+    return redirect('/movie/' + str(result.id))
 
 
 # random movie from chosen studio
 @app.route("/studio", methods=['POST', 'GET'])
 def studio(name=None):
     if request.method == 'POST':
-        result = db.engine.execute(f"SELECT * FROM movies WHERE studio='{request.form['studio_select']}' "
-                                   f"ORDER BY RANDOM() LIMIT 1;")
-        if current_user.is_authenticated:
+        #result = db.engine.execute(f"SELECT * FROM movies WHERE studio = '{studio_name}' ORDER BY RANDOM() LIMIT 1;")
+        result = MovieDB.query.filter_by(studio=request.form['studio_select']).order_by(func.random()).first()
+        """if current_user.is_authenticated:
             for line in result:
                 new_result = line.id
                 result_studio = line.studio
@@ -231,15 +213,15 @@ def studio(name=None):
                                               studio_selection=result_studio, movie_result_id=new_result)
                 db.session.add(result_log)
                 db.session.commit()
-                return redirect('/movie/' + str(new_result))
-        for line in result:
-            new_result = line.id
-            result_studio = line.studio
+                return redirect('/movie/' + str(new_result))"""
+        #for line in result:
+        #    new_result = line.id
+        """result_studio = line.studio
             result_log = MovieSelectionDB(date=datetime.today().date(), user_id=None,
                                           studio_selection=result_studio, movie_result_id=new_result)
             db.session.add(result_log)
-            db.session.commit()
-            return redirect('/movie/' + str(new_result))
+            db.session.commit()"""
+        return redirect('/movie/' + str(result.id))
 
     return render_template("studio.html")
 
@@ -264,7 +246,7 @@ def movie(movie_id):
                 db.session.commit()
                 return redirect('/user-page/likes')
 
-    if current_user.is_authenticated:
+    """if current_user.is_authenticated:
         fav_check = False
         for line in result:
             new_result = line.id
@@ -274,10 +256,10 @@ def movie(movie_id):
                 return fav_check
             else:
                 fav_check = False
-                return fav_check
+                return fav_check"""
 
 
-    return render_template("movie.html", result=result, id=movie_id, fav_check=fav_check)
+    return render_template("movie.html", result=result, id=movie_id)
 
 
 # random movie from user favorites

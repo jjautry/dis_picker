@@ -17,16 +17,21 @@
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 		<div class="navbar-nav">
 		  <a class="nav-link" aria-current="page" href="/">Home</a>
-		  {% if current_user.is_authenticated %}
-		  <a class="nav-link" href="/user-page">Account</a>
-		  {% else %}
-		  <a class="nav-link" href="/login">Login / Sign-up</a>
-		  {% endif %}
-		  <a class="nav-link active" href="/studio">Movie Picker</a>
-		  <a href="/bucket-list" class="nav-link">Bucket List</a>
-		  {% if current_user.is_authenticated %}
-		  <a href="/logout" class="nav-link">Logout</a>
-		  {% endif %}
+		  <!--
+        {% if current_user.is_authenticated %}
+        <a class="nav-link" href="/account">Account</a>
+        {% else %}
+        <a class="nav-link" href="/login">Login / Sign-up</a>
+        {% endif %}
+        -->
+        <a class="nav-link" href="/studio">Movie Picker</a>
+        <a href="/bucket-list" class="nav-link">Bucket List</a>
+
+		  <!--
+        {% if current_user.is_authenticated %}
+        <a href="/logout" class="nav-link">Logout</a>
+        {% endif %}
+        -->
 		</div>
 	  </div>
 	</div>
@@ -49,7 +54,7 @@
         <div class="row row-cols-1 row-cols-md-3 justify-content-evenly">
 			<div class="col-10 col-md-4">
 				<h1 class="d-none">Random Disney, Marvel, Star Wars, Pixar, Disney Channel Movie Picker</h1>
-				<h2 class="h3 text-light text-center border-bottom border-light">Random Disney Movie</h2>
+				<h2 class="h3 text-light text-center border-bottom border-light">Random Disney Movie Generator</h2>
 
 				<div class="card-body text-center py-4">
 					<img src="/static/random_studio.png" alt="disney studios collage" class="img-fluid">
@@ -66,7 +71,7 @@
 			</div>
 
             <div class="col-9 col-md-4 justify-content-center">
-				<h2 class="h3 text-light text-center border-bottom border-light" id="studio-select">Select by Studio</h2>
+				<h2 class="h3 text-light text-center border-bottom border-light" id="studio-select">Random Movie by Studio</h2>
 				<p class="text-muted small my-3 text-center">
 					Click on studio button below
 				</p>
