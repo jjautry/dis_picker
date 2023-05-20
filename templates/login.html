@@ -43,17 +43,17 @@
                     <img class="mb-4" src="/static/dp_logo.png" alt="" width="72" height="57">
                     <h1 class="h3 mb-3 fw-normal">Sign in</h1>
                 
-                    <div class="form-floating">
-                      <input type="text" class="form-control my-1" id="floatingInput" placeholder="username" name="username">
-                      <label for="floatingInput">Username</label>
+                    <div class="form-group mt-4 px-4">
+                      <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username">
                     </div>
-                    <div class="form-floating">
-                      <input type="password" class="form-control my-1" id="floatingPassword" placeholder="Password" name="password">
-                      <label for="floatingPassword">Password</label>
+                    <div class="form-group my-3 px-4">
+                      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
                     </div>
-                    <div class="mt-5">
-                        <button class="w-100 btn btn-lg btn-primary mb-2" type="submit" value="submit">Sign in</button>
-                        <a href="{{ url_for('register') }}" class="text-muted">Don't have an account?</a>
+                    <div class="form-group my-3 px-4 mt-4">
+                        <button class="w-50 btn btn-md btn-primary mb-2" type="submit" value="submit">Sign in</button>
+						<div class="mt-3">
+							<a href="{{ url_for('register') }}" class="text-muted">Don't have an account?</a>
+						</div>
                     </div>
                 </form>
             </div>

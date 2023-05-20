@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, send_from_directory
 from flask_login import login_required, current_user, login_user, logout_user
 from models import db, login, UserModel, DislikeMovie, MovieDB, FavoriteMovie, FeedbackDB, \
-    dis_countdown, AttractionDB, UserAttractionDB, MovieSelectionDB
+    dis_countdown, AttractionDB, UserAttractionDB, MovieSelectionDB, UserActivityDB
 from datetime import datetime
 import random
 from math import floor
@@ -27,6 +27,22 @@ def create_table():
 # homepage
 @app.route('/')
 def index():
+
+    if current_user.is_authenticated:
+        # log user activity
+        act_log = UserActivityDB(date=datetime.now(),
+                                 user_id=current_user.id,
+                                 activity_type='homepage visit')
+        db.session.add(act_log)
+        db.session.commit()
+    else:
+        # log user activity
+        act_log = UserActivityDB(date=datetime.now(),
+                                 user_id=None,
+                                 activity_type='homepage visit')
+        db.session.add(act_log)
+        db.session.commit()
+
     return render_template('index-2.html')
 
 
@@ -130,10 +146,25 @@ def countdown():
 @app.route("/countdown", methods=["POST", "GET"])
 def countdown_v2():
     if current_user.is_authenticated:
+        # log user activity
+        act_log = UserActivityDB(date=datetime.now(),
+                                 user_id=current_user.id,
+                                 activity_type='trip countdown page visit')
+        db.session.add(act_log)
+        db.session.commit()
+
         user = UserModel.query.filter_by(id=current_user.id).first()
         if request.method == "POST":
+            # add disney date to user profile
             date = datetime.strptime(request.form['disney_date'], '%Y-%m-%d').date()
             user.disney_date = date
+            db.session.commit()
+
+            # log user activity
+            act_log = UserActivityDB(date=datetime.now(),
+                                     user_id=current_user.id,
+                                     activity_type='trip countdown date update')
+            db.session.add(act_log)
             db.session.commit()
             return redirect("/countdown")
 
@@ -145,6 +176,14 @@ def countdown_v2():
 
     else:
         if request.method == "POST":
+
+            # log user activity
+            act_log = UserActivityDB(date=datetime.now(),
+                                     user_id=None,
+                                     activity_type='trip countdown date update')
+            db.session.add(act_log)
+            db.session.commit()
+
             user_date = datetime.strptime(request.form['disney_date'], '%Y-%m-%d').date()
             days = dis_countdown(user_date)
             if days < 0:
@@ -169,7 +208,9 @@ def remove_dis_date():
 @app.route("/restore/<movie_id>")
 @login_required
 def restore(movie_id):
-    db.engine.execute(f"DELETE FROM disliked_movies WHERE user_id ={current_user.id} AND movie_id={movie_id};")
+    DislikeMovie.query.filter_by(user_id=current_user.id, movie_id=movie_id).delete()
+    db.session.commit()
+    #db.engine.execute(f"DELETE FROM disliked_movies WHERE user_id ={current_user.id} AND movie_id={movie_id};")
     return redirect("/user-page/dislikes")
 
 
@@ -177,9 +218,11 @@ def restore(movie_id):
 @app.route("/remove/<movie_id>")
 @login_required
 def remove(movie_id):
-    db.engine.execute(f"DELETE FROM favorite_movie "
+    FavoriteMovie.query.filter_by(user_id=current_user.id, movie_id=movie_id).delete()
+    db.session.commit()
+    """db.engine.execute(f"DELETE FROM favorite_movie "
                       f"WHERE user_id ={current_user.id} "
-                      f"AND movie_id={movie_id};")
+                      f"AND movie_id={movie_id};")"""
     return redirect("/user-page/likes")
 
 
@@ -194,14 +237,41 @@ def logout():
 @app.route('/random-movie', methods=['POST', 'GET'])
 def random_movie():
     result = MovieDB.query.filter(MovieDB.studio!='Disney Channel').order_by(func.random()).first()
-    #for count in result:
-    #    return redirect('/movie/' + str(count.count))
-    return redirect('/movie/' + str(result.id))
+
+    if current_user.is_authenticated:
+        result_log = MovieSelectionDB(date=datetime.today().date(), user_id=current_user.id,
+                                      studio_selection='Random', movie_result_id=result.id)
+        db.session.add(result_log)
+        db.session.commit()
+        return redirect('/movie/' + str(result.id))
+    else:
+        result_log = MovieSelectionDB(date=datetime.today().date(), user_id=None, studio_selection='Random',
+                                      movie_result_id=result.id)
+        db.session.add(result_log)
+        db.session.commit()
+        return redirect('/movie/' + str(result.id))
+
 
 
 # random movie from chosen studio
 @app.route("/studio", methods=['POST', 'GET'])
 def studio(name=None):
+
+    if current_user.is_authenticated:
+        # log user activity
+        act_log = UserActivityDB(date=datetime.now(),
+                                 user_id=current_user.id,
+                                 activity_type='movie picker selection page visit')
+        db.session.add(act_log)
+        db.session.commit()
+    else:
+        # log user activity
+        act_log = UserActivityDB(date=datetime.now(),
+                                 user_id=None,
+                                 activity_type='movie picker selection page visit')
+        db.session.add(act_log)
+        db.session.commit()
+
     if request.method == 'POST':
         result = MovieDB.query.filter_by(studio=request.form['studio_select']).order_by(func.random()).first()
         if current_user.is_authenticated:
@@ -223,6 +293,20 @@ def studio(name=None):
 def movie(movie_id):
     result = MovieDB.query.filter_by(id=movie_id).first()
 
+    if request.method == 'POST':
+        # Dislike button
+        if request.form['movie_fb_button'] == 'Dislike':
+            reject = DislikeMovie(user_id=current_user.id, title=result.title, movie_id=result.id)
+            db.session.add(reject)
+            db.session.commit()
+            return redirect("/studio")
+        # Favorite button
+        elif request.form['movie_fb_button'] == 'Favorite':
+            fav = FavoriteMovie(user_id=current_user.id, title=result.title, movie_id=result.id)
+            db.session.add(fav)
+            db.session.commit()
+            return redirect('/user-page/likes')
+
     if current_user.is_authenticated:
         fav_check = False
         check = FavoriteMovie().check_in(current_user.id, result.id)
@@ -232,19 +316,6 @@ def movie(movie_id):
             fav_check = False
         return render_template("movie.html", result=result, id=movie_id, fav_check=fav_check)
 
-    if request.method == 'POST':
-        # Dislike button
-        if request.form['submit_button'] == 'Dislike':
-            reject = DislikeMovie(user_id=current_user.id, title=result.title, movie_id=result.id)
-            db.session.add(reject)
-            db.session.commit()
-            return redirect("/studio")
-        # Favorite button
-        elif request.form['submit_button'] == 'Favorite':
-            fav = FavoriteMovie(user_id=current_user.id, title=result.title, movie_id=result.id)
-            db.session.add(fav)
-            db.session.commit()
-            return redirect('/user-page/likes')
 
 
     return render_template("movie.html", result=result, id=movie_id)
@@ -306,8 +377,8 @@ def admin():
 # remove feedback
 @app.route('/remove/feedback/<id>')
 def remove_feedback(id):
-
-    db.engine.execute(f"DELETE FROM feedback WHERE id ={id};")
+    FeedbackDB.query.filter_by(id=id).delete()
+    db.session.commit()
 
     return redirect("/admin")
 
@@ -324,6 +395,14 @@ def bucket_list():
     ak_total = AttractionDB.query.filter_by(park="Animal Kingdom").count()
 
     if current_user.is_authenticated:
+
+        # log user activity
+        act_log = UserActivityDB(date=datetime.now(),
+                                 user_id=current_user.id,
+                                 activity_type='bucket list visit')
+        db.session.add(act_log)
+        db.session.commit()
+
         """Queries all counts of attractions in parks and user ridden"""
         id = current_user.id
         # user totals
@@ -341,6 +420,13 @@ def bucket_list():
                                mk_user=mk_user, hs_user=hs_user, hs_total=hs_total, ep_user=ep_user,
                                ep_total=ep_total, ak_user=ak_user, ak_total=ak_total, user_total=user_total,
                                wdw_total=wdw_total, user_lst=user_lst, percent=percent)
+
+    # log user activity
+    act_log = UserActivityDB(date=datetime.now(),
+                             user_id=None,
+                             activity_type='bucket list visit')
+    db.session.add(act_log)
+    db.session.commit()
 
     return render_template("bucket-landing.html", attractions=attractions, wdw_total=wdw_total, mk_total=mk_total,
                            hs_total=hs_total, ep_total=ep_total, ak_total=ak_total)
@@ -364,9 +450,9 @@ def add_attraction(id, park):
 @app.route('/remove-attraction/<park>/<id>')
 @login_required
 def remove_attraction(id, park):
-    db.engine.execute(f"DELETE FROM user_attractionDB "
-                      f"WHERE user_id ={current_user.id} "
-                      f"AND attraction_id={id};")
+    user_id = current_user.id
+    UserAttractionDB.query.filter_by( user_id=user_id,attraction_id=id).delete()
+    db.session.commit()
     return redirect(f"/bucket-list/{park}#ride-selection")
 
 
@@ -387,6 +473,14 @@ def bucket_list_park(park):
         image = "/static/ak_logo.webp"
 
     if current_user.is_authenticated:
+
+        # log user activity
+        act_log = UserActivityDB(date=datetime.now(),
+                                 user_id=current_user.id,
+                                 activity_type=f'bucket list park visit - {park}')
+        db.session.add(act_log)
+        db.session.commit()
+
         user_count = UserAttractionDB.query.filter_by(park=park, user_id=current_user.id).count()
 
         user_lst = []
@@ -395,6 +489,14 @@ def bucket_list_park(park):
 
         return render_template("park.html", image=image, park=park, attractions=attractions,
                                attraction_count=attraction_count, user_count=user_count, user_lst=user_lst)
+
+    # log user activity
+    act_log = UserActivityDB(date=datetime.now(),
+                             user_id=None,
+                             activity_type=f'bucket list park visit - {park}')
+    db.session.add(act_log)
+    db.session.commit()
+
 
     return render_template("park.html", image=image, park=park, attractions=attractions,
                            attraction_count=attraction_count)

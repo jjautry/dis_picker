@@ -40,7 +40,9 @@
       <div class="row text-center justify-content-center">
           <div class="col-12 col-md-5">
             	<form action="" method="POST" class="bg-light rounded-3 border border-5 border-light p-5">
-                	<h1 class="display-6">Create an Account</h1>
+					<img class="mb-4" src="/static/dp_logo.png" alt="" width="72" height="57">
+                	<h1 class="h3 mb-3 fw-normal">Create an Account</h1>
+
                 	<div class="form-group mt-5 px-4">
 						<input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
 							<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
@@ -54,7 +56,10 @@
 						<input type="password" class="form-control" id="password" name="password" placeholder="Password">
 					</div>
 					
-					<button type="submit" class="btn btn-primary mt-3">Sign-up</button>
+					<button type="submit" class="w-50 btn btn-md btn-primary mb-2 mt-3">Sign-up</button>
+					<div class="mt-3">
+						<a href="{{ url_for('login') }}" class="text-muted">Already have an account?</a>
+					</div>
               	</form>
           </div>
       </div>

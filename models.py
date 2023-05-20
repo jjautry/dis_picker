@@ -108,7 +108,7 @@ class AttractionDB(db.Model):
 
 # user's ridden attractions table
 class UserAttractionDB(db.Model):
-	__table_name = 'user_attraction'
+	__table_name__ = 'user_attraction'
 
 	id = db.Column(db.Integer, primary_key=True)
 	user_id = db.Column(db.Integer, nullable=False)
@@ -131,13 +131,23 @@ class UserAttractionDB(db.Model):
 
 # movie selection results
 class MovieSelectionDB(db.Model):
-	__table_name = 'movie_selection_db'
+	__table_name__ = 'movie_selection'
 
 	id = db.Column(db.Integer, primary_key=True)
 	date = db.Column(db.Date())
 	user_id = db.Column(db.Integer)
 	studio_selection = db.Column(db.String, nullable=False)
 	movie_result_id = db.Column(db.Integer, nullable=False)
+
+
+
+class UserActivityDB(db.Model):
+	__table_name__ = 'user_activity'
+
+	id = db.Column(db.Integer, primary_key=True)
+	date = db.Column(db.DateTime())
+	user_id = db.Column(db.Integer)
+	activity_type = db.Column(db.String, nullable=False)
 
 
 # stores the user id during session

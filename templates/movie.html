@@ -90,7 +90,7 @@
                     <div class="col-6 text-end">
 
                         {% if current_user.is_authenticated %}
-                        <button class="btn btn-outline-danger btn-lg w-auto" type="Submit" name="submit_button" value="Dislike">
+                        <button class="btn btn-outline-danger btn-lg w-auto" type="Submit" name="movie_fb_button" value="Dislike">
                             <i class="bi bi-hand-thumbs-down px-4 px-md-5"></i>
                         </button>
                         <div class="row justify-content-end">
@@ -114,14 +114,14 @@
                                 </div>
                             </div>
                             {% else %}
-                            <button class="btn btn-outline-success btn-lg w-auto" type="Submit" name="submit_button" value="Favorite">
+                            <button class="btn btn-outline-success btn-lg w-auto" type="Submit" name="movie_fb_button" value="Favorite">
                                 <i class="bi bi-hand-thumbs-up px-4 px-md-5"></i>
                             </button>
                             {% endif %}
 
                             {% else %}
 
-                        <button class="btn btn-outline-danger btn-lg w-auto disabled" type="Submit" name="submit_button" value="Dislike">
+                        <button class="btn btn-outline-danger btn-lg w-auto disabled" type="Submit" name="movie_fb_button" value="Dislike">
                             <i class="bi bi-hand-thumbs-down px-4 px-md-5"></i>
                         </button>
                     </div>
@@ -143,7 +143,7 @@
         </form>
         <div class="row mt-4 justify-content-center">
             <div class="col-8 col-md-5 text-center">
-                <a href="/studio" class="btn btn-secondary btn">Back to Movie Picker</a>
+                <a href="{{ url_for('studio') }}" class="btn btn-secondary btn">Back to Movie Picker</a>
             </div>
         </div>
     </div>
