@@ -131,7 +131,7 @@ class UserAttractionDB(db.Model):
 
 # movie selection results
 class MovieSelectionDB(db.Model):
-	__table_name = 'movie_selection'
+	__table_name = 'movie_selection_db'
 
 	id = db.Column(db.Integer, primary_key=True)
 	date = db.Column(db.Date())

@@ -203,25 +203,17 @@ def random_movie():
 @app.route("/studio", methods=['POST', 'GET'])
 def studio(name=None):
     if request.method == 'POST':
-        #result = db.engine.execute(f"SELECT * FROM movies WHERE studio = '{studio_name}' ORDER BY RANDOM() LIMIT 1;")
         result = MovieDB.query.filter_by(studio=request.form['studio_select']).order_by(func.random()).first()
-        """if current_user.is_authenticated:
-            for line in result:
-                new_result = line.id
-                result_studio = line.studio
-                result_log = MovieSelectionDB(date=datetime.today().date(), user_id=current_user.id,
-                                              studio_selection=result_studio, movie_result_id=new_result)
-                db.session.add(result_log)
-                db.session.commit()
-                return redirect('/movie/' + str(new_result))"""
-        #for line in result:
-        #    new_result = line.id
-        """result_studio = line.studio
-            result_log = MovieSelectionDB(date=datetime.today().date(), user_id=None,
-                                          studio_selection=result_studio, movie_result_id=new_result)
+        if current_user.is_authenticated:
+            result_log = MovieSelectionDB(date=datetime.today().date(), user_id=current_user.id, studio_selection=result.studio, movie_result_id=result.id)
             db.session.add(result_log)
-            db.session.commit()"""
-        return redirect('/movie/' + str(result.id))
+            db.session.commit()
+            return redirect('/movie/' + str(result.id))
+        else:
+            result_log = MovieSelectionDB(date=datetime.today().date(), user_id=None, studio_selection=result.studio, movie_result_id=result.id)
+            db.session.add(result_log)
+            db.session.commit()
+            return redirect('/movie/' + str(result.id))
 
     return render_template("studio.html")
 
@@ -238,24 +230,24 @@ def movie(movie_id):
             fav_check = True
         else:
             fav_check = False
+        return render_template("movie.html", result=result, id=movie_id, fav_check=fav_check)
 
     if request.method == 'POST':
-        if current_user.is_authenticated:
-            # Dislike button
-            if request.form['submit_button'] == 'Dislike':
-                reject = DislikeMovie(user_id=current_user.id, title=result.title, movie_id=result.id)
-                db.session.add(reject)
-                db.session.commit()
-                return redirect("/studio")
-            # Favorite button
-            elif request.form['submit_button'] == 'Favorite':
-                fav = FavoriteMovie(user_id=current_user.id, title=result.title, movie_id=result.id)
-                db.session.add(fav)
-                db.session.commit()
-                return redirect('/user-page/likes')
+        # Dislike button
+        if request.form['submit_button'] == 'Dislike':
+            reject = DislikeMovie(user_id=current_user.id, title=result.title, movie_id=result.id)
+            db.session.add(reject)
+            db.session.commit()
+            return redirect("/studio")
+        # Favorite button
+        elif request.form['submit_button'] == 'Favorite':
+            fav = FavoriteMovie(user_id=current_user.id, title=result.title, movie_id=result.id)
+            db.session.add(fav)
+            db.session.commit()
+            return redirect('/user-page/likes')
 
 
-    return render_template("movie.html", result=result, id=movie_id, fav_check=fav_check)
+    return render_template("movie.html", result=result, id=movie_id)
 
 
 # random movie from user favorites
@@ -314,6 +306,7 @@ def admin():
 # remove feedback
 @app.route('/remove/feedback/<id>')
 def remove_feedback(id):
+
     db.engine.execute(f"DELETE FROM feedback WHERE id ={id};")
 
     return redirect("/admin")
@@ -405,6 +398,12 @@ def bucket_list_park(park):
 
     return render_template("park.html", image=image, park=park, attractions=attractions,
                            attraction_count=attraction_count)
+
+
+
+@app.route('/maintenance')
+def maintenance():
+    return render_template("construction.html")
 
 
 @app.route('/policy.html')

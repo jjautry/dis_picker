@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Oopsie!</title>
+{% endblock %}
+
+{% block nav %}
+<!-- navbar -->
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+	<div class="container-lg">
+		<a class="navbar-brand" href="/">
+		<img src="/static/dp_logo.png" alt="" width="37.5" height="30">
+		  </a>
+		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+		  </button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		<div class="navbar-nav">
+		  <a class="nav-link" aria-current="page" href="/">Home</a>
+		</div>
+	  </div>
+	</div>
+</nav>
+{% endblock %}
+
+{% block content %}
+
+<div class="row py-5 justify-content-center">
+    <div class="col-5 col-md-2">
+        <img src="/static/dp_logo.png" alt="dis picker logo" class="img-fluid">
+    </div>
+</div>
+
+<div class="container pt-5">
+    <div class="row justify-content-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="white" class="bi bi-cone-striped" viewBox="0 0 16 16">
+            <path d="m9.97 4.88.953 3.811C10.159 8.878 9.14 9 8 9c-1.14 0-2.158-.122-2.923-.309L6.03 4.88C6.635 4.957 7.3 5 8 5s1.365-.043 1.97-.12zm-.245-.978L8.97.88C8.718-.13 7.282-.13 7.03.88L6.275 3.9C6.8 3.965 7.382 4 8 4c.618 0 1.2-.036 1.725-.098zm4.396 8.613a.5.5 0 0 1 .037.96l-6 2a.5.5 0 0 1-.316 0l-6-2a.5.5 0 0 1 .037-.96l2.391-.598.565-2.257c.862.212 1.964.339 3.165.339s2.303-.127 3.165-.339l.565 2.257 2.391.598z"/>
+          </svg>
+    </div>
+
+    <div class="row justify-content-center pt-2">
+        <h5 class="text-light text-center">UNDER MAINTENANCE</h5>
+    </div>
+
+    <div class="row justify-content-center pt-5">
+        <h1 class="display-1 text-light text-center">We'll be back soon!</h1>
+    </div>
+</div>
+
+{% endblock %}
