@@ -90,6 +90,18 @@
                     <div class="col-6 text-end">
 
                         {% if current_user.is_authenticated %}
+                        {% if dislike_check %}
+                        <button class="btn btn-danger btn-lg w-auto disabled" type="Submit" name="movie_fb_button" value="Dislike">
+                            <i class="bi bi-hand-thumbs-down px-4 px-md-5"></i>
+                        </button>
+                        <div class="row justify-content-end">
+                            <div class="col-7 col-md-4 mt-2">
+                                <p class="small text-muted text-center">
+                                    Already in your disliked list!
+                                </p>
+                            </div>
+                        </div>
+                        {% else %}
                         <button class="btn btn-outline-danger btn-lg w-auto" type="Submit" name="movie_fb_button" value="Dislike">
                             <i class="bi bi-hand-thumbs-down px-4 px-md-5"></i>
                         </button>
@@ -100,6 +112,7 @@
                                 </p>
                             </div>
                         </div>
+                        {% endif %}
                     </div>
                     <div class="col-6 text-start">
                             {% if fav_check %}

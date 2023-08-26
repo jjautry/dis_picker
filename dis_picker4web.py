@@ -201,6 +201,7 @@ def remove_dis_date():
     user = UserModel.query.filter_by(id=id).first()
     user.disney_date = None
     db.session.commit()
+
     return redirect("/countdown")
 
 
@@ -208,9 +209,8 @@ def remove_dis_date():
 @app.route("/restore/<movie_id>")
 @login_required
 def restore(movie_id):
-    DislikeMovie.query.filter_by(user_id=current_user.id, movie_id=movie_id).delete()
-    db.session.commit()
-    #db.engine.execute(f"DELETE FROM disliked_movies WHERE user_id ={current_user.id} AND movie_id={movie_id};")
+    db.engine.execute(f"DELETE FROM disliked_movies WHERE user_id={current_user.id} AND movie_id={movie_id};")
+
     return redirect("/user-page/dislikes")
 
 
@@ -220,9 +220,7 @@ def restore(movie_id):
 def remove(movie_id):
     FavoriteMovie.query.filter_by(user_id=current_user.id, movie_id=movie_id).delete()
     db.session.commit()
-    """db.engine.execute(f"DELETE FROM favorite_movie "
-                      f"WHERE user_id ={current_user.id} "
-                      f"AND movie_id={movie_id};")"""
+
     return redirect("/user-page/likes")
 
 
@@ -309,12 +307,17 @@ def movie(movie_id):
 
     if current_user.is_authenticated:
         fav_check = False
-        check = FavoriteMovie().check_in(current_user.id, result.id)
-        if check:
+        dislike_check = False
+        fav_check = FavoriteMovie().check_in(current_user.id, result.id)
+        dislike_check = DislikeMovie().check_in(current_user.id, result.id)
+        if fav_check:
             fav_check = True
+        elif dislike_check:
+            dislike_check = True
         else:
             fav_check = False
-        return render_template("movie.html", result=result, id=movie_id, fav_check=fav_check)
+            dislike_check = False
+        return render_template("movie.html", result=result, id=movie_id, fav_check=fav_check, dislike_check=dislike_check)
 
 
 
